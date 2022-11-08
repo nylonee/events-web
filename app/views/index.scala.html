@@ -1,0 +1,77 @@
+@()(implicit req: play.api.mvc.RequestHeader)
+
+@helper.javascriptRouter("jsRoutes")(
+  controllers.routes.javascript.HomeController.events
+)
+
+@main("Welcome to Play") {
+  <div id="calendar" style="height: 600px;" />
+  <script>
+    const Calendar = tui.Calendar;
+    const container = document.getElementById('calendar');
+    const options = {
+      defaultView: 'month',
+      timezone: {
+        zones: [
+          {
+            timezoneName: 'Europe/London',
+            displayLabel: 'London',
+          },
+        ],
+      },
+      calendars: [
+        {
+          id: 'calendar1',
+          name: 'Personal',
+          backgroundColor: '#03bd9e',
+        }
+      ],
+    };
+
+    const calendar = new Calendar(container, options);
+
+    setTimeout(() => calendar.createEvents([
+      {
+        id: 'event1',
+        calendarId: 'calendar1',
+        title: 'Weekly Meeting',
+        start: '2022-11-27T09:00:00',
+        end: '2022-11-27T10:00:00',
+      },
+    ]), 1000)
+
+    console.log("bla")
+
+    setTimeout(function() {
+    fetch(jsRoutes.controllers.HomeController.events().url, {
+      method: 'get',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+      .then(events => events.map(adaptEvent))
+      .then(events => {
+        console.log(events)
+        calendar.createEvents(events)
+      })
+      .catch(console.log)
+      }, 5000)
+
+<!--      "name" -> JsString(event.name),-->
+<!--      "link" -> JsString(event.link),-->
+<!--      "address" -> JsString(event.address),-->
+<!--      "start" -> JsString(event.start.toString),-->
+<!--      "end" -> JsString(event.end.toString)-->
+
+    function adaptEvent(event) {
+        return {
+          id: event.link,
+          calendarId: 'calendar1',
+          title: event.name,
+          start: event.start,
+          end: event.end,
+        }
+    }
+  </script>
+}
