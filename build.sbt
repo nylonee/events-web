@@ -16,6 +16,12 @@ libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
 libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.8.18"
 
+enablePlugins(JavaAppPackaging)
+
+//Universal / javaOptions ++= Seq(
+//  "-J--add-opens java.base/java.lang=ALL-UNNAMED"
+//)
+
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "net.pawel.controllers._"
 

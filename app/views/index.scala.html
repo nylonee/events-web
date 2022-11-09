@@ -30,19 +30,6 @@
 
     const calendar = new Calendar(container, options);
 
-    setTimeout(() => calendar.createEvents([
-      {
-        id: 'event1',
-        calendarId: 'calendar1',
-        title: 'Weekly Meeting',
-        start: '2022-11-27T09:00:00',
-        end: '2022-11-27T10:00:00',
-      },
-    ]), 1000)
-
-    console.log("bla")
-
-    setTimeout(function() {
     fetch(jsRoutes.controllers.HomeController.events().url, {
       method: 'get',
       headers: {
@@ -56,13 +43,6 @@
         calendar.createEvents(events)
       })
       .catch(console.log)
-      }, 5000)
-
-<!--      "name" -> JsString(event.name),-->
-<!--      "link" -> JsString(event.link),-->
-<!--      "address" -> JsString(event.address),-->
-<!--      "start" -> JsString(event.start.toString),-->
-<!--      "end" -> JsString(event.end.toString)-->
 
     function adaptEvent(event) {
         return {

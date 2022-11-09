@@ -25,9 +25,15 @@ object TicketTailor extends FetchPage {
     val timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH)
 
     def parseTimeOrDate(defaultDate: LocalDate, string: String, timezoneSuffix: String): LocalDateTime = {
-      val accessor = Try {timeFormatter.parse(string)}
-        .orElse(Try {dateAndTimeWithTimezoneFormatter.parse(string + timezoneSuffix)})
-        .orElse(Try {dateAndTimeFormatter.parse(string)})
+      val accessor = Try {
+        timeFormatter.parse(string)
+      }
+        .orElse(Try {
+          dateAndTimeWithTimezoneFormatter.parse(string + timezoneSuffix)
+        })
+        .orElse(Try {
+          dateAndTimeFormatter.parse(string)
+        })
         .get
       val time = accessor.query(TemporalQueries.localTime())
       val date = Option(accessor.query(TemporalQueries.localDate())).getOrElse(defaultDate)
@@ -36,8 +42,12 @@ object TicketTailor extends FetchPage {
 
     def parseDateAndTime(string: String): LocalDateTime = {
       val accessor =
-        Try { dateAndTimeWithTimezoneFormatter.parse(string) }
-          .orElse(Try { dateAndTimeFormatter.parse(string) })
+        Try {
+          dateAndTimeWithTimezoneFormatter.parse(string)
+        }
+          .orElse(Try {
+            dateAndTimeFormatter.parse(string)
+          })
           .get
 
       val time = accessor.query(TemporalQueries.localTime())
@@ -130,12 +140,37 @@ object TicketTailor extends FetchPage {
   }
 
   def fetchCurrentEvents(urls: List[String]): List[Event] = {
-    val distinctNames = urls
+    val distinctNames = fetchOrganizerNames(urls)
+
+    fetchEventsOf(distinctNames)
+  }
+
+  def fetchEventsOf(organizerNames: List[String]) =
+    organizerNames.par.flatMap(fetchEventsFor).toList
+
+  def fetchOrganizerNames(urls: List[String]) = {
+    urls
       .filter(isTicketTailorUrl)
       .distinct
       .map(extractNameFromUrl)
       .distinct
-
-    distinctNames.par.flatMap(fetchEventsFor).toList
   }
+
+  val organizerNames =
+    List("anatomiestudiolondon",
+      "dancelondon",
+      "healingintohealth",
+      "danceto",
+      "relaaax",
+      "acaringplace",
+      "foxandbadge",
+      "margotzwiefka",
+      "geniegee",
+      "haneenkhan",
+      "antarma",
+      "ritualeros",
+      "londonbuddhistcentre",
+      "heartsongcollective",
+      "theconsciousclan"
+    )
 }

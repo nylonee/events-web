@@ -11,15 +11,19 @@ object Events {
   lazy val uri = classOf[TicketTailor.type].getResource("/wa-group-chat.txt").toURI
   lazy val text = Source.fromFile(uri).getLines().mkString("\n")
   lazy val allUrls = extractUrls(text).toList
-  lazy val ticketTailorEvents = TicketTailor.fetchCurrentEvents(allUrls)
+  lazy val ticketTailorEvents = TicketTailor.fetchEventsOf(TicketTailor.organizerNames)
   lazy val eventBriteEvents = EventBrite.fetchCurrentEvents(allUrls)
   lazy val facebookEvents = Facebook.fetchCurrentEvents(allUrls)
-  def allEvents = List(() => ticketTailorEvents, () => eventBriteEvents).par.flatMap(_()).toList
+  def allEvents = List(
+    () => ticketTailorEvents,
+//    () => eventBriteEvents
+  ).par.flatMap(_()).toList
     .filterNot(event => event.end.minusDays(3).isAfter(event.start))
     .sortBy(_.start)
 
   def main(args: Array[String]): Unit = {
-    println(allEvents.filter(_.start.toLocalDate == LocalDate.now()).mkString("\n"))
+    println(TicketTailor.fetchOrganizerNames(allUrls).map(name => s""""$name"""").mkString("List(\n", ",\n", ")"))
+//    println(allEvents.filter(_.start.toLocalDate == LocalDate.now()).mkString("\n"))
 //    facebookEvents
   }
 }

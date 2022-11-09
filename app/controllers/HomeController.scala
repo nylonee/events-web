@@ -18,11 +18,11 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   val eventList = Events.allEvents
 
-  def index() = Action { implicit request: Request[AnyContent] =>
+  def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
 
-  def events() = Action { implicit request: Request[AnyContent] =>
+  def events(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val json = JsArray(eventList.map(event => JsObject(List(
       "name" -> JsString(event.name),
       "link" -> JsString(event.link),

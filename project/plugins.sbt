@@ -1,2 +1,6 @@
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.8.18")
-addSbtPlugin("org.foundweekends.giter8" % "sbt-giter8-scaffold" % "0.13.1")
+
+addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.9.11")
+
+dependencyOverrides += "org.scala-lang.modules" %% "scala-xml" % "2.1.0"
+
