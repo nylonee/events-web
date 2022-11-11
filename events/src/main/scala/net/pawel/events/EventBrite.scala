@@ -1,5 +1,6 @@
 package net.pawel.events
 
+import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import org.jsoup.nodes.Document
 import play.api.libs.json.{JsArray, JsValue, Json}
 
@@ -7,29 +8,38 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.{TemporalAccessor, TemporalQueries}
 import java.time.{LocalDate, LocalDateTime, LocalTime}
 import java.util.Locale
+import java.util.concurrent.ForkJoinPool
 import scala.collection.parallel.CollectionConverters._
 import scala.collection.parallel.ForkJoinTaskSupport
+import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
 
 object EventBrite extends FetchPage {
   private val eventBriteUrl = """https://(www\.eventbrite\.co\.uk|www\.eventbrite\.com)/.+""".r
 
-  private def isEventBriteUrl(url: String): Boolean = eventBriteUrl.matches(url)
+  private def isEventBriteUrl(url: String): Boolean = eventBriteUrl.matches(url) && !url.contains("/cc/")
 
-  def extractOrganizerUrl(document: Document): Option[String] = {
-    val hasPassword = document.selectFirst("#event_password") != null
-    val isUnavailable = Option(document.selectFirst(".text-heading-epic")).filter(_.text().contains("This event is currently unavailable.")).isDefined
+  def extractOrganizerUrl(url: String): Option[String] = {
+    val page = fetchPage(url)
+    val hasPassword = page.selectFirst("#event_password") != null
+    val isUnavailable = Option(page.selectFirst(".text-heading-epic")).filter(_.text().contains("This event is currently unavailable."))
+      .orElse(Option(page.selectFirst(".text-heading-primary")).filter(_.text().contains("Whoops, the page or event you are looking for was not found.")))
+      .isDefined
 
     if (isUnavailable || hasPassword) {
       None
     } else {
-      val anchors = document.select(".expired-organizer__link").asScala ++
-        document.select("#organizer-link-org-panel").asScala ++
-        document.select(".organizer-info__name a").asScala
-      val anchor = anchors.head
-      val result = anchor.attr("href")
-      Some(result)
+      val anchors = page.select(".expired-organizer__link").asScala ++
+        page.select("#organizer-link-org-panel").asScala ++
+        page.select(".organizer-info__name a").asScala
+      val anchorOption = anchors.headOption
+      val result = anchorOption.map(_.attr("href"))
+      if (result.isEmpty) {
+        println(url)
+      }
+      result
     }
+
   }
 
 
@@ -37,8 +47,7 @@ object EventBrite extends FetchPage {
     if (url.contains("/o/"))
       Some(url)
     else {
-      val page = fetchPage(url)
-      extractOrganizerUrl(page)
+      extractOrganizerUrl(url)
     }
   }
 
@@ -74,7 +83,7 @@ object EventBrite extends FetchPage {
       s"$streetAddress $city $postCode"
     }
 
-    Event(name, url, startDate, endDate, fullAddress)
+    domain.Event(name, url, startDate, endDate, fullAddress)
   }
 
   val dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH)
@@ -90,19 +99,23 @@ object EventBrite extends FetchPage {
     extractEvents(page)
   }
 
+  def fetchOrganizers(allUrls: List[String]) = {
+    fetchOrganizerUrls(allUrls)
+      .flatMap(url => {
+        val page = fetchPage(url)
+        val nameOption = page.select("meta").asScala
+          .filter(_.attr("property") == "og:title")
+          .map(_.attr("content"))
+          .headOption
+        if (nameOption.isEmpty) {
+          println(url)
+        }
+        nameOption.map(name => Organizer(url = url, name = name, organizerType = OrganizerType.EventBrite))
+      })
+  }
+
   def fetchCurrentEvents(allUrls: List[String]) = {
-    val parallel = allUrls.par
-
-    val forkJoinPool = new java.util.concurrent.ForkJoinPool(1000)
-    parallel.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
-
-    val eventBriteUrls = parallel
-      .filter(isEventBriteUrl)
-      .distinct
-
-    val organizerUrls = eventBriteUrls
-      .flatMap(toOrganizerUrl)
-      .distinct
+    val organizerUrls = fetchOrganizerUrls(allUrls)
 
     println(organizerUrls.mkString("\n"))
 
@@ -111,5 +124,20 @@ object EventBrite extends FetchPage {
       .toList
 
     events
+  }
+
+  private def fetchOrganizerUrls(allUrls: List[String]) = {
+    val parallel = allUrls.par
+
+    val forkJoinPool = new ForkJoinPool(1000)
+    parallel.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
+
+    val eventBriteUrls = parallel
+      .filter(isEventBriteUrl)
+      .distinct
+
+    eventBriteUrls
+      .flatMap(toOrganizerUrl)
+      .distinct
   }
 }

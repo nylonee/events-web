@@ -1,5 +1,6 @@
 package net.pawel.events
 
+import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import org.jsoup.nodes.{Document, Element}
 
 import java.time.format.DateTimeFormatter
@@ -9,8 +10,6 @@ import java.util.Locale
 import scala.collection.parallel.CollectionConverters._
 import scala.jdk.CollectionConverters._
 import scala.util.Try
-
-case class Event(name: String, link: String, start: LocalDateTime, end: LocalDateTime, address: String)
 
 object TicketTailor extends FetchPage {
   private val ticketTailor = """https://(www\.tickettailor\.com/events|buytickets\.at)/([^/]+)(/(\d)+#?/?(\?.+)?)?""".r
@@ -98,11 +97,11 @@ object TicketTailor extends FetchPage {
     val href = element.attr("href")
     val eventLink = s"https://www.tickettailor.com$href"
     val eventName = eventDetails.selectFirst(".name").text()
-    val address = eventDetails.selectFirst(".venue").text()
+    val address = Option(eventDetails.selectFirst(".venue")).map(_.text()).getOrElse("")
 
     val dateRanges: List[(LocalDateTime, LocalDateTime)] = extractEventDates(eventLink)
     dateRanges.map {
-      case (fromDate, toDate) => Event(eventName, eventLink, fromDate, toDate, address)
+      case (fromDate, toDate) => domain.Event(eventName, eventLink, fromDate, toDate, address)
     }
   }
 
@@ -134,10 +133,16 @@ object TicketTailor extends FetchPage {
   }
 
   private def fetchEventsFor(name: String): List[Event] = {
-    val eventPageUrl = s"https://www.tickettailor.com/events/$name"
-    val page = fetchPage(eventPageUrl)
+    val organizerPageUrl = organizerEventsPageUrl(name)
+    fetchOrganizerEvents(organizerPageUrl)
+  }
+
+  def fetchOrganizerEvents(organizerPageUrl: String): List[Event] = {
+    val page = fetchPage(organizerPageUrl)
     extractEvents(page)
   }
+
+  private def organizerEventsPageUrl(name: String): String = s"https://www.tickettailor.com/events/$name"
 
   def fetchCurrentEvents(urls: List[String]): List[Event] = {
     val distinctNames = fetchOrganizerNames(urls)
@@ -156,21 +161,22 @@ object TicketTailor extends FetchPage {
       .distinct
   }
 
-  val organizerNames =
-    List("anatomiestudiolondon",
-      "dancelondon",
-      "healingintohealth",
-      "danceto",
-      "relaaax",
-      "acaringplace",
-      "foxandbadge",
-      "margotzwiefka",
-      "geniegee",
-      "haneenkhan",
-      "antarma",
-      "ritualeros",
-      "londonbuddhistcentre",
-      "heartsongcollective",
-      "theconsciousclan"
-    )
+  def fetchOrganizers(urls: List[String]): List[Organizer] = {
+    fetchOrganizerNames(urls)
+      .map(organizerEventsPageUrl)
+      .flatMap(url => {
+        val page = fetchPage(url)
+
+        if (page.wholeText().contains("This page is not available right now.")) {
+          None
+        } else {
+          val header = page.selectFirst("#global_large_header")
+          val name =
+            Option(header.selectFirst("h1")).map(_.text())
+              .orElse(Option(header.selectFirst("img")).map(_.attr("alt")))
+              .get
+          Some(Organizer(url = url, name = name, organizerType = OrganizerType.TicketTailor))
+        }
+      })
+  }
 }

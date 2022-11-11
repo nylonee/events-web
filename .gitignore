@@ -7,5 +7,5 @@ target
 /.project
 /.settings
 /RUNNING_PID
-**/production.conf
+**/local.conf
 **/*.txt
