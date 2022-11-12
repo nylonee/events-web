@@ -7,6 +7,7 @@ import play.api.libs.json.{JsArray, JsObject, JsString}
 import play.api.mvc._
 import play.mvc.Results.ok
 
+import java.time.ZoneOffset
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
 import javax.inject._
@@ -31,6 +32,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
       .all
       .toFuture
       .map(_.filterNot(event => event.end.minusDays(3).isAfter(event.start))
+        .sortBy(_.start)
         .map(event => JsObject(List(
           "name" -> JsString(event.name),
           "link" -> JsString(event.url),
