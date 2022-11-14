@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
-object Main extends App {
+object UpdateEvents extends App {
 
   import play.api.ConfigLoader._
 
