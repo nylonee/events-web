@@ -11,6 +11,10 @@
     const container = document.getElementById('calendar');
     const options = {
       defaultView: 'month',
+      useDetailPopup: true,
+      isReadOnly: true,
+      usageStatistics: false,
+      gridSelection: false,
       timezone: {
         zones: [
           {
@@ -22,8 +26,7 @@
       calendars: [
         {
           id: 'calendar1',
-          name: 'Personal',
-          backgroundColor: '#03bd9e',
+          name: 'Conscious Events',
         }
       ],
     };
@@ -38,10 +41,7 @@
       }
     }).then(response => response.json())
       .then(events => events.map(adaptEvent))
-      .then(events => {
-        console.log(events)
-        calendar.createEvents(events)
-      })
+      .then(events => calendar.createEvents(events))
       .catch(console.log)
 
     function adaptEvent(event) {
@@ -51,6 +51,7 @@
           title: event.name,
           start: event.start,
           end: event.end,
+          body: '<a target="_blank" href="' + event.link + '">Event page</a>'
         }
     }
   </script>
