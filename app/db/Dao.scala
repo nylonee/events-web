@@ -12,4 +12,7 @@ abstract class Dao[DO](implicit ct: ClassTag[DO],
 
   def upsertOne(it: DO, query: Document): Future[_] =
     collection.replaceOne(query, it, ReplaceOptions().upsert(true)).toFuture()
+
+  def replaceOne(it: DO, query: Document): Future[_] =
+    collection.replaceOne(query, it).toFuture()
 }

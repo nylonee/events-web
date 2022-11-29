@@ -10,7 +10,7 @@ trait FetchPage {
       val body = Unirest.get(url).asString().getBody
       Jsoup.parse(body)
     } catch {
-      case e => null
+      case _: Throwable => null
     }
   }
 }

@@ -1,16 +1,13 @@
 package controllers
 
-import db.{EventRepository, OrganizerRepository}
-import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import net.pawel.events.{EventBrite, Events, TicketTailor}
+import db.EventRepository
+import net.pawel.events.domain.Event
 import play.api.libs.json.{JsArray, JsObject, JsString}
 import play.api.mvc._
-import play.mvc.Results.ok
 
-import java.time.ZoneOffset
-import javax.inject.Inject
-import scala.concurrent.ExecutionContext.Implicits.global
+import java.time.temporal.ChronoUnit
 import javax.inject._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -20,18 +17,16 @@ import javax.inject._
 class HomeController @Inject()(val controllerComponents: ControllerComponents,
                                val eventRepository: EventRepository) extends BaseController {
 
-  val eventList: List[Event] = Nil
-
   def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
-    //    Ok("")
+//        Ok("")
   }
 
   def events(): Action[AnyContent] = Action.async { implicit request: Request[AnyContent] =>
     eventRepository
       .all
-      .toFuture
-      .map(_.filterNot(event => event.end.minusDays(3).isAfter(event.start))
+      .toFuture()
+      .map(_.filterNot(event => event.end.minus(3, ChronoUnit.DAYS).isAfter(event.start))
         .sortBy(_.start)
         .map(event => JsObject(List(
           "name" -> JsString(event.name),

@@ -1,7 +1,9 @@
 package net.pawel.events
 
 import net.pawel.events.ExtractUrls.extractUrls
+import net.pawel.events.domain.{Organizer, OrganizerType}
 
+import java.time.temporal.ChronoUnit
 import scala.collection.parallel.CollectionConverters._
 import scala.io.Source
 
@@ -20,7 +22,7 @@ object Events {
     () => ticketTailorEvents,
     () => eventBriteEvents
   ).par.flatMap(_()).toList
-    .filterNot(event => event.end.minusDays(3).isAfter(event.start))
+    .filterNot(event => event.end.minus(3, ChronoUnit.DAYS).isAfter(event.start))
     .sortBy(_.start)
 
   def main(args: Array[String]): Unit = {
@@ -40,6 +42,15 @@ object RankUrls {
       case (url, list) => (url, list.size)
     }.sortBy(_._2).reverse.mkString("\n"))
   }
+}
+
+object OrganizersEvents extends App {
+  val organizer = Organizer("https://www.eventbrite.com/o/the-tantra-institute-14144505274", "", OrganizerType.EventBrite)
+  val events = organizer.organizerType match {
+    case OrganizerType.TicketTailor => TicketTailor.fetchOrganizerEvents(organizer.url)
+    case OrganizerType.EventBrite => EventBrite.organizersEvents(organizer.url)
+  }
+  println(events.mkString("\n"))
 }
 
 

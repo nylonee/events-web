@@ -17,4 +17,5 @@ class EventRepository @Inject()(context: DatabaseContext) extends Dao[Event] {
   override val collection: MongoCollection[Event] = db.getCollection[Event]("events")
 
   def upsert(event: Event): Future[_] = upsertOne(event, Document("url" -> event.url))
+  def replace(event: Event): Future[_] = replaceOne(event, Document(s"""{ url: "${event.url}" }"""))
 }

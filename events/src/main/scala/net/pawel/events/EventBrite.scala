@@ -6,7 +6,7 @@ import play.api.libs.json.{JsArray, JsValue, Json}
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.{TemporalAccessor, TemporalQueries}
-import java.time.{LocalDate, LocalDateTime, LocalTime}
+import java.time.{LocalDate, LocalDateTime, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
 import java.util.concurrent.ForkJoinPool
 import scala.collection.parallel.CollectionConverters._
@@ -51,23 +51,7 @@ object EventBrite extends FetchPage {
     }
   }
 
-  def extractEvents(organizerPage: Document): List[Event] = {
-    val json = organizerPage
-      .select("script").asScala
-      .filter(_.attr("type") == "application/ld+json")
-      .map(_.data().trim)
-      .filter(_.startsWith("["))
-      .head
-
-    Json.parse(json)
-      .as[JsArray]
-      .value
-      .map(toEvent)
-      .filter(_.start.isAfter(LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT)))
-      .toList
-  }
-
-  def toEvent(json: JsValue): Event = {
+  def toEvent(organizerUrl: String)(json: JsValue): Event = {
     val startDate = localDateTimeFrom(dateTimeFormat.parse((json \ "startDate").as[String]))
     val endDate = localDateTimeFrom(dateTimeFormat.parse((json \ "endDate").as[String]))
     val name = (json \ "name").as[String]
@@ -83,7 +67,7 @@ object EventBrite extends FetchPage {
       s"$streetAddress $city $postCode"
     }
 
-    domain.Event(name, url, startDate, endDate, fullAddress)
+    domain.Event(name, url, startDate.toInstant, endDate.toInstant, fullAddress, organizerUrl)
   }
 
   val dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH)
@@ -91,12 +75,27 @@ object EventBrite extends FetchPage {
   def localDateTimeFrom(accessor: TemporalAccessor) = {
     val time = accessor.query(TemporalQueries.localTime())
     val date = accessor.query(TemporalQueries.localDate())
-    LocalDateTime.of(date, time)
+    val timeZone = accessor.query(TemporalQueries.offset())
+    ZonedDateTime.of(date, time, timeZone)
   }
 
   def organizersEvents(organizerPageUrl: String): List[Event] = {
     val page = fetchPage(organizerPageUrl)
-    extractEvents(page)
+
+    val json = page
+      .select("script").asScala
+      .filter(_.attr("type") == "application/ld+json")
+      .map(_.data().trim)
+      .filter(_.startsWith("["))
+      .head
+
+    val midnight = ZonedDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT, ZoneId.of("GMT"))
+    Json.parse(json)
+      .as[JsArray]
+      .value
+      .map(toEvent(organizerPageUrl))
+      .filter(_.start.isAfter(midnight.toInstant))
+      .toList
   }
 
   def fetchOrganizers(allUrls: List[String]) = {

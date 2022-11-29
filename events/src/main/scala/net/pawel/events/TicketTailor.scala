@@ -5,7 +5,7 @@ import org.jsoup.nodes.{Document, Element}
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalQueries
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, LocalDateTime, ZoneId, ZonedDateTime}
 import java.util.Locale
 import scala.collection.parallel.CollectionConverters._
 import scala.jdk.CollectionConverters._
@@ -23,12 +23,12 @@ object TicketTailor extends FetchPage {
     val dateAndTimeFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu h:mm a", Locale.ENGLISH)
     val timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH)
 
-    def parseTimeOrDate(defaultDate: LocalDate, string: String, timezoneSuffix: String): LocalDateTime = {
+    def parseTimeOrDate(defaultDate: LocalDate, string: String, timezoneSuffix: String): ZonedDateTime = {
       val accessor = Try {
         timeFormatter.parse(string)
       }
         .orElse(Try {
-          dateAndTimeWithTimezoneFormatter.parse(string + timezoneSuffix)
+          dateAndTimeWithTimezoneFormatter.parse((string + " " + timezoneSuffix).trim)
         })
         .orElse(Try {
           dateAndTimeFormatter.parse(string)
@@ -36,10 +36,11 @@ object TicketTailor extends FetchPage {
         .get
       val time = accessor.query(TemporalQueries.localTime())
       val date = Option(accessor.query(TemporalQueries.localDate())).getOrElse(defaultDate)
-      LocalDateTime.of(date, time)
+      val timeZone = ZoneId.of(if (timezoneSuffix.isEmpty || timezoneSuffix == "BST") "GMT" else timezoneSuffix)
+      ZonedDateTime.of(date, time, timeZone)
     }
 
-    def parseDateAndTime(string: String): LocalDateTime = {
+    def parseDateAndTime(string: String): ZonedDateTime = {
       val accessor =
         Try {
           dateAndTimeWithTimezoneFormatter.parse(string)
@@ -51,7 +52,8 @@ object TicketTailor extends FetchPage {
 
       val time = accessor.query(TemporalQueries.localTime())
       val date = accessor.query(TemporalQueries.localDate())
-      LocalDateTime.of(date, time)
+      val timeZone = Option(accessor.query(TemporalQueries.zoneId()))
+      ZonedDateTime.of(date, time, timeZone.getOrElse(ZoneId.of("GMT")))
     }
   }
 
@@ -66,20 +68,20 @@ object TicketTailor extends FetchPage {
     }
   }
 
-  private def dateRangeFrom(string: String): (LocalDateTime, LocalDateTime) = {
+  private def dateRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
     val (rangeString, timezoneSuffix) = if (string.matches(""".+ [A-Z]{3}""")) {
-      (string.substring(0, string.length - 4), string.substring(string.length - 4))
+      (string.substring(0, string.length - 4), string.substring(string.length - 3))
     } else {
       (string, "")
     }
     val Array(fromString, toString) = rangeString.split(" - ")
-    val fromDateTime = TimeParsing.parseDateAndTime(fromString + timezoneSuffix)
+    val fromDateTime = TimeParsing.parseDateAndTime((fromString + " " + timezoneSuffix).trim)
     val toDateTime = TimeParsing.parseTimeOrDate(fromDateTime.toLocalDate, toString, timezoneSuffix)
 
     (fromDateTime, toDateTime)
   }
 
-  def extractMultipleDates(eventUrl: String): List[(LocalDateTime, LocalDateTime)] = {
+  def extractMultipleDates(eventUrl: String): List[(ZonedDateTime, ZonedDateTime)] = {
     val page = fetchPage(eventUrl + "select-date")
     page.select(".select_date .date")
       .asScala
@@ -92,20 +94,20 @@ object TicketTailor extends FetchPage {
       })
   }
 
-  private def extractEvent(eventDetails: Element): List[Event] = {
+  private def extractEvent(organizerUrl: String)(eventDetails: Element): List[Event] = {
     val element = eventDetails.selectFirst("a")
     val href = element.attr("href")
     val eventLink = s"https://www.tickettailor.com$href"
     val eventName = eventDetails.selectFirst(".name").text()
     val address = Option(eventDetails.selectFirst(".venue")).map(_.text()).getOrElse("")
 
-    val dateRanges: List[(LocalDateTime, LocalDateTime)] = extractEventDates(eventLink)
+    val dateRanges: List[(ZonedDateTime, ZonedDateTime)] = extractEventDates(eventLink)
     dateRanges.map {
-      case (fromDate, toDate) => domain.Event(eventName, eventLink, fromDate, toDate, address)
+      case (fromDate, toDate) => domain.Event(eventName, eventLink, fromDate.toInstant, toDate.toInstant, address, organizerUrl)
     }
   }
 
-  private def extractEventDates(eventLink: String): List[(LocalDateTime, LocalDateTime)] = {
+  private def extractEventDates(eventLink: String): List[(ZonedDateTime, ZonedDateTime)] = {
     val eventPage = fetchPage(eventLink)
     if (eventPage.select(".password_protected").first() != null) {
       Nil
@@ -123,15 +125,6 @@ object TicketTailor extends FetchPage {
     }
   }
 
-  private def extractEvents(document: Document): List[Event] = {
-    val listings = document
-      .select(".event_listing")
-      .asScala.toList
-      .filterNot(_.attr("class").contains("no_events"))
-
-    listings.flatMap(extractEvent)
-  }
-
   private def fetchEventsFor(name: String): List[Event] = {
     val organizerPageUrl = organizerEventsPageUrl(name)
     fetchOrganizerEvents(organizerPageUrl)
@@ -139,7 +132,13 @@ object TicketTailor extends FetchPage {
 
   def fetchOrganizerEvents(organizerPageUrl: String): List[Event] = {
     val page = fetchPage(organizerPageUrl)
-    extractEvents(page)
+
+    val listings = page
+      .select(".event_listing")
+      .asScala.toList
+      .filterNot(_.attr("class").contains("no_events"))
+
+    listings.flatMap(extractEvent(organizerPageUrl))
   }
 
   private def organizerEventsPageUrl(name: String): String = s"https://www.tickettailor.com/events/$name"
