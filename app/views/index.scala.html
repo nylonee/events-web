@@ -15,6 +15,11 @@
       isReadOnly: true,
       usageStatistics: false,
       gridSelection: false,
+      month: {
+        startDayOfWeek: 1,
+        visibleWeeksCount: 3,
+        visibleEventCount: 10,
+      },
       timezone: {
         zones: [
           {
@@ -33,23 +38,6 @@
 
     const calendar = new Calendar(container, options);
 
-    calendar.setOptions({
-      template: {
-        popupEdit() {
-          return '';
-        },
-      },
-    });
-
-    calendar.setOptions({
-      template: {
-        popupDelete() {
-          return '';
-        },
-      },
-    });
-
-<!--    calendar.changeView('day');-->
 
     fetch(jsRoutes.controllers.HomeController.events().url, {
       method: 'get',
@@ -69,6 +57,7 @@
           title: event.name,
           start: event.start,
           end: event.end,
+          isReadOnly: true,
           body: '<a target="_blank" href="' + event.link + '">Event page</a>'
         }
     }
