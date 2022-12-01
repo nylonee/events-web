@@ -57,7 +57,7 @@ object TicketTailor extends FetchPage {
     }
   }
 
-  val moreRegexp = """.+?( +\+.\d+.more.dates)""".r
+  val moreRegexp = """.+?( +\+.\d+.more.dates?)""".r
 
   private def stripMore(string: String) = moreRegexp.findFirstMatchIn(string) match {
     case Some(theMatch) => {
@@ -95,16 +95,27 @@ object TicketTailor extends FetchPage {
   }
 
   private def extractEvent(organizerUrl: String)(eventDetails: Element): List[Event] = {
-    val element = eventDetails.selectFirst("a")
-    val href = element.attr("href")
-    val eventLink = s"https://www.tickettailor.com$href"
-    val eventName = eventDetails.selectFirst(".name").text()
-    val address = Option(eventDetails.selectFirst(".venue")).map(_.text()).getOrElse("")
+    Try {
+      val element = eventDetails.selectFirst("a")
+      val href = element.attr("href")
+      val eventLink = s"https://www.tickettailor.com$href"
+      val eventName = eventDetails.selectFirst(".name").text()
+      val address = Option(eventDetails.selectFirst(".venue")).map(_.text()).getOrElse("")
 
-    val dateRanges: List[(ZonedDateTime, ZonedDateTime)] = extractEventDates(eventLink)
-    dateRanges.map {
-      case (fromDate, toDate) => domain.Event(eventName, eventLink, fromDate.toInstant, toDate.toInstant, address, organizerUrl)
-    }
+      val dateRanges: List[(ZonedDateTime, ZonedDateTime)] = extractEventDates(eventLink)
+      dateRanges.map {
+        case (fromDate, toDate) => domain.Event(eventName, eventLink, fromDate.toInstant, toDate.toInstant, address, organizerUrl)
+      }
+    }.recover {
+      case e: Throwable =>
+        println(
+          s"""Event parsing failed:
+             |Organizer url: $organizerUrl
+             |EventDetails: $eventDetails
+             |""".stripMargin)
+        e.printStackTrace()
+        Nil
+    }.get
   }
 
   private def extractEventDates(eventLink: String): List[(ZonedDateTime, ZonedDateTime)] = {
@@ -113,12 +124,12 @@ object TicketTailor extends FetchPage {
       Nil
     } else {
       val dateAndTimeElement = eventPage.selectFirst(".date_and_venue h2")
-      val hasMultipleDates = dateAndTimeElement.wholeText().contains("Multiple dates and times")
+      val dateAndTimeText = dateAndTimeElement.wholeText().trim
+      val hasMultipleDates = dateAndTimeText.contains("Multiple dates and times")
       if (hasMultipleDates) {
         extractMultipleDates(eventLink)
       } else {
-        val trimmed = dateAndTimeElement.wholeText().trim
-        val moreStripped = stripMore(trimmed)
+        val moreStripped = stripMore(dateAndTimeText)
         val (fromDate, toDate) = dateRangeFrom(moreStripped)
         List((fromDate, toDate))
       }
