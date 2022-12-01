@@ -43,17 +43,12 @@ trait Common {
 }
 
 object UpdateEvents extends App with Repositories with Common {
-  private lazy val events = Await.result(organizerRepository.find(Document({"{ deleted: { $not: { $eq: true } }}"})).toFuture(), Duration.Inf)
-    .flatMap(eventsOf)
-
-//  eventRepository
-//    .find(Document("organizerUrl" -> "https://www.eventbrite.com/o/the-tantra-institute-14144505274"))
-//    .toFuture()
-//    .map(_.mkString("\n"))
-//    .foreach(eventRepository.)
+  private lazy val events = Await.result(
+    organizerRepository.find(Document({"{ deleted: { $not: { $eq: true } }}"})).toFuture(), Duration.Inf
+  ).flatMap(eventsOf)
 
   println(events.mkString("\n"))
-  events.filter(_.organizerUrl == null).par.map(event => event.copy(organizerUrl = organizerOfEvent(event.url).url)).foreach(eventRepository.replace)
+  events.foreach(eventRepository.upsert)
 }
 
 object UpdateExistingEvents extends App with Repositories with Common {
