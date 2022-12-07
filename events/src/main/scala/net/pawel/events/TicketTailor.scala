@@ -5,7 +5,7 @@ import org.jsoup.nodes.{Document, Element}
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalQueries
-import java.time.{LocalDate, LocalDateTime, ZoneId, ZonedDateTime}
+import java.time.{LocalDate, LocalDateTime, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
 import scala.collection.parallel.CollectionConverters._
 import scala.jdk.CollectionConverters._
@@ -35,7 +35,8 @@ object TicketTailor extends FetchPage {
         })
         .get
       val time = accessor.query(TemporalQueries.localTime())
-      val date = Option(accessor.query(TemporalQueries.localDate())).getOrElse(defaultDate)
+      val date = Option(accessor.query(TemporalQueries.localDate()))
+        .getOrElse(if (time == LocalTime.MIDNIGHT) defaultDate.plusDays(1) else defaultDate)
       val timeZone = ZoneId.of(if (timezoneSuffix.isEmpty || timezoneSuffix == "BST") "GMT" else timezoneSuffix)
       ZonedDateTime.of(date, time, timeZone)
     }
