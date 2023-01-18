@@ -22,6 +22,7 @@ object TicketTailor extends FetchPage {
     val dateAndTimeWithTimezoneFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu h:mm a z", Locale.ENGLISH)
     val dateAndTimeFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu h:mm a", Locale.ENGLISH)
     val timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH)
+    val dateFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu", Locale.ENGLISH)
 
     def parseTimeOrDate(defaultDate: LocalDate, string: String, timezoneSuffix: String): ZonedDateTime = {
       val accessor = Try {
@@ -33,8 +34,14 @@ object TicketTailor extends FetchPage {
         .orElse(Try {
           dateAndTimeFormatter.parse(string)
         })
+        .orElse(
+          Try {
+            dateFormatter.parse(string)
+          }
+        )
         .get
-      val time = accessor.query(TemporalQueries.localTime())
+      val time = Option(accessor.query(TemporalQueries.localTime()))
+        .getOrElse(LocalTime.MIDNIGHT.minusMinutes(1))
       val date = Option(accessor.query(TemporalQueries.localDate()))
         .getOrElse(if (time == LocalTime.MIDNIGHT) defaultDate.plusDays(1) else defaultDate)
       val timeZone = ZoneId.of(if (timezoneSuffix.isEmpty || timezoneSuffix == "BST") "GMT" else timezoneSuffix)
