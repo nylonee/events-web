@@ -16,7 +16,7 @@ object Events {
   lazy val eventBriteEvents = EventBrite.fetchCurrentEvents(allUrls)
   lazy val eventBriteOrganizers = EventBrite.fetchOrganizers(allUrls)
   lazy val facebookEvents = Facebook.fetchCurrentEvents(allUrls)
-  lazy val allOrganizers = ticketTailorOrganizers ++ eventBriteOrganizers
+  lazy val allOrganizers = (ticketTailorOrganizers ++ eventBriteOrganizers).toSet
 
   def allEvents = List(
     () => ticketTailorEvents,
@@ -26,7 +26,7 @@ object Events {
     .sortBy(_.start)
 
   def main(args: Array[String]): Unit = {
-//    println(ticketTailorEvents.mkString("\n"))
+    println(ticketTailorEvents.mkString("\n"))
     println(eventBriteOrganizers.mkString("\n"))
 //    facebookEvents
   }

@@ -1,8 +1,9 @@
 package db
 
 import ai.snips.bsonmacros.DatabaseContext
+import db.UpdateEvents.eventRepository
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import net.pawel.events.{EventBrite, TicketTailor}
+import net.pawel.events.{EventBrite, Events, TicketTailor}
 import org.mongodb.scala.bson.collection.immutable.Document
 import play.api.inject.ApplicationLifecycle
 import play.api.{Configuration, Environment, Mode}
@@ -42,27 +43,38 @@ trait Common {
   }
 }
 
+object UpdateOrganizersFromFile extends App with Repositories with Common {
+  Events.allOrganizers.foreach(organizerRepository.upsert)
+  println(Events.allOrganizers.mkString("\n"))
+}
+
 object UpdateEvents extends App with Repositories with Common {
   private lazy val events = Await.result(
-    organizerRepository.find(Document({"{ deleted: { $not: { $eq: true } }}"})).toFuture(), Duration.Inf
+    organizerRepository.find(Document({
+      "{ deleted: { $not: { $eq: true } }}"
+    })).toFuture(), Duration.Inf
   ).flatMap(eventsOf)
 
   println(events.mkString("\n"))
-  events.foreach(eventRepository.upsert)
+
+  filter(events).foreach(eventRepository.upsert)
+
+  def filter(events: Seq[Event]): Seq[Event] = {
+    val excludeAdrressWords = List("Bristol", "BN1 1UB").map(_.toLowerCase())
+    events.filter(event => !excludeAdrressWords.exists(word => event.address.toLowerCase().contains(word)))
+  }
 }
 
 object UpdateExistingEvents extends App with Repositories with Common {
   private lazy val events = Await.result(eventRepository.all.toFuture(), Duration.Inf)
-  events.filter(_.organizerUrl == "").par
+  events.filter(_.organizerUrl == "https://www.tickettailor.com/events/dancelondon").par
     .map(event => event.copy(organizerUrl = organizerOfEvent(event.url).url))
     .foreach(eventRepository.replace)
 }
 
 object InsertOrganizer extends App with Repositories with Common {
-
-  val organizer = organizerOfEvent("https://www.eventbrite.co.uk/o/hulya-erbeyli-coaching-39859153553")
+  val organizer = organizerOfEvent("https://www.eventbrite.co.uk/o/studio-108-34126014551")
   organizerRepository.upsert(organizer)
 
   eventsOf(organizer).foreach(eventRepository.upsert)
-
 }
