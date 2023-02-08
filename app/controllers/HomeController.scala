@@ -1,7 +1,6 @@
 package controllers
 
 import db.EventRepository
-import net.pawel.events.domain.Event
 import play.api.libs.json.{JsArray, JsObject, JsString}
 import play.api.mvc._
 
