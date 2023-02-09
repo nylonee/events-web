@@ -1,7 +1,6 @@
 package db
 
 import ai.snips.bsonmacros.DatabaseContext
-import db.UpdateEvents.eventRepository
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import net.pawel.events.{EventBrite, Events, TicketTailor}
 import org.mongodb.scala.bson.collection.immutable.Document
@@ -31,10 +30,15 @@ trait Repositories {
 
 trait Common {
   def eventsOf(organizer: Organizer): List[Event] = {
-    organizer.organizerType match {
+    (organizer.organizerType match {
       case OrganizerType.TicketTailor => TicketTailor.fetchOrganizerEvents(organizer.url)
       case OrganizerType.EventBrite => EventBrite.organizersEvents(organizer.url)
-    }
+    }).filter(filterEvent)
+  }
+
+  private def filterEvent(event: Event): Boolean = {
+    val excludeAdrressWords = List("Bristol", "BN1 1UB").map(_.toLowerCase())
+    !excludeAdrressWords.exists(word => event.address.toLowerCase().contains(word))
   }
 
   def organizerOfEvent(eventUrl: String): Organizer = {
@@ -57,24 +61,21 @@ object UpdateEvents extends App with Repositories with Common {
 
   println(events.mkString("\n"))
 
-  filter(events).foreach(eventRepository.upsert)
-
-  def filter(events: Seq[Event]): Seq[Event] = {
-    val excludeAdrressWords = List("Bristol", "BN1 1UB").map(_.toLowerCase())
-    events.filter(event => !excludeAdrressWords.exists(word => event.address.toLowerCase().contains(word)))
-  }
+  events.foreach(eventRepository.upsert)
 }
 
 object UpdateExistingEvents extends App with Repositories with Common {
   private lazy val events = Await.result(eventRepository.all.toFuture(), Duration.Inf)
-  events.filter(_.organizerUrl == "https://www.tickettailor.com/events/dancelondon").par
+  events.filter(_.organizerUrl == "").par
     .map(event => event.copy(organizerUrl = organizerOfEvent(event.url).url))
     .foreach(eventRepository.replace)
 }
 
 object InsertOrganizer extends App with Repositories with Common {
-  val organizer = organizerOfEvent("https://www.eventbrite.co.uk/o/studio-108-34126014551")
+  val organizer = organizerOfEvent("")
   organizerRepository.upsert(organizer)
 
-  eventsOf(organizer).foreach(eventRepository.upsert)
+  val events = eventsOf(organizer)
+  println(events.mkString("\n"))
+  events.foreach(eventRepository.upsert)
 }
