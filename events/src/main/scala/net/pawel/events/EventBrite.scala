@@ -1,17 +1,16 @@
 package net.pawel.events
 
+import kong.unirest.Unirest
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import org.jsoup.nodes.Document
 import play.api.libs.json.{JsArray, JsValue, Json}
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.{TemporalAccessor, TemporalQueries}
-import java.time.{LocalDate, LocalDateTime, LocalTime, ZoneId, ZonedDateTime}
+import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
 import java.util.concurrent.ForkJoinPool
 import scala.collection.parallel.CollectionConverters._
 import scala.collection.parallel.ForkJoinTaskSupport
-import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
 
 object EventBrite extends FetchPage {
@@ -51,11 +50,30 @@ object EventBrite extends FetchPage {
     }
   }
 
-  def toEvent(organizerUrl: String)(json: JsValue): Event = {
-    val startDate = localDateTimeFrom(dateTimeFormat.parse((json \ "startDate").as[String]))
-    val endDate = localDateTimeFrom(dateTimeFormat.parse((json \ "endDate").as[String]))
-    val name = (json \ "name").as[String]
+  def possibleMultipleDates(url: String): Option[List[(ZonedDateTime, ZonedDateTime)]] = {
+    val id = url.substring(url.lastIndexOf("-") + 1)
+    val seriesUrl = s"https://www.eventbrite.co.uk/api/v3/series/$id/events/?time_filter=current_future&expand=series_dates%2Cticket_availability%2Cevent_sales_status%2Cvenue&page_size=1000&continuation="
+    val response = Unirest.get(seriesUrl).asString()
+    if (response.isSuccess) {
+      val json = Json.parse(response.getBody)
+      Some((json \ "events").as[JsArray].value.map(json => {
+        val startTime = localDateTimeFrom(dateTimeFormat.parse((json \ "start" \ "utc").as[String]))
+        val endTime = localDateTimeFrom(dateTimeFormat.parse((json \ "end" \ "utc").as[String]))
+        (startTime, endTime)
+      }).toList)
+    } else {
+      None
+    }
+  }
+
+  def toEvent(organizerUrl: String)(json: JsValue): List[Event] = {
     val url = (json \ "url").as[String]
+    val dates = possibleMultipleDates(url).getOrElse({
+      val startDate = localDateTimeFrom(dateTimeFormat.parse((json \ "startDate").as[String]))
+      val endDate = localDateTimeFrom(dateTimeFormat.parse((json \ "endDate").as[String]))
+      List((startDate, endDate))
+    })
+    val name = (json \ "name").as[String]
     val addressType = (json \ "location" \ "@type").as[String]
     val fullAddress = if (addressType == "VirtualLocation") {
       "Online"
@@ -67,10 +85,12 @@ object EventBrite extends FetchPage {
       s"$streetAddress $city $postCode"
     }
 
-    domain.Event(name, url, startDate.toInstant, endDate.toInstant, fullAddress, organizerUrl)
+    dates.map {
+      case (startDate, endDate) => domain.Event(name, url, startDate.toInstant, endDate.toInstant, fullAddress, organizerUrl)
+    }
   }
 
-  val dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH)
+  val dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ssX", Locale.ENGLISH)
 
   def localDateTimeFrom(accessor: TemporalAccessor) = {
     val time = accessor.query(TemporalQueries.localTime())
@@ -93,7 +113,7 @@ object EventBrite extends FetchPage {
     Json.parse(json)
       .as[JsArray]
       .value
-      .map(toEvent(organizerPageUrl))
+      .flatMap(toEvent(organizerPageUrl))
       .filter(_.start.isAfter(midnight.toInstant))
       .toList
   }
