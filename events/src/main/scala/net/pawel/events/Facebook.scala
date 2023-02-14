@@ -1,15 +1,14 @@
 package net.pawel.events
 
 import scala.collection.parallel.ForkJoinTaskSupport
-import scala.collection.parallel.CollectionConverters._
-import scala.jdk.CollectionConverters._
+import scala.collection.parallel.immutable.ParSeq
 
 object Facebook extends FetchPage {
   private val eventBriteUrl = """https://(fb\.me|www\.facebook\.com)/.+""".r
 
   private def isFacebookUrl(url: String): Boolean = eventBriteUrl.matches(url)
 
-  def fetchCurrentEvents(allUrls: List[String]) = {
+  def fetchCurrentEvents(allUrls: ParSeq[String]) = {
     val parallel = allUrls.par
 
     val forkJoinPool = new java.util.concurrent.ForkJoinPool(1000)

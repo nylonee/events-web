@@ -4,7 +4,7 @@ import org.mongodb.scala.bson.BsonObjectId
 
 object OrganizerType extends Enumeration {
   type OrganizerType = Value
-  val TicketTailor, EventBrite, Facebook = Value
+  val TicketTailor, EventBrite, Dandelion = Value
 }
 
 case class Organizer(url: String,

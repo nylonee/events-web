@@ -8,9 +8,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.{TemporalAccessor, TemporalQueries}
 import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
-import java.util.concurrent.ForkJoinPool
-import scala.collection.parallel.CollectionConverters._
-import scala.collection.parallel.ForkJoinTaskSupport
+import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
 
 object EventBrite extends FetchPage {
@@ -118,7 +116,7 @@ object EventBrite extends FetchPage {
       .toList
   }
 
-  def fetchOrganizers(allUrls: List[String]) = {
+  def fetchOrganizers(allUrls: ParSeq[String]): ParSeq[Organizer] = {
     fetchOrganizerUrls(allUrls)
       .flatMap(url => {
         val page = fetchPage(url)
@@ -133,7 +131,7 @@ object EventBrite extends FetchPage {
       })
   }
 
-  def fetchCurrentEvents(allUrls: List[String]) = {
+  def fetchCurrentEvents(allUrls: ParSeq[String]) = {
     val organizerUrls = fetchOrganizerUrls(allUrls)
 
     println(organizerUrls.mkString("\n"))
@@ -145,13 +143,8 @@ object EventBrite extends FetchPage {
     events
   }
 
-  private def fetchOrganizerUrls(allUrls: List[String]) = {
-    val parallel = allUrls.par
-
-    val forkJoinPool = new ForkJoinPool(1000)
-    parallel.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
-
-    val eventBriteUrls = parallel
+  private def fetchOrganizerUrls(allUrls: ParSeq[String]): ParSeq[String] = {
+    val eventBriteUrls = allUrls
       .filter(isEventBriteUrl)
       .distinct
 

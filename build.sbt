@@ -13,7 +13,7 @@ lazy val root = (project in file("."))
 scalaVersion := "2.13.10"
 
 libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
 libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.8.18"
 libraryDependencies += "ai.snips" %% "play-mongo-bson" % "0.5.2"
 

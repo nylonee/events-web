@@ -1,6 +1,7 @@
 package net.pawel.events
 
 import net.pawel.events.ExtractUrls.extractUrls
+import net.pawel.events.Utils.parallelize
 import net.pawel.events.domain.{Organizer, OrganizerType}
 
 import java.time.temporal.ChronoUnit
@@ -10,9 +11,9 @@ import scala.io.Source
 object Events {
   lazy val uri = classOf[TicketTailor.type].getResource("/wa-group-chat.txt").toURI
   lazy val text = Source.fromFile(uri).getLines().mkString("\n")
-  lazy val allUrls = extractUrls(text).toList
+  lazy val allUrls = parallelize(extractUrls(text).toList)
+  lazy val ticketTailorEvents = TicketTailor.fetchCurrentEvents(allUrls)
   lazy val ticketTailorOrganizers = TicketTailor.fetchOrganizers(allUrls)
-  lazy val ticketTailorEvents = ticketTailorOrganizers.flatMap(organizer => TicketTailor.fetchOrganizerEvents(organizer.url))
   lazy val eventBriteEvents = EventBrite.fetchCurrentEvents(allUrls)
   lazy val eventBriteOrganizers = EventBrite.fetchOrganizers(allUrls)
   lazy val facebookEvents = Facebook.fetchCurrentEvents(allUrls)

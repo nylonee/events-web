@@ -1,13 +1,13 @@
 package net.pawel.events
 
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import org.jsoup.nodes.{Document, Element}
+import org.jsoup.nodes.Element
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalQueries
-import java.time.{LocalDate, LocalDateTime, LocalTime, ZoneId, ZonedDateTime}
+import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
-import scala.collection.parallel.CollectionConverters._
+import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
 import scala.util.Try
 
@@ -89,7 +89,7 @@ object TicketTailor extends FetchPage {
     (fromDateTime, toDateTime)
   }
 
-  def extractMultipleDates(eventUrl: String): List[(ZonedDateTime, ZonedDateTime)] = {
+  private def extractMultipleDates(eventUrl: String): List[(ZonedDateTime, ZonedDateTime)] = {
     val page = fetchPage(eventUrl + "select-date")
     page.select(".select_date .date")
       .asScala
@@ -162,16 +162,13 @@ object TicketTailor extends FetchPage {
 
   private def organizerEventsPageUrl(name: String): String = s"https://www.tickettailor.com/events/$name"
 
-  def fetchCurrentEvents(urls: List[String]): List[Event] = {
-    val distinctNames = fetchOrganizerNames(urls)
+  def fetchCurrentEvents(urls: ParSeq[String]): List[Event] = {
+    val organizerNames = fetchOrganizerNames(urls)
 
-    fetchEventsOf(distinctNames)
+    organizerNames.flatMap(fetchEventsFor).toList
   }
 
-  def fetchEventsOf(organizerNames: List[String]) =
-    organizerNames.par.flatMap(fetchEventsFor).toList
-
-  def fetchOrganizerNames(urls: List[String]) = {
+  def fetchOrganizerNames(urls: ParSeq[String]): ParSeq[String] = {
     urls
       .filter(isTicketTailorUrl)
       .distinct
@@ -179,7 +176,7 @@ object TicketTailor extends FetchPage {
       .distinct
   }
 
-  def fetchOrganizers(urls: List[String]): List[Organizer] = {
+  def fetchOrganizers(urls: ParSeq[String]): ParSeq[Organizer] = {
     fetchOrganizerNames(urls)
       .map(organizerEventsPageUrl)
       .flatMap(url => {
