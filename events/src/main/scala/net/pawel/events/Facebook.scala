@@ -3,7 +3,7 @@ package net.pawel.events
 import scala.collection.parallel.ForkJoinTaskSupport
 import scala.collection.parallel.immutable.ParSeq
 
-object Facebook extends FetchPage {
+class Facebook(fetchPage: FetchPage = new FetchPageWithUnirest) {
   private val eventBriteUrl = """https://(fb\.me|www\.facebook\.com)/.+""".r
 
   private def isFacebookUrl(url: String): Boolean = eventBriteUrl.matches(url)
@@ -18,7 +18,7 @@ object Facebook extends FetchPage {
       .filter(isFacebookUrl)
       .filter(isEventUrl)
       .distinct
-      .map(fetchPage)
+      .map(fetchPage(_))
 
     println(facebookUrls.mkString("\n"))
   }

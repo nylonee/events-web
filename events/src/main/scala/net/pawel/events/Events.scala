@@ -9,14 +9,15 @@ import scala.collection.parallel.CollectionConverters._
 import scala.io.Source
 
 object Events {
-  lazy val uri = classOf[TicketTailor.type].getResource("/wa-group-chat.txt").toURI
+  lazy val ticketTailor = new TicketTailor()
+  lazy val eventBrite = new EventBrite()
+  lazy val uri = classOf[TicketTailor].getResource("/wa-group-chat.txt").toURI
   lazy val text = Source.fromFile(uri).getLines().mkString("\n")
   lazy val allUrls = parallelize(extractUrls(text).toList)
-  lazy val ticketTailorEvents = TicketTailor.fetchCurrentEvents(allUrls)
-  lazy val ticketTailorOrganizers = TicketTailor.fetchOrganizers(allUrls)
-  lazy val eventBriteEvents = EventBrite.fetchCurrentEvents(allUrls)
-  lazy val eventBriteOrganizers = EventBrite.fetchOrganizers(allUrls)
-  lazy val facebookEvents = Facebook.fetchCurrentEvents(allUrls)
+  lazy val ticketTailorEvents = ticketTailor.fetchCurrentEvents(allUrls)
+  lazy val ticketTailorOrganizers = ticketTailor.fetchOrganizers(allUrls)
+  lazy val eventBriteEvents = eventBrite.fetchCurrentEvents(allUrls)
+  lazy val eventBriteOrganizers = eventBrite.fetchOrganizers(allUrls)
   lazy val allOrganizers = (ticketTailorOrganizers ++ eventBriteOrganizers).toSet
 
   def allEvents = List(
@@ -45,11 +46,17 @@ object RankUrls {
   }
 }
 
+object FindMeetup {
+  def main(args: Array[String]): Unit = {
+    println(Events.allUrls.filter(_.contains("meetu")).mkString("\n"))
+  }
+}
+
 object OrganizersEvents extends App {
   val organizer = Organizer("https://www.eventbrite.com/o/the-tantra-institute-14144505274", "", OrganizerType.EventBrite)
   val events = organizer.organizerType match {
-    case OrganizerType.TicketTailor => TicketTailor.fetchOrganizerEvents(organizer.url)
-    case OrganizerType.EventBrite => EventBrite.organizersEvents(organizer.url)
+    case OrganizerType.TicketTailor => (new TicketTailor).fetchOrganizerEvents(organizer.url)
+    case OrganizerType.EventBrite => (new EventBrite).organizersEvents(organizer.url)
   }
   println(events.mkString("\n"))
 }

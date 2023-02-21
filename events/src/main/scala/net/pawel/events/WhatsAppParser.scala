@@ -3,6 +3,7 @@ package net.pawel.events
 import java.time.LocalDateTime
 import java.time.format.{DateTimeFormatter, DateTimeFormatterBuilder}
 import java.time.temporal.ChronoField
+import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
 
 case class Message(date: LocalDateTime, text: String)
@@ -25,7 +26,7 @@ class WhatsAppParser extends RegexParsers {
     .toFormatter()
 
   def time: Parser[LocalDateTime] =
-    """[\d{2}/\d{2}/\d{4}, \d{2}:\d{2}:\d{2}]""".r ^^ {
+    """\[\d{2}/\d{2}/\d{4}, \d{2}:\d{2}:\d{2}\]""".r ^^ {
       string => LocalDateTime.parse(string, dateTimeFormatter)
     }
 
@@ -35,7 +36,7 @@ class WhatsAppParser extends RegexParsers {
 
   def message: Parser[Message] = time ~ text ^^ { case time ~ text => Message(time, text) }
 
-  def messages: Parser[List[Message]] = message.*
+  def messages: Parser[List[Message]] = message.+
 
   def parse(string: String): List[Message] = parse(messages, string) match {
     case Success(matched, _) => matched
@@ -43,3 +44,5 @@ class WhatsAppParser extends RegexParsers {
     case Error(msg, _) => throw new RuntimeException("ERROR: " + msg)
   }
 }
+
+

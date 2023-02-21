@@ -11,7 +11,7 @@ object Utils {
   def parallelize[T](list: Seq[T]): ParSeq[T] = {
     val parallel = list.par
 
-    val forkJoinPool = new ForkJoinPool(100)
+    val forkJoinPool = new ForkJoinPool(1000)
     parallel.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
     parallel
   }

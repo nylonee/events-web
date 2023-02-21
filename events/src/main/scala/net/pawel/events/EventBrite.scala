@@ -11,7 +11,7 @@ import java.util.Locale
 import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
 
-object EventBrite extends FetchPage {
+class EventBrite(fetchPage: FetchPage = new FetchPageWithUnirest) {
   private val eventBriteUrl = """https://(www\.eventbrite\.co\.uk|www\.eventbrite\.com)/.+""".r
 
   private def isEventBriteUrl(url: String): Boolean = eventBriteUrl.matches(url) && !url.contains("/cc/")

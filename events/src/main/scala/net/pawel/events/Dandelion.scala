@@ -19,14 +19,12 @@ import scala.jdk.javaapi.CollectionConverters.asScala
 import scala.language.postfixOps
 import scala.util.Try
 
-object Dandelion extends FetchPage {
+class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
 
   def dateTimeRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
     val regexp = """(.+) – (.*\d+(am|pm)) (.+) \(UTC (.+)\)""" r
     val (start, end, offset) = string match {
-      case regexp(start, end, _, _, offset) => {
-        (start, end, offset)
-      }
+      case regexp(start, end, _, _, offset) => (start, end, offset)
     }
     val startTime = parseDateAndTime(start, offset)
     val endTime = parseDateAndTimeOrTime(end, offset, startTime.toLocalDate, startTime.getZone)
@@ -80,7 +78,9 @@ object Dandelion extends FetchPage {
       events.map(_.organizerUrl).distinct.map(toOrganizer)
 
   lazy val events =
-    parallelize(await(eventUrls())).map(tryToFetchEvent).toList
+    parallelize(await(eventUrls()))
+      .map(tryToFetchEvent)
+      .toList
 
   private def tryToFetchEvent(url: String): Event = {
     try {
@@ -95,13 +95,15 @@ object Dandelion extends FetchPage {
   lazy val organizersToEventsMap = events.groupBy(_.organizerUrl)
 
   private def eventUrls(): Future[List[String]] = Future {
-    val ical = fetchPageAsString("https://dandelion.earth/events.ics")
+    val todaysDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+    val ical = fetchPage.fetchUrl(s"https://dandelion.earth/events.ics?display=&order=&from=$todaysDate&q=&event_tag_id=&search=1")
     System.setProperty("ical4j.unfolding.relaxed", "true")
     val stringReader = new StringReader(ical)
     val builder = new CalendarBuilder
     val calendar = builder.build(stringReader)
     val calendarEvents = calendar.getComponents[VEvent]()
-    asScala(calendarEvents).drop(1)
+    val events = asScala(calendarEvents).drop(1)
+    events
       .map(_.getProperty[Description](Property.DESCRIPTION).get().getValue)
       .toList
   }

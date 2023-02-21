@@ -19,4 +19,5 @@ class EventRepository @Inject()(context: DatabaseContext) extends Dao[Event] {
   def upsert(event: Event): Future[_] = upsertOne(event, Document("url" -> event.url, "start" -> BsonDateTime(event.start.toEpochMilli)))
   def replace(event: Event): Future[_] = replaceOne(event, Document("url" -> event.url, "start" -> BsonDateTime(event.start.toEpochMilli)))
   def delete(event: Event): Future[_] = deleteOne(Document("url" -> event.url, "start" -> BsonDateTime(event.start.toEpochMilli)))
+  def deleteAllOfOrganizer(organizerUrl: String): Future[_] = collection.deleteMany(Document("organizerUrl" -> organizerUrl)).toFuture()
 }

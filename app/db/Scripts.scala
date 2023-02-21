@@ -30,12 +30,16 @@ trait Repositories {
 }
 
 trait Common {
+  lazy val ticketTailor = new TicketTailor()
+  lazy val eventBrite = new EventBrite()
+  lazy val dandelion = new Dandelion()
+
   def eventsOf(organizer: Organizer): List[Event] = {
     println("Fetching events for " + organizer.name + " " + organizer.organizerType)
     (organizer.organizerType match {
-      case OrganizerType.TicketTailor => TicketTailor.fetchOrganizerEvents(organizer.url)
-      case OrganizerType.EventBrite => EventBrite.organizersEvents(organizer.url)
-      case OrganizerType.Dandelion => Dandelion.organizersToEventsMap(organizer.url)
+      case OrganizerType.TicketTailor => ticketTailor.fetchOrganizerEvents(organizer.url)
+      case OrganizerType.EventBrite => eventBrite.organizersEvents(organizer.url)
+      case OrganizerType.Dandelion => dandelion.organizersToEventsMap.get(organizer.url).getOrElse(Nil)
     }).filter(filterEvent)
   }
 
@@ -46,7 +50,7 @@ trait Common {
 
   def organizerOfEvent(eventUrl: String): Organizer = {
     val urlList = parallelize(List(eventUrl))
-    (TicketTailor.fetchOrganizers(urlList) ++ EventBrite.fetchOrganizers(urlList)).head
+    (ticketTailor.fetchOrganizers(urlList) ++ eventBrite.fetchOrganizers(urlList)).head
   }
 }
 
@@ -56,62 +60,85 @@ object UpdateOrganizersFromFile extends App with Repositories with Common {
 }
 
 object UpdateEvents extends App with Repositories with Common {
-  private val organizersFuture = organizerRepository.find(Document({
+  lazy val organizersFuture = organizerRepository.find(Document({
     "{ deleted: { $not: { $eq: true } }}"
-  })).toFuture()
+  })).toFuture().map(_.filter(_.url == "https://www.tickettailor.com/events/acaringplace"))
+  lazy val allOrganizersFuture = organizerRepository.all.toFuture()
 
-  val updateDandelionOrganizers =
+
+  val insertedDandelionOrganizersFuture =
     for {
-      organizers <- organizersFuture
-      organizersMap = organizers.map(organizer => organizer.url -> organizer).toMap
-      dandelionOrganizers <- Future { Dandelion.organizers }
-      filtered = dandelionOrganizers.filterNot(org => organizersMap.isDefinedAt(org.url))
-      _ <- Future.sequence(filtered.map(organizerRepository.upsert))
+      organizers <- allOrganizersFuture
+      existingDandelionOrganizers = organizers.filter(_.organizerType == OrganizerType.Dandelion)
+      organizersSet = existingDandelionOrganizers.map(_.url).toSet
+      dandelionOrganizers = dandelion.organizers
+      newOrganizers = dandelionOrganizers.filterNot(org => organizersSet.contains(org.url))
+      _ <- Future.sequence(newOrganizers.map(organizerRepository.upsert))
     } yield {
       println("All Dandelion organizers:\n" + dandelionOrganizers.mkString("\n"))
-      println("New Dandelion organizers:\n" + filtered.mkString("\n"))
+      println("New Dandelion organizers:\n" + newOrganizers.mkString("\n"))
       println("Updated organizers")
-      ()
+      newOrganizers
     }
 
-  val eventsFuture = for {
-    organizers <- organizersFuture
-    events <- Future { parallelize(organizers).flatMap(eventsOf).toList }
-    _ <- updateDandelionOrganizers
+  def eventsForOrganizers(organizersFuture: Future[Seq[Organizer]]): Future[List[Event]] =
+    for {
+      organizers <- organizersFuture
+      events = parallelize(organizers).flatMap(eventsOf).toList
+    } yield events
+
+  val eventsFuture = eventsForOrganizers(organizersFuture)
+  val newDandelionEventsFuture = eventsForOrganizers(insertedDandelionOrganizersFuture)
+
+  val allEventsFuture = for {
+    events <- eventsFuture
+    dandelionEvents <- newDandelionEventsFuture
   } yield {
     println("Main for finished")
-    events
+    events ++ dandelionEvents.filter(onlyLondonEvents)
   }
 
-  private def keyFor(event: Event): String =
-    event.url + event.start.getEpochSecond
+  def onlyLondonEvents(event: Event): Boolean = {
+    val address = event.address.toLowerCase
+    (address.contains("london") ||
+      address == "online") && !address.contains("canada")
+  }
 
-  lazy val events = await(eventsFuture)
-  val existingEvents = await(eventRepository.all.toFuture())
-  val existingSet = existingEvents.map(event => keyFor(event)).toSet
+  lazy val events = await(allEventsFuture)
 
-  val newEvents = events.filterNot(event => existingSet.contains(keyFor(event)))
+  println("Events:\n" + events.mkString("\n"))
 
-  println("All events:\n" + events.mkString("\n"))
+  val inserts = Future.sequence(
+    parallelize(events).groupBy(_.organizerUrl).map {
+      case (organizerUrl, events) => for {
+        _ <- eventRepository.deleteAllOfOrganizer(organizerUrl)
+        _ <- Future.sequence(events.map(eventRepository.upsert).toList)
+      } yield ()
+    }.toList
+  )
 
-  println("Events to be inserted:\n" + newEvents.mkString("\n"))
-
-  await(Future.sequence(newEvents.map(eventRepository.upsert)))
+  await(inserts)
   println("New events were inserted")
 }
 
 object UpdateExistingEvents extends App with Repositories with Common {
   private lazy val events = Await.result(eventRepository.all.toFuture(), Duration.Inf)
-  events.filter(_.organizerUrl == "").par
+  events.filter(_.organizerUrl == "https://www.tickettailor.com/events/acaringplace").par
     .map(event => event.copy(organizerUrl = organizerOfEvent(event.url).url))
     .foreach(eventRepository.replace)
 }
 
 object InsertOrganizer extends App with Repositories with Common {
-  val organizer = organizerOfEvent("")
+  val organizer = organizerOfEvent("https://www.tickettailor.com/events/rebeltantra/827897/")
   organizerRepository.upsert(organizer)
 
   val events = eventsOf(organizer)
   println(events.mkString("\n"))
-  events.foreach(eventRepository.upsert)
+  await(Future.sequence(events.map(eventRepository.upsert)))
+  println("Events upserted")
+}
+
+object EventsOfAnOrganizer extends App with Repositories with Common {
+  val events = eventsOf(Organizer("https://www.tickettailor.com/events/acaringplace", "", OrganizerType.TicketTailor))
+  println(events.mkString("\n"))
 }

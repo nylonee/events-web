@@ -5,17 +5,21 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
 trait FetchPage {
-  protected def fetchPageAsString(url: String): String = {
+  def fetchUrl(url: String): String
+
+  def apply(url: String): Document = {
     try {
-      Unirest.get(url).asString().getBody
+      Jsoup.parse(fetchUrl(url))
     } catch {
       case _: Throwable => null
     }
   }
+}
 
-  protected def fetchPage(url: String): Document = {
+class FetchPageWithUnirest extends FetchPage {
+  def fetchUrl(url: String): String = {
     try {
-      Jsoup.parse(fetchPageAsString(url))
+      Unirest.get(url).asString().getBody
     } catch {
       case _: Throwable => null
     }

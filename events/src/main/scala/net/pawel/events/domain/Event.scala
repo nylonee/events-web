@@ -1,7 +1,5 @@
 package net.pawel.events.domain
 
-import org.mongodb.scala.bson.BsonObjectId
-
 import java.time.Instant
 
 case class Event(name: String,
@@ -9,5 +7,4 @@ case class Event(name: String,
                  start: Instant,
                  end: Instant,
                  address: String,
-                 organizerUrl: String,
-                 _id: BsonObjectId = BsonObjectId())
+                 organizerUrl: String)
