@@ -1,7 +1,7 @@
 package net.pawel.events
 
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import org.jsoup.nodes.Element
+import org.jsoup.nodes.{Document, Element}
 
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalQueries
@@ -25,19 +25,28 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
     case None => string
   }
 
-  private def dateRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
+  private val London_Time_Zone_Id = "Europe/London"
+
+  def translateTimezone(timeZone: String): ZoneId = {
+    val timeZonesMap = Map(
+      "BST" -> London_Time_Zone_Id
+    )
+    ZoneId.of(timeZonesMap.get(timeZone).getOrElse(timeZone))
+  }
+
+  def dateRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
     val hasTimeZone = string.matches(""".+ [A-Z]{3}""")
-    val (rangeString, timezoneSuffix) =
+    val (rangeString, timeZone) =
       if (hasTimeZone) {
-        val timeZone = string.substring(string.length - 3)
         val range = string.substring(0, string.length - 4)
+        val timeZone = translateTimezone(string.substring(string.length - 3))
         (range, timeZone)
       } else {
-        (string, "")
+        (string, ZoneId.of(London_Time_Zone_Id))
       }
     val Array(fromString, toString) = rangeString.split(" - ")
-    val fromDateTime = TicketTailorTimeParsing.parseDateAndTime((fromString + " " + timezoneSuffix).trim)
-    val toDateTime = TicketTailorTimeParsing.parseTimeOrDate(fromDateTime.toLocalDate, toString, timezoneSuffix)
+    val fromDateTime = TicketTailorTimeParsing.parseDateAndTime(fromString.trim, timeZone)
+    val toDateTime = TicketTailorTimeParsing.parseTimeOrDate(fromDateTime.toLocalDate, toString, timeZone)
 
     (fromDateTime, toDateTime)
   }
@@ -141,29 +150,28 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
     if (page.wholeText().contains("This page is not available right now.")) {
       None
     } else {
-      val header = page.selectFirst("#global_large_header")
-      val name =
-        Option(header.selectFirst("h1")).map(_.text())
-          .orElse(Option(header.selectFirst("img")).map(_.attr("alt")))
-          .get
+      val name = nameFromHeader(page)
       Some(Organizer(url = organizerPageUrl, name = name, organizerType = OrganizerType.TicketTailor))
     }
+  }
+
+  private def nameFromHeader(page: Document): String = {
+    val header = page.selectFirst("#global_large_header")
+    def nameInHeader: Option[String] = Option(header.selectFirst("h1")).map(_.text())
+    def nameInLogoAltText = header.selectFirst("img.logo").attr("alt")
+    nameInHeader.getOrElse(nameInLogoAltText)
   }
 }
 
 object TicketTailorTimeParsing {
-  val dateAndTimeWithTimezoneFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu h:mm a z", Locale.ENGLISH)
   val dateAndTimeFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu h:mm a", Locale.ENGLISH)
   val timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH)
   val dateFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu", Locale.ENGLISH)
 
-  def parseTimeOrDate(defaultDate: LocalDate, string: String, timezoneSuffix: String): ZonedDateTime = {
+  def parseTimeOrDate(defaultDate: LocalDate, string: String, timeZone: ZoneId): ZonedDateTime = {
     val accessor = Try {
       timeFormatter.parse(string)
     }
-      .orElse(Try {
-        dateAndTimeWithTimezoneFormatter.parse((string + " " + timezoneSuffix).trim)
-      })
       .orElse(Try {
         dateAndTimeFormatter.parse(string)
       })
@@ -178,23 +186,14 @@ object TicketTailorTimeParsing {
     val time = localTimeQuery.getOrElse(LocalTime.MIDNIGHT.minusMinutes(1))
     val date = Option(accessor.query(TemporalQueries.localDate()))
       .getOrElse(if (noTimeSet) defaultDate.plusDays(1) else defaultDate)
-    val timeZone = ZoneId.of(if (timezoneSuffix.isEmpty || timezoneSuffix == "BST") "GMT" else timezoneSuffix)
     ZonedDateTime.of(date, time, timeZone)
   }
 
-  def parseDateAndTime(string: String): ZonedDateTime = {
-    val accessor =
-      Try {
-        dateAndTimeWithTimezoneFormatter.parse(string)
-      }
-        .orElse(Try {
-          dateAndTimeFormatter.parse(string)
-        })
-        .get
+  def parseDateAndTime(string: String, timeZone: ZoneId): ZonedDateTime = {
+    val accessor = dateAndTimeFormatter.parse(string)
 
     val time = accessor.query(TemporalQueries.localTime())
     val date = accessor.query(TemporalQueries.localDate())
-    val timeZone = Option(accessor.query(TemporalQueries.zoneId()))
-    ZonedDateTime.of(date, time, timeZone.getOrElse(ZoneId.of("GMT")))
+    ZonedDateTime.of(date, time, timeZone)
   }
 }

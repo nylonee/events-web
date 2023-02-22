@@ -29,7 +29,7 @@ object Events {
 
   def main(args: Array[String]): Unit = {
     println(ticketTailorEvents.mkString("\n"))
-    println(eventBriteOrganizers.mkString("\n"))
+//    println(eventBriteOrganizers.mkString("\n"))
 //    facebookEvents
   }
 }
@@ -50,15 +50,6 @@ object FindMeetup {
   def main(args: Array[String]): Unit = {
     println(Events.allUrls.filter(_.contains("meetu")).mkString("\n"))
   }
-}
-
-object OrganizersEvents extends App {
-  val organizer = Organizer("https://www.eventbrite.com/o/the-tantra-institute-14144505274", "", OrganizerType.EventBrite)
-  val events = organizer.organizerType match {
-    case OrganizerType.TicketTailor => (new TicketTailor).fetchOrganizerEvents(organizer.url)
-    case OrganizerType.EventBrite => (new EventBrite).organizersEvents(organizer.url)
-  }
-  println(events.mkString("\n"))
 }
 
 

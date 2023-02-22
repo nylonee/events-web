@@ -1,11 +1,11 @@
 package net.pawel.events
 
-import net.pawel.events.domain.{Organizer, OrganizerType}
+import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import net.pawel.events.util.FetchPageFromFile
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
+import java.time._
 
 class TicketTailorTest extends AnyFlatSpec with Matchers {
 
@@ -20,7 +20,42 @@ class TicketTailorTest extends AnyFlatSpec with Matchers {
     )
   }
 
-  "fetchOrganizerEvents" should "extract correct event information" in {
+  "fetchOrganizer" should "extract organizer's name from image" in {
+    val ticketTailor = new TicketTailor(new FetchPageFromFile)
+    val organizer = ticketTailor.fetchOrganizer("https://www.tickettailor.com/events/rapture")
+    organizer shouldBe Some(
+      Organizer(
+        "https://www.tickettailor.com/events/rapture",
+        "RAPTURE - High Energy Ecstatic Dance",
+        OrganizerType.TicketTailor)
+    )
+  }
+
+  "fetchOrganizer" should "handle nonexistent / inactive organizer page" in {
+    val ticketTailor = new TicketTailor(new FetchPageFromFile)
+    val organizer = ticketTailor.fetchOrganizer("https://www.tickettailor.com/events/wilddancer")
+    organizer shouldBe None
+  }
+
+   "dateRangeFrom" should "extract date range for BST" in {
+    val ticketTailor = new TicketTailor(new FetchPageFromFile)
+    val (from, to) = ticketTailor.dateRangeFrom("Tue 11 Apr 2023 6:45 PM - 9:30 PM BST")
+     val date = LocalDate.of(2023, 4, 11)
+     val zoneId = ZoneId.of("Europe/London")
+     from shouldBe ZonedDateTime.of(date, LocalTime.of(18, 45), zoneId)
+     to shouldBe ZonedDateTime.of(date, LocalTime.of(21, 30), zoneId)
+  }
+
+  "dateRangeFrom" should "extract date range for GMT" in {
+    val ticketTailor = new TicketTailor(new FetchPageFromFile)
+    val (from, to) = ticketTailor.dateRangeFrom("Thu 2 Feb 2023 6:45 PM - 9:30 PM GMT")
+     val date = LocalDate.of(2023, 2, 2)
+     val zoneId = ZoneId.of("GMT")
+     from shouldBe ZonedDateTime.of(date, LocalTime.of(18, 45), zoneId)
+     to shouldBe ZonedDateTime.of(date, LocalTime.of(21, 30), zoneId)
+  }
+
+  "fetchOrganizerEvents" should "extract correct event information for an event with multiple dates" in {
     val ticketTailor = new TicketTailor(new FetchPageFromFile)
     val events = ticketTailor.fetchOrganizerEvents("https://www.tickettailor.com/events/acaringplace")
     events.foreach(event => {
@@ -46,11 +81,94 @@ class TicketTailorTest extends AnyFlatSpec with Matchers {
     )
   }
 
+  "fetchOrganizerEvents" should "extract correct event information for one organizer's events" in {
+    val ticketTailor = new TicketTailor(new FetchPageFromFile)
+    val allEvents = ticketTailor.fetchOrganizerEvents("https://www.tickettailor.com/events/dancelondon")
+
+    def onlyForro(event: Event): Boolean = event.name == "Brazilian Partner Dance Forró Night - every Monday!"
+
+    def onlyMovingConnections(event: Event): Boolean = event.name == "Moving Connections - Playful Encounters through Dance!"
+
+    allEvents.size shouldBe 45
+
+    val forroEvents = allEvents.filter(onlyForro)
+    forroEvents.size shouldBe 27
+    val movingConnections = allEvents.filter(onlyMovingConnections)
+    movingConnections.size shouldBe 14
+
+    movingConnections.foreach(event => {
+      event.name shouldBe "Moving Connections - Playful Encounters through Dance!"
+      event.url shouldBe "https://www.tickettailor.com/events/dancelondon/583732/"
+      event.address shouldBe "Open House Hackney, E9 5LX"
+      event.organizerUrl shouldBe "https://www.tickettailor.com/events/dancelondon"
+    })
+
+    movingConnections.map(event => (event.start, event.end)) shouldBe List(
+      movingConnectionsEventTimesFor(month = 2, day = 28),
+      movingConnectionsEventTimesFor(month = 3, day = 7),
+      movingConnectionsEventTimesFor(month = 3, day = 14),
+      movingConnectionsEventTimesFor(month = 3, day = 21),
+      movingConnectionsEventTimesFor(month = 3, day = 28),
+      movingConnectionsEventTimesFor(month = 4, day = 4),
+      movingConnectionsEventTimesFor(month = 4, day = 11),
+      movingConnectionsEventTimesFor(month = 4, day = 18),
+      movingConnectionsEventTimesFor(month = 4, day = 25),
+      movingConnectionsEventTimesFor(month = 5, day = 2),
+      movingConnectionsEventTimesFor(month = 5, day = 9),
+      movingConnectionsEventTimesFor(month = 5, day = 16),
+      movingConnectionsEventTimesFor(month = 5, day = 23),
+      movingConnectionsEventTimesFor(month = 5, day = 30),
+    )
+
+    val otherEvents = allEvents.filterNot(onlyForro).filterNot(onlyMovingConnections)
+    otherEvents shouldBe List(
+      Event("Moving Connections, Contact Improvisation, Dancing, Sharing, Saunas and Camping in Nature!",
+        "https://www.tickettailor.com/events/dancelondon/812462/",
+        Instant.parse("2023-06-09T15:00:00Z"),
+        Instant.parse("2023-06-11T18:00:00Z"),
+        "Bellingdon and Asheridge Village Hall, HP5 2XU",
+        "https://www.tickettailor.com/events/dancelondon"
+      ),
+      Event(
+        "Connecting with our Sensual Selves through Movement, Intimacy, Presence, Saunas and Camping in Nature!",
+        "https://www.tickettailor.com/events/dancelondon/819749/",
+        Instant.parse("2023-06-16T15:00:00Z"),
+        Instant.parse("2023-06-18T18:00:00Z"),
+        "Bellingdon and Asheridge Village Hall, HP5 2XU",
+        "https://www.tickettailor.com/events/dancelondon"
+      ),
+      Event("Rumble 2023 - A festival devoted to its dancers - Part 1",
+        "https://www.tickettailor.com/events/dancelondon/831409/",
+        Instant.parse("2023-08-03T13:00:00Z"),
+        Instant.parse("2023-08-07T22:59:00Z"),
+        "Bellingdon and Asheridge Village Hall, HP5 2XU",
+        "https://www.tickettailor.com/events/dancelondon"
+      ),
+      Event("Rumble 2023 - A festival devoted to its dancers - Part 2",
+        "https://www.tickettailor.com/events/dancelondon/833184/",
+        Instant.parse("2023-08-10T13:00:00Z"),
+        Instant.parse("2023-08-14T22:59:00Z"),
+        "Bellingdon and Asheridge Village Hall, HP5 2XU",
+        "https://www.tickettailor.com/events/dancelondon"
+      ),
+    )
+  }
+
   private def caringPlaceEventTimesFor(month: Int, day: Int) = {
+    val zoneId: ZoneId = ZoneId.of("Europe/London")
     val date = LocalDate.of(2023, month, day)
     val startTime = LocalTime.of(18, 0)
     val endTime = LocalTime.of(21, 15)
-    (ZonedDateTime.of(date, startTime, ZoneId.of("GMT")).toInstant,
-      ZonedDateTime.of(date, endTime, ZoneId.of("GMT")).toInstant)
+    (ZonedDateTime.of(date, startTime, zoneId).toInstant,
+      ZonedDateTime.of(date, endTime, zoneId).toInstant)
+  }
+
+  private def movingConnectionsEventTimesFor(month: Int, day: Int) = {
+    val zoneId: ZoneId = ZoneId.of("Europe/London")
+    val date = LocalDate.of(2023, month, day)
+    val startTime = LocalTime.of(18, 45)
+    val endTime = LocalTime.of(21, 30)
+    (ZonedDateTime.of(date, startTime, zoneId).toInstant,
+      ZonedDateTime.of(date, endTime, zoneId).toInstant)
   }
 }
