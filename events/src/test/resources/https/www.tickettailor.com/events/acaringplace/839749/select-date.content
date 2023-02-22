@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+<html style="overflow-y: auto; -webkit-overflow-scrolling: touch;" lang="en">
+<head>
+    <!-- Layout: event-page-checkout -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+            <link rel="canonical" href="&#x2F;events&#x2F;acaringplace&#x2F;" />
+    	<link rel="icon" type="image/png" href="https://cdn.tickettailor.com/favicon.ico?r=1677065112" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/assets/checkout/css/checkout.css?r=1677065112" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/assets/checkout/css/form.css?r=1677065112" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/assets/checkout/css/modal.css?r=1677065112" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/css/fontawesome/css/font-awesome.min.css?r=1677065112" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.tickettailor.com/assets/css/font-faces.css?r=1677065112" media="all" />
+
+		<title>A Caring Place</title>	
+    <script src="https://cdn.tickettailor.com/js/jquery/js/jquery-1.12.4.min.js?r=1677065112"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/assets/checkout/js/jquery/jquery-ui.css?r=1677065112" />
+    <script src="https://cdn.tickettailor.com/assets/checkout/js/jquery/jquery-ui.min.js?r=1677065112"></script>
+
+    <script src="https://cdn.tickettailor.com/js/accounting.min.js?r=1677065112"></script>
+    <script src="https://cdn.tickettailor.com/js/checkout.js?r=1677065112"></script>
+
+    
+
+
+
+
+
+    
+	
+    <script>
+        $(document).ready(function() {
+            persistWidgetPrefsToUrlsOfAllLinks();
+        });
+    </script>
+</head>
+<html style="display: block; overflow-y: auto; -webkit-overflow-scrolling: touch; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+<body  id="shop-front" style="position: relative;" class="hide_on_load widget new_event_page  ">
+    <div id="window-holder">
+        <div id="shop-container" class="box-color-background" role="dialog" aria-live="assertive" aria-labelledby="dialog_header">
+            <div class="tt_reset">
+
+                <div class="new-page-body-wrapper">
+                                        <div class="new-page-body">
+                        
+<style type="text/css">
+
+    .select_date_wrapper { text-align: center; }
+    .select_date_wrapper .select_date { text-align: left; }
+    .select_date_wrapper p.show_more { display: none; margin: 0 auto; font-size: 14px; padding: 20px 10px 10px 10px;  }
+    .select_date_wrapper p.show_more a::after { content: "\f107"; }
+
+    .select_date_wrapper p.back_to_top {  padding: 20px 10px 10px 10px; }
+    .select_date_wrapper p.back_to_top a::after { content: "\f106"; }
+    .select_date_wrapper.restrict_view p.back_to_top { display: none; }
+
+            .select_date_wrapper.restrict_view p.show_more { display: block; }
+        .select_date_wrapper.restrict_view .date:nth-child(n+10) { display: none; }
+    
+
+    a.clear_selection { display: inline-block; opacity: 0.8; float: right; font-size: 14px; line-height: 24px; }
+    a.clear_selection::after { content: "\f057"; }
+
+    .occurrences.time_select div.header {
+        margin-left: -800px;
+        margin-right: -800px;
+        padding: 20px 800px;
+        text-align: left;
+        border-bottom: 1px solid rgba(28, 35, 43, 0.07);
+    }
+
+    .occurrences.time_select div.header h2 {
+        padding: 0;
+        font-size: 18px;
+    }
+
+    @media only screen and (max-width: 660px) {
+        .ui-datepicker-group-last { display: none; }
+        .ui-datepicker-multi-2 .ui-datepicker-group { width: 100% !important; }
+    }
+</style>
+
+<script type="text/javascript">
+    var selectableDates = {};
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D03\x2D03 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910075",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910075\x2Fchk\x2Fcfb1\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D03\x2D03"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D03\x2D10 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910076",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910076\x2Fchk\x2Fc033\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D03\x2D10"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D03\x2D17 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910077",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910077\x2Fchk\x2F879b\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D03\x2D17"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D03\x2D24 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910078",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910078\x2Fchk\x2F9399\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D03\x2D24"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D03\x2D31 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910079",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910079\x2Fchk\x2F7b91\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D03\x2D31"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D04\x2D07 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910080",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910080\x2Fchk\x2Ff977\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D04\x2D07"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D04\x2D14 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910081",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910081\x2Fchk\x2F9301\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D04\x2D14"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D04\x2D21 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910082",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910082\x2Fchk\x2Fa019\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D04\x2D21"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D04\x2D28 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910083",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910083\x2Fchk\x2Fa7af\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D04\x2D28"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D05\x2D05 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910084",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910084\x2Fchk\x2F3ccc\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D05\x2D05"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D05\x2D12 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910085",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910085\x2Fchk\x2F316d\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D05\x2D12"] = thisDate;
+            var thisDate = {
+            available: true,
+            sold_out: false
+        };
+        thisDate.availability_note = $("#occurrence_2023\x2D05\x2D19 .time_portion").text();
+                var times = [];
+                    var time = {
+                id: "1910086",
+                url: "\x2Fcheckout\x2Fview\x2Devent\x2Fid\x2F1910086\x2Fchk\x2Faf82\x2F",
+                button_cta: "➔",
+                button_cta_notranslate: 0,
+                button_color: "",
+                date_string: "\x20\x3Cvar\x3E6\x3A00\x20PM\x3C\x2Fvar\x3E\x20\x2D\x20\x3Cvar\x3E9\x3A15\x20PM\x3C\x2Fvar\x3E"
+            }
+            times.push(time);
+                thisDate.times = times;
+        selectableDates["2023\x2D05\x2D19"] = thisDate;
+    
+    $( document ).ready(function() {
+        $('.clear_selection').click(function(){
+            showAllDates();
+        });
+
+        $('p.back_to_top a').click(function(){
+            scrollToTop();
+        });
+
+        $('p.show_more a').click(function(){
+            $('.select_date_wrapper').removeClass('restrict_view');
+        });
+
+            });
+</script>
+
+<header class="widget_header">
+    <h1 id="dialog_header" notranslate>A Caring Place – 12 Greenhills Terrace</h1>
+    <style type="text/css">
+    ul.progress { display: inline-block; margin: 16px auto 0 auto; font-size: 12px; padding: 5px 4px; list-style-type: none; background-color: rgba(28, 35, 43, 0.05); border-radius: 15px; }
+    ul.progress li { display: inline-block; margin: 0; padding: 0 10px; opacity: 0.7; }
+    ul.progress li.active { font-weight: bold; opacity: 1; }
+    ul.progress li::after {
+        font-weight: normal; opacity: 1;
+        border-style: solid;
+        border-color: rgba(28, 35, 43, 0.6);
+        border-width: 1px 1px 0 0;
+        content: '';
+        display: inline-block;
+        left: 10px;
+        position: relative;
+        top: 6px;
+        transform: rotate(-315deg);
+        vertical-align: top;
+        width: 5px;
+        height: 5px; }
+    ul.progress li:last-child::after { border-width: 0; }
+</style>
+<ul class="progress">
+            <li class="active"><span class="mobile_hide">Select occurrence</span><span class="mobile_only">Occurrence</span></li>
+                <li ><span class="mobile_hide">Select tickets</span><span class="mobile_only">Tickets</span></li>
+            <li >Your details</li>
+    <li >Review</li>
+        </ul></header>
+
+<style type="text/css">
+
+    .filter_by_date {
+        margin: 0 -800px; padding: 0 800px ;
+        border-bottom: 1px solid rgba(28, 35, 43, 0.1);
+    }
+    .filter_by_date.open {
+        background-color: rgba(28, 35, 43, 0.05);
+    }
+    .filter_by_date a.date_select_button {
+        display: inline-block;
+        background-color: transparent;
+        font-size: 14px;
+        padding: 20px 10px 20px 0;
+        color:  #1c232b;
+        text-decoration: none;
+    }
+    .filter_by_date a.date_select_button::after {
+        content: "\f133";
+    }
+
+    .datepicker_scroller { position: relative; }
+    .datepicker_scroller a { position: absolute; top: 15px; z-index: 99; text-decoration: none; text-indent: -99999px;
+        background-image: url('https://cdn.tickettailor.com/assets/checkout/img/dropdown-chevron@2x.png?r=1677065112');
+        background-size: 30px auto;
+        height: 30px; width: 30px; border-radius: 20px; }
+    .datepicker_scroller a:hover { background-color: rgba(28, 35, 43, 0.05); }
+    .datepicker_scroller a.prev_month { left: 5px; transform: rotate(90deg); }
+    .datepicker_scroller a.next_month { right: 5px; transform: rotate(-90deg); }
+
+    .ui-datepicker { padding: 0; }
+    .ui-widget-content { background-color: transparent; }
+    .ui-tooltip { background: #fff; margin: 0 !important; -webkit-box-shadow: 0px 0px 5px -2px #000000; box-shadow: 0px 0px 5px -2px #000000; }
+
+    .ui-datepicker .ui-datepicker-header { padding: 0; }
+    .ui-datepicker .ui-datepicker-title { line-height: 48px; font-weight: bold; font-size: 18px; }
+
+    .filter_by_date .datepicker_wrapper { display: none; position: relative; }
+    .filter_by_date #datepicker { color: #1c232b; width: 100%; padding-top: 5px;}
+    .filter_by_date #datepicker .ui-widget-header { background: none; border: none; font-weight: normal; }
+    .filter_by_date #datepicker .ui-widget { font-family: inherit; margin: 0 auto; }
+    .filter_by_date #datepicker .ui-widget.ui-widget-content { border: 0; padding-bottom: 10px; }
+    .filter_by_date .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active { border: 0; background: none; }
+    .ui-datepicker td span, .ui-datepicker td a { text-align: center; }
+
+    .ui-datepicker-calendar thead tr th { opacity: 0.6; font-weight: bold; font-size: 12px; line-height: 38px; padding: 0; }
+    .ui-datepicker-calendar tbody tr td { border-spacing: 0; }
+    .ui-datepicker-calendar tbody tr td a { display: inline-block; border: none !important; width: 100%; height: 40px; padding: 0; line-height: 38px; background-color: #1fcb0050 !important; color: #293626;  }
+    .ui-datepicker-calendar tbody tr td a:hover { background-color: #1fcb0070 !important; }
+    .ui-datepicker-calendar tbody tr td a.ui-state-active { background-color: #4d8000 !important; color: #fff !important; }
+
+    .ui-datepicker-calendar tbody tr td.unavailable a { background-color: #99999950 !important; }
+    .ui-datepicker-calendar tbody tr td.unavailable a:hover {  background-color: #99999980 !important; }
+    .ui-datepicker-calendar tbody tr td.unavailable a.ui-state-active { background-color: #60656A !important; color: #fff !important; }
+
+    .ui-datepicker-calendar tbody tr td.sold_out a { background-color: #cb000050 !important; }
+    .ui-datepicker-calendar tbody tr td.sold_out a:hover { background-color:  #cb000080 !important; }
+    .ui-datepicker-calendar tbody tr td.sold_out a.ui-state-active { background-color: #cb0000 !important; color: #fff !important; }
+
+    .ui-tooltip { color: #000 !important; }
+
+    .ui-state-disabled span:before,
+    .ui-state-disabled span:after {
+        content: "\00a0";
+    }
+
+    .ui-datepicker-inline { width: 100% !important; }
+
+    .ui-datepicker td { width: 40px; height: 40px; padding: 0; }
+
+    .ui-datepicker-multi-2 .ui-datepicker-group { margin-left: 6%; width: 47%; }
+    .ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-first { margin-left: 0; }
+
+
+    .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+        display: none;
+    }
+
+    .ui-datepicker-multi .ui-datepicker-group table { width: 100%; margin: 0; }
+
+    
+</style>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('a.date_select_button').click(function(e){
+            e.preventDefault();
+            if($(this).parent().hasClass('open')) {
+                $('#datepicker_wrapper').slideUp();
+                $('.filter_by_date').removeClass('open');
+                $(this).attr('aria-expanded','false');
+                $(this).text($(this).text().replace("Hide","Show"));
+            } else {
+                $('#datepicker_wrapper').slideDown();
+                $('.filter_by_date').addClass('open');
+                $(this).attr('aria-expanded','true');
+                $(this).text($(this).text().replace("Show","Hide"));
+            }
+        });
+
+        $('.prev_month').click(function(){
+            $('#datepicker .ui-datepicker-prev').trigger("click");
+        });
+        $('.next_month').click(function(){
+            $('#datepicker .ui-datepicker-next').trigger("click");
+        });
+
+        $('.clear_selection').click(function(){
+            showAllDates();
+        });
+
+        $('#datepicker').datepicker({
+            numberOfMonths: 2,
+            minDate: Object.keys(selectableDates)[0], // start the calendar on the first selectable date
+            firstDay: 1,
+            beforeShowDay: function(date) {
+                var mysqlDate = date.toMysqlFormat();
+                if(mysqlDate in selectableDates) {
+                    if(selectableDates[mysqlDate].available) {
+                        return [true, "", selectableDates[mysqlDate].availability_note];
+                    }
+                    if(selectableDates[mysqlDate].sold_out) {
+                        return [true, "sold_out", selectableDates[mysqlDate].unavailable_label];
+                    }
+                    return [true, "unavailable", selectableDates[mysqlDate].unavailable_label];
+                }
+                return [false, "", ""];
+            },
+            onSelect: function(date) {
+                showDate(date, $('#fullDateFormat').val());
+            },
+            dateFormat: "yy-mm-dd",
+            altFormat: "D d M yy",
+            altField: "#fullDateFormat"
+        });
+
+        // no date selected by default
+        $('#datepicker').datepicker("setDate", -1);
+        $('.ui-datepicker-current-day .ui-state-active').removeClass('ui-state-active');
+
+        $('#datepicker').on('mouseenter', ".ui-datepicker-calendar", function() {
+            $(this).tooltip();
+        });
+
+        $('p.back_to_top a').click(function(){
+            scrollToTop();
+        });
+    });
+
+    function twoDigits(d) {
+        if(0 <= d && d < 10) return "0" + d.toString();
+        if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+        return d.toString();
+    }
+
+    Date.prototype.toMysqlFormat = function() {
+        var mysqdlDate = new Date(this.getTime() - this.getTimezoneOffset()*60000);
+        return mysqdlDate.getUTCFullYear() + "-" + twoDigits(1 + mysqdlDate.getUTCMonth()) + "-" + twoDigits(mysqdlDate.getUTCDate());
+    };
+
+</script>
+
+<div class="filter_by_date">
+    <a href="javascript://" class="date_select_button with_icon" role="button" aria-expanded="false" aria-controls="datepicker_wrapper">Show calendar</a>
+    <input type="hidden" id="fullDateFormat">
+    <div class="datepicker_wrapper" id="datepicker_wrapper">
+        <div class="datepicker_scroller">
+            <a href="JavaScript: //" class="prev_month" aria-label="Previous month"><</a>
+            <a href="JavaScript: //" class="next_month" aria-label="Next month">></a>
+        </div>
+        <div id="datepicker"></div>
+    </div>
+</div>
+
+<div class="select_date_wrapper restrict_view">
+    <div class="select_date">
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-03-03">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910075&#x2F;chk&#x2F;cfb1&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>3</var> <span isolate>Mar</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-03-03" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>3</var> <span isolate>Mar</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-03-10">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910076&#x2F;chk&#x2F;c033&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>10</var> <span isolate>Mar</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-03-10" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>10</var> <span isolate>Mar</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-03-17">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910077&#x2F;chk&#x2F;879b&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>17</var> <span isolate>Mar</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-03-17" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>17</var> <span isolate>Mar</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-03-24">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910078&#x2F;chk&#x2F;9399&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>24</var> <span isolate>Mar</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-03-24" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>24</var> <span isolate>Mar</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-03-31">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910079&#x2F;chk&#x2F;7b91&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>31</var> <span isolate>Mar</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-03-31" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>31</var> <span isolate>Mar</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-04-07">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910080&#x2F;chk&#x2F;f977&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>7</var> <span isolate>Apr</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-04-07" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>7</var> <span isolate>Apr</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-04-14">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910081&#x2F;chk&#x2F;9301&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>14</var> <span isolate>Apr</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-04-14" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>14</var> <span isolate>Apr</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-04-21">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910082&#x2F;chk&#x2F;a019&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>21</var> <span isolate>Apr</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-04-21" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>21</var> <span isolate>Apr</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-04-28">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910083&#x2F;chk&#x2F;a7af&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>28</var> <span isolate>Apr</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-04-28" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>28</var> <span isolate>Apr</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-05-05">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910084&#x2F;chk&#x2F;3ccc&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>5</var> <span isolate>May</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-05-05" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>5</var> <span isolate>May</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-05-12">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910085&#x2F;chk&#x2F;316d&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>12</var> <span isolate>May</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-05-12" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>12</var> <span isolate>May</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+                    <div class="date" >
+                                    <div class="occurrence date_select" id="occurrence_2023-05-19">
+                                                    <a href="&#x2F;checkout&#x2F;view-event&#x2F;id&#x2F;1910086&#x2F;chk&#x2F;af82&#x2F;">
+                                                                    <span class="button">➔</span>
+                                <span class='date_portion'><span isolate>Fri</span> <var>19</var> <span isolate>May</span> <var>2023</var></span><span class='time_portion'> <var>6:00 PM</var> - <var>9:15 PM</var></span>                            </a>
+                                            </div>
+                    
+                <div class="occurrences time_select" data-date="2023-05-19" style="display: none;">
+                    <div class="header">
+                        <a href="JavaScript: //" class="clear_selection with_icon">Clear<span class="mobile_hide">&nbsp;date&nbsp;selection</span></a>
+                        <h2><span isolate>Fri</span> <var>19</var> <span isolate>May</span> <var>2023</var></h2>
+                    </div>
+                    <div class="time_select_wrapper">
+                    </div>
+                </div>
+            </div>
+            </div>
+    <p class="show_more"><a class="with_icon" href="JavaScript://">+ <var>2</var> more</a></p>
+    <p class="back_to_top"><a class="with_icon" href="JavaScript: //">Back to top</a></p>
+</div>
+<!-- CACHED: 1677067534 -->                </div></div>
+
+                <div class="new-page-footer-wrapper"><div class="new-page-footer">
+                                            <div class="need-help">
+                            <p>
+                                                                   <a href="/promoter/privacy-policy/link/acaringplace">View&nbsp;privacy&nbsp;policy</a>
+                                                            </p>
+                        </div>
+                                            <div class="powered_by">
+        <a href="https://www.tickettailor.com/?rf=wdg_107171" target="_blank" style="text-decoration: none; color: inherit; font-size: 13px; display: block;">
+            <span style="position: relative; top: -12px; display: inline-block; padding-right: 4px;">Event ticketing by            </span><svg aria-label="Ticket Tailor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="40" viewBox="0 0 100 40" id="ticket_tailor_footer_logo">
+                <title>Ticket Tailor</title>
+                <defs>
+                    <path id="a" d="M0 32.547h100V0H0z"/>
+                </defs>
+                <g>
+                    <g transform="translate(0 7)">
+                        <path class="logo_color" d="M29.014 18.87l1.789 1.025-.053.1c-.748 1.406-2.26 2.283-3.943 2.283-2.636 0-4.625-1.983-4.625-4.607 0-2.625 1.989-4.608 4.625-4.608 1.695 0 3.195.866 3.913 2.266l.047.1-1.794 1.042-.053-.118c-.365-.777-1.159-1.248-2.13-1.248-1.442 0-2.525 1.106-2.525 2.566 0 1.459 1.083 2.559 2.525 2.559.947 0 1.759-.464 2.165-1.247l.059-.112zM100 13.128v2.242l-.13-.006c-.746-.053-1.423.153-1.865.565-.423.394-.635.97-.635 1.706v4.419h-2.083v-8.767h2.083v1.082c.524-.8 1.395-1.241 2.506-1.241H100zM42.592 16.835c.29-1.171 1.188-1.865 2.43-1.865 1.19 0 2.042.694 2.295 1.865h-4.725zm2.448-3.772c-2.677 0-4.625 1.936-4.625 4.607 0 2.713 1.96 4.608 4.76 4.608 1.642 0 3.001-.683 3.837-1.913l.07-.106-1.724-1.006-.058.088c-.442.642-1.207 1.013-2.107 1.013-1.318 0-2.277-.665-2.583-1.783h6.75l.011-.1c.035-.253.07-.524.07-.783 0-2.636-1.894-4.625-4.4-4.625z"/>
+                        <mask id="b" fill="#fff">
+                            <use xlink:href="#a"/>
+                        </mask>
+                        <path class="logo_color" d="M76.316 22.054h2.083v-8.768h-2.083zM54.076 13.287h2.118v2.006h-2.118v3.978c0 .336.07.553.212.689.276.264.859.247 1.783.205l.123-.005v1.883l-.106.012a9.586 9.586 0 0 1-1.165.076c-.982 0-1.682-.206-2.153-.624-.518-.46-.771-1.188-.771-2.236v-3.978h-1.571v-2.006h1.571v-1.818l2.077-.612v2.43zM80.571 22.054h2.077V9.356h-2.077zM65.573 11.986h-3.36v10.068h-2.2V11.986h-3.377V9.874h8.937zM18.47 22.054h2.083v-8.768H18.47zM20.805 10.945c0 .7-.593 1.294-1.293 1.294a1.313 1.313 0 0 1-1.296-1.294c0-.712.583-1.294 1.296-1.294.71 0 1.293.582 1.293 1.294M78.652 10.945c0 .7-.594 1.294-1.294 1.294a1.313 1.313 0 0 1-1.295-1.294c0-.712.583-1.294 1.295-1.294.711 0 1.294.582 1.294 1.294M88.967 20.248c-1.447 0-2.542-1.106-2.542-2.577 0-1.471 1.095-2.583 2.542-2.583 1.454 0 2.548 1.112 2.548 2.583 0 1.47-1.094 2.577-2.548 2.577m0-7.185c-2.595 0-4.625 2.025-4.625 4.608 0 2.583 2.03 4.607 4.625 4.607s4.625-2.024 4.625-4.607-2.03-4.608-4.625-4.608M69.461 20.283c-1.495 0-2.577-1.1-2.577-2.612 0-1.513 1.082-2.613 2.577-2.613 1.495 0 2.583 1.1 2.583 2.613 0 1.512-1.088 2.612-2.583 2.612zm2.583-6.996v.995c-.706-.801-1.688-1.22-2.87-1.22-2.449 0-4.367 2.026-4.367 4.609 0 2.536 1.96 4.607 4.366 4.607 1.188 0 2.171-.424 2.871-1.23v1.006h2.077v-8.767h-2.077zM8.131 9.874h8.938v2.112h-3.36v10.068h-2.2V11.986H8.13zM36.116 17.582l3.995 4.472h-2.518l-3.325-3.748v3.748h-2.083V9.874h2.083v6.99l3.137-3.577h2.571z" mask="url(#b)"/>
+                        <path class="logo_color" d="M24.196 27.772c-.15.27-.41.479-.719.569l-4.006 1.16a1.208 1.208 0 0 1-1.399-.64 2.221 2.221 0 0 0-2.617-1.159 2.209 2.209 0 0 0-1.618 2.378 1.183 1.183 0 0 1-.84 1.269l-4.026 1.158c-.1.02-.21.04-.319.04-.2 0-.4-.05-.58-.15a1.153 1.153 0 0 1-.569-.709L.04 5.674c-.08-.299-.04-.629.11-.909s.4-.479.71-.569l4.015-1.149c.111-.03.22-.04.34-.04.45 0 .85.25 1.06.669a2.229 2.229 0 0 0 1.997 1.249c.21 0 .42-.03.62-.09A2.212 2.212 0 0 0 10.5 2.458c-.06-.57.29-1.1.85-1.269L15.364.04a1.31 1.31 0 0 1 .91.1c.27.16.468.409.558.709l1.718 5.974a.617.617 0 0 1-.419.749.809.809 0 0 1-.17.02.598.598 0 0 1-.569-.429l-1.698-5.964-4.006 1.138a3.428 3.428 0 0 1-2.458 3.667c-.309.08-.629.13-.949.13a3.41 3.41 0 0 1-3.087-1.928L1.21 5.345l7.433 25.993 4.006-1.128a3.43 3.43 0 0 1 2.467-3.677c.31-.079.63-.13.95-.13 1.328 0 2.506.75 3.066 1.929l4.006-1.129-1.039-3.617a.61.61 0 0 1 .41-.749c.06-.01.11-.02.17-.02.27 0 .51.18.58.43l1.038 3.626c.08.31.05.629-.1.899" mask="url(#b)"/>
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+                </div></div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        body.hide_on_load { display: none; }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('body').removeClass('hide_on_load');
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window === window.top) {
+                $('body').addClass('no-iframe');
+            }
+        });
+    </script>
+</body>
+</html>
+</html>

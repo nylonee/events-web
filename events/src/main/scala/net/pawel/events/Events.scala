@@ -1,7 +1,7 @@
 package net.pawel.events
 
 import net.pawel.events.ExtractUrls.extractUrls
-import net.pawel.events.Utils.parallelize
+import net.pawel.events.util.Utils.parallelize
 import net.pawel.events.domain.{Organizer, OrganizerType}
 
 import java.time.temporal.ChronoUnit

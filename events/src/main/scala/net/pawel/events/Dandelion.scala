@@ -4,7 +4,7 @@ import net.fortuna.ical4j.data.CalendarBuilder
 import net.fortuna.ical4j.model.Property
 import net.fortuna.ical4j.model.component.VEvent
 import net.fortuna.ical4j.model.property.Description
-import net.pawel.events.Utils.{await, parallelize}
+import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import org.jsoup.nodes.{Document, Element}
 

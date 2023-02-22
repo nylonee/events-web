@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <link rel="icon" type="image/png" href="https://cdn.tickettailor.com/favicon.ico?r=1677065112" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/event-pages/css/style.css?r=1677065112" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/event-pages/css/event-page-description.css?r=1677065112" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.tickettailor.com/assets/css/font-faces.css?r=1677065112" media="all" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.tickettailor.com/event-pages/font-awesome/css/font-awesome.min.css?r=1677065112" />
+    <script type="text/javascript" src="https://cdn.tickettailor.com/js/jquery/js/jquery-3.5.1.min.js?r=1677065112" ></script>
+
+    <meta name="twitter:site" content="@tickettailor" />
+    <meta name="twitter:title" content="Buy&#x20;tickets&#x20;for&#x20;A&#x20;Caring&#x20;Place" />
+
+    
+    
+    <title>Buy tickets for A Caring Place</title>    
+    
+
+
+
+
+
+    <script type="text/javascript">
+        function frameBraker(){
+            if( window!= window.top ) {
+                top.location.href = location.href;
+            }
+        }
+                frameBraker();
+            </script>
+
+    
+    
+    <style type="text/css" id="custom_css">
+
+        body { background-color: /*background_color*/#F5F5F6/*background_color*/;
+        font-family: /*font*/&#039;Open Sans&#039;, sans-serif2/*font*/; }
+
+    body.listings { background-color: /*page_color*/#FFFFFF/*page_color*/; }
+    body.listings div.store a.btn.btn_outline { color: /*store_button_text_color*/#000000/*store_button_text_color*/ !important; border-color: /*store_button_border_color*/#000000/*store_button_border_color*/ !important;}
+    header { background-color: /*header_color*/#E2E3E6/*header_color*/; }
+    body header h1, body.page_not_found header h1 { color: /*header_text_color*/#000000/*header_text_color*/; }
+    footer { background-color: /*page_color*/#FFFFFF/*page_color*/; }
+    body, footer p, footer p a { color: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+    #ticket_tailor_footer_logo g { fill: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+
+    div.row { background-color: /*page_color*/#FFFFFF/*page_color*/; }
+    div.row.event_listing a  { color: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+    div.row.event_listing div.event_image { background-color: /*page_text_color*/#4A4A4A10/*page_text_color*/;  }
+    div.row.event_listing div.event_image svg g#img-event-empty { fill: /*page_text_color*/#4A4A4A/*page_text_color*/;  }
+
+    div.row { border-bottom: 1px solid /*page_text_color*/#4A4A4A33/*page_text_color*/; }
+    footer.event_page_footer { border-top: 1px solid /*page_text_color*/#4A4A4A33/*page_text_color*/; }
+
+    div.row.content svg.padlock g { fill: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+
+    div.row.event_listing.no_events p { color: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+
+    .btn { background-color: /*button_color*/#0357AB/*button_color*/ !important;
+        color: /*button_text_color*/#FFFFFF/*button_text_color*/ !important; }
+    .btn.btn_outline { background-color: transparent !important; border-color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important;
+        color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important; }
+
+
+    body.event_listing div.tab a { color: /*header_text_color*/#000000/*header_text_color*/; }
+    body.event_listing .container.event_page, body.event_listing div.page_content_wrapper div.tickets {
+        color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important;
+    }
+    body.event_listing  div.page_content_wrapper h2, body.event_listing  div.page_content_wrapper h3, body.event_listing  div.page_content_wrapper h4, body.event_listing  div.page_content_wrapper p, body.event_listing  div.page_content_wrapper p a { color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important; }
+
+    body.event_listing div.event_heading_border_line { background-color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important; }
+
+    ul.share_options li a { background-color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important; opacity: 0.2; }
+    ul.share_options li a i { color: /*page_color*/#FFFFFF/*page_color*/ !important; }
+    ul.share_options li a:hover { opacity: 1; }
+
+    .brand_bg_color { background-color: /*header_color*/#E2E3E6/*header_color*/ !important; }
+    .button_color { background-color: /*button_color*/#0357AB/*button_color*/ !important;
+        color: /*button_text_color*/#FFFFFF/*button_text_color*/ !important; }
+    .page_color { background-color: /*page_color*/#FFFFFF/*page_color*/ !important;
+        color: /*page_text_color*/#4A4A4A/*page_text_color*/ !important; }
+    .bg_color { background-color: /*background_color*/#F5F5F6/*background_color*/ !important; }
+
+    .brand_bg_color_fade {
+        background: linear-gradient(
+            to bottom,
+            /*header_color*/#E2E3E6/*header_color*/,
+            rgba(0, 0, 0, 0) /*transparent*/
+        )
+    }
+
+    .event_listings .about_box_office.suppressed a.read_more {
+        background: linear-gradient( to top, /*page_color*/#FFFFFF/*page_color*/, rgba(0, 0, 0, 0) /*transparent*/ );
+    }
+
+
+    @media (max-width: 639px) {
+        body.event_listing header div.event_heading h1 { color: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+        body.event_listing header div.date_and_venue h3 { color: /*page_text_color*/#4A4A4A/*page_text_color*/; }
+    }
+
+
+    body.event_listing div.page_content_wrapper {
+        background-color: /*page_color*/#FFFFFF/*page_color*/ !important;
+    }
+
+    body.event_listing div.background_blur {
+        background-color: /*header_color*/#E2E3E6/*header_color*/;
+    }
+
+    @media (max-width: 880px) {
+        body.event_listing div.page_content_wrapper div.tickets {
+            background-color: /*page_color*/ #FFFFFF /*page_color*/ !important;
+        }
+    }
+</style>
+</head>
+
+<body class="listings">
+
+<style type="text/css">
+
+    .position_fixed { position: fixed; }
+    .position_absolute { position: absolute; }
+
+    .overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background:rgba(0,0,0,.7); z-index: 997; }
+    .close_button { top: 35px;left:50%; margin-left: 420px; width: 30px; height: 30px; color: white; text-align: center; z-index: 1001; }
+    .lds-spinner { top: 35px; left: 50%; z-index: 998; margin-left: -100px; }
+
+    @media (max-width: 880px) {
+        .close_button { top: 15px; right: 15px; margin: 0; left: auto; }
+    }
+</style>
+
+<div class="overlay_wrapper" style="display: none;">
+    <div class="overlay">
+    </div>
+
+    <div class="position_fixed" style="z-index: 999; top:0; left: 0; right: 0; bottom: 0;" id="overlay_window_wrapper">
+        <iframe title="Checkout" style="height: 100%; width: 100%;" src="" id="overlay_window" frameborder="0" role="dialog" aria-live="assertive" aria-labelledby="dialog_header" ></iframe>
+    </div>
+
+    <a href="#" aria-label="Close modal"  class="close_button position_fixed" onclick="closeOverlay(false);" >
+        <svg alt="Close modal" height="30px" id="Layer_1" style="enable-background:new 0 0 30 30; fill: #f00;" version="1.1" viewBox="0 0 512 512" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"/></svg>
+    </a>
+    <svg class="lds-spinner position_fixed" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="animation-play-state: running; animation-delay: 0s; background: none;"><g transform="rotate(0 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(30 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(60 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(90 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(120 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(150 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(180 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(210 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(240 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(270 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(300 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g><g transform="rotate(330 50 50)" style="animation-play-state: running; animation-delay: 0s;">
+            <rect x="49" y="37" rx="0" ry="0" width="2" height="6" fill="#ffffff" style="animation-play-state: running; animation-delay: 0s;">
+                <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
+            </rect>
+        </g></svg>
+
+</div>
+
+<div class="footer_compensation">
+        <header class="brand_bg_color" id="global_large_header" notranslate>
+    <div class="container" style="position: relative;">
+                    <h1>A Caring Place</h1>
+        
+            </div>
+</header>
+<div class="container event_listings">
+                    <div class="row event_listing">
+                <a href="&#x2F;events&#x2F;acaringplace&#x2F;839749&#x2F;">
+                    <div class="col event_image_and_details">
+                                                    <img class="event_image" src="https://uploads.tickettailor.com/c_crop,dpr_1.0,h_360,q_100,w_360,x_140,y_0/c_scale,h_108,q_85,w_108/v1/production/userfiles/j74qqxazxxnnujhqold0.jpg?_a=AAFIKDQ" srcset="https://uploads.tickettailor.com/c_crop,dpr_1.0,h_360,q_100,w_360,x_140,y_0/c_scale,dpr_2.0,h_108,q_85,w_108/v1/production/userfiles/j74qqxazxxnnujhqold0.jpg?_a=AAFIKDQ 2x" alt="A&#x20;Caring&#x20;Place image" notranslate />
+                                                <div class="event_details">
+                            <span class="event_cta mobile_hide btn button_color" role="button" >Buy tickets</span>
+                            <h2 class="name" notranslate>A Caring Place</h2>
+                            <h3 class="date_and_time"><i class="fa fa-calendar"></i>Multiple dates and times</h3>
+                            <h3 class="venue" notranslate><i class="fa fa-map-marker"></i>12 Greenhills Terrace, N1 3QD</h3>                        </div>
+                        <span class="event_cta mobile_show btn" role="button" >Buy tickets</span>
+                    </div>
+                </a>
+            </div>
+            <!-- CACHED: 1677067533 --></div>
+    <div class="footer_compensation_push"></div>
+</div>
+<footer class="event_page_footer">
+    <div class="container">
+            <div class="powered_by">
+        <a href="https://www.tickettailor.com/?rf=wdg_107171" target="_blank" style="text-decoration: none; color: inherit; font-size: 13px; display: block;">
+            <span style="position: relative; top: -12px; display: inline-block; padding-right: 4px;">Event ticketing by            </span><svg aria-label="Ticket Tailor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="40" viewBox="0 0 100 40" id="ticket_tailor_footer_logo">
+                <title>Ticket Tailor</title>
+                <defs>
+                    <path id="a" d="M0 32.547h100V0H0z"/>
+                </defs>
+                <g>
+                    <g transform="translate(0 7)">
+                        <path class="logo_color" d="M29.014 18.87l1.789 1.025-.053.1c-.748 1.406-2.26 2.283-3.943 2.283-2.636 0-4.625-1.983-4.625-4.607 0-2.625 1.989-4.608 4.625-4.608 1.695 0 3.195.866 3.913 2.266l.047.1-1.794 1.042-.053-.118c-.365-.777-1.159-1.248-2.13-1.248-1.442 0-2.525 1.106-2.525 2.566 0 1.459 1.083 2.559 2.525 2.559.947 0 1.759-.464 2.165-1.247l.059-.112zM100 13.128v2.242l-.13-.006c-.746-.053-1.423.153-1.865.565-.423.394-.635.97-.635 1.706v4.419h-2.083v-8.767h2.083v1.082c.524-.8 1.395-1.241 2.506-1.241H100zM42.592 16.835c.29-1.171 1.188-1.865 2.43-1.865 1.19 0 2.042.694 2.295 1.865h-4.725zm2.448-3.772c-2.677 0-4.625 1.936-4.625 4.607 0 2.713 1.96 4.608 4.76 4.608 1.642 0 3.001-.683 3.837-1.913l.07-.106-1.724-1.006-.058.088c-.442.642-1.207 1.013-2.107 1.013-1.318 0-2.277-.665-2.583-1.783h6.75l.011-.1c.035-.253.07-.524.07-.783 0-2.636-1.894-4.625-4.4-4.625z"/>
+                        <mask id="b" fill="#fff">
+                            <use xlink:href="#a"/>
+                        </mask>
+                        <path class="logo_color" d="M76.316 22.054h2.083v-8.768h-2.083zM54.076 13.287h2.118v2.006h-2.118v3.978c0 .336.07.553.212.689.276.264.859.247 1.783.205l.123-.005v1.883l-.106.012a9.586 9.586 0 0 1-1.165.076c-.982 0-1.682-.206-2.153-.624-.518-.46-.771-1.188-.771-2.236v-3.978h-1.571v-2.006h1.571v-1.818l2.077-.612v2.43zM80.571 22.054h2.077V9.356h-2.077zM65.573 11.986h-3.36v10.068h-2.2V11.986h-3.377V9.874h8.937zM18.47 22.054h2.083v-8.768H18.47zM20.805 10.945c0 .7-.593 1.294-1.293 1.294a1.313 1.313 0 0 1-1.296-1.294c0-.712.583-1.294 1.296-1.294.71 0 1.293.582 1.293 1.294M78.652 10.945c0 .7-.594 1.294-1.294 1.294a1.313 1.313 0 0 1-1.295-1.294c0-.712.583-1.294 1.295-1.294.711 0 1.294.582 1.294 1.294M88.967 20.248c-1.447 0-2.542-1.106-2.542-2.577 0-1.471 1.095-2.583 2.542-2.583 1.454 0 2.548 1.112 2.548 2.583 0 1.47-1.094 2.577-2.548 2.577m0-7.185c-2.595 0-4.625 2.025-4.625 4.608 0 2.583 2.03 4.607 4.625 4.607s4.625-2.024 4.625-4.607-2.03-4.608-4.625-4.608M69.461 20.283c-1.495 0-2.577-1.1-2.577-2.612 0-1.513 1.082-2.613 2.577-2.613 1.495 0 2.583 1.1 2.583 2.613 0 1.512-1.088 2.612-2.583 2.612zm2.583-6.996v.995c-.706-.801-1.688-1.22-2.87-1.22-2.449 0-4.367 2.026-4.367 4.609 0 2.536 1.96 4.607 4.366 4.607 1.188 0 2.171-.424 2.871-1.23v1.006h2.077v-8.767h-2.077zM8.131 9.874h8.938v2.112h-3.36v10.068h-2.2V11.986H8.13zM36.116 17.582l3.995 4.472h-2.518l-3.325-3.748v3.748h-2.083V9.874h2.083v6.99l3.137-3.577h2.571z" mask="url(#b)"/>
+                        <path class="logo_color" d="M24.196 27.772c-.15.27-.41.479-.719.569l-4.006 1.16a1.208 1.208 0 0 1-1.399-.64 2.221 2.221 0 0 0-2.617-1.159 2.209 2.209 0 0 0-1.618 2.378 1.183 1.183 0 0 1-.84 1.269l-4.026 1.158c-.1.02-.21.04-.319.04-.2 0-.4-.05-.58-.15a1.153 1.153 0 0 1-.569-.709L.04 5.674c-.08-.299-.04-.629.11-.909s.4-.479.71-.569l4.015-1.149c.111-.03.22-.04.34-.04.45 0 .85.25 1.06.669a2.229 2.229 0 0 0 1.997 1.249c.21 0 .42-.03.62-.09A2.212 2.212 0 0 0 10.5 2.458c-.06-.57.29-1.1.85-1.269L15.364.04a1.31 1.31 0 0 1 .91.1c.27.16.468.409.558.709l1.718 5.974a.617.617 0 0 1-.419.749.809.809 0 0 1-.17.02.598.598 0 0 1-.569-.429l-1.698-5.964-4.006 1.138a3.428 3.428 0 0 1-2.458 3.667c-.309.08-.629.13-.949.13a3.41 3.41 0 0 1-3.087-1.928L1.21 5.345l7.433 25.993 4.006-1.128a3.43 3.43 0 0 1 2.467-3.677c.31-.079.63-.13.95-.13 1.328 0 2.506.75 3.066 1.929l4.006-1.129-1.039-3.617a.61.61 0 0 1 .41-.749c.06-.01.11-.02.17-.02.27 0 .51.18.58.43l1.038 3.626c.08.31.05.629-.1.899" mask="url(#b)"/>
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+        <p class="need_help"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Need help with your order?
+            <span class="help_links">
+                <a href="&#x2F;promoter&#x2F;help&#x2F;link&#x2F;acaringplace?widget=true&modal_widget=true" class="trigger_overlay">Contact&nbsp;the&nbsp;event&nbsp;organiser</a>
+                                    <a href="&#x2F;promoter&#x2F;privacy-policy&#x2F;link&#x2F;acaringplace?widget=true&modal_widget=true" class="trigger_overlay">Privacy&nbsp;Policy</a>
+                            </span>
+        </p>
+    </div>
+</footer>
+<style type="text/css">
+    html body.showing-modal * { display: none; }
+    html body.showing-modal .overlay_wrapper { display: block; }
+    html body.showing-modal .overlay_wrapper * { display: inherit !important; }
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        $('a.trigger_overlay').click(function (event) {
+            if(!isMobile) {
+                event.preventDefault();
+                loadTicketModal($(this).attr('href'));
+            }
+        });
+
+        if(window.location.hash == "#ticket_selection") {
+            var href = $('a#buy_tickets_button').attr('href');
+            if(!isMobile) {
+                loadTicketModal(href);
+            } else {
+                location.href = href;
+            }
+        }
+    });
+
+    function loadTicketModal(url) {
+
+        $('.overlay_wrapper').show();
+        $('body').css('overflow', 'hidden');
+        loadUrl(url);
+        $('body').css('max-height', '100%');
+        setTabIndex('.event_page_footer', '-1');
+        setTabIndex('.footer_compensation', '-1');
+    }
+
+    function loadUrl(url) {
+        var overlayWindow = $('#overlay_window');
+        if(overlayWindow.length) {
+            overlayWindow.attr('src',url);
+        } else {
+            setTimeout("loadUrl('"+url+"');", 200);
+        }
+    }
+
+    function closeOverlay(confirmClose) {
+        if(!confirmClose || confirm("Are you sure you wish to close this window?")) {
+            $('body').removeClass('showing-modal');
+            $('.overlay_wrapper').hide();
+            $('body').css('overflow', 'initial');
+            $('#overlay_window').attr('src', "");
+            $('body').css('max-height', 'auto');
+            setTabIndex('.event_page_footer', '0');
+            setTabIndex('.footer_compensation', '0');
+        }
+    }
+
+    function setTabIndex(parentElement, tabIndex) {
+        $(parentElement).find('a, input, select, button, textarea, iframe').attr('tabindex',tabIndex);
+    }
+</script>
+<!-- Cached: 1677067533 -->
+</body>
+</html>

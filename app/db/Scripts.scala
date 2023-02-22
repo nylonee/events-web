@@ -1,14 +1,18 @@
 package db
 
 import ai.snips.bsonmacros.DatabaseContext
-import net.pawel.events.Utils.{await, parallelize}
+import kong.unirest.Unirest
+import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
+import net.pawel.events.util.PathFromUrl.makePathFromUrl
 import net.pawel.events.{Dandelion, EventBrite, Events, TicketTailor}
 import org.mongodb.scala.bson.collection.immutable.Document
 import play.api.inject.ApplicationLifecycle
 import play.api.{Configuration, Environment, Mode}
 
 import java.io.File
+import java.nio.charset.StandardCharsets
+import java.nio.file.{Files, Paths}
 import scala.collection.parallel.CollectionConverters.seqIsParallelizable
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration

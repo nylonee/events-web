@@ -1,4 +1,4 @@
-package net.pawel.events
+package net.pawel.events.util
 
 import java.util.concurrent.ForkJoinPool
 import scala.collection.parallel.CollectionConverters._
@@ -21,3 +21,5 @@ object Utils {
     case t => throw t
   }, Duration.Inf)
 }
+
+

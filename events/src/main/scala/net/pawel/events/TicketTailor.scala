@@ -20,17 +20,21 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
 
   val moreRegexp = """.+?( +\+.\d+.more.dates?)""".r
 
-  private def stripMore(string: String) = moreRegexp.findFirstMatchIn(string) match {
+  private def stripMoreDatesText(string: String) = moreRegexp.findFirstMatchIn(string) match {
     case Some(theMatch) => string.substring(0, string.size - theMatch.group(1).size)
     case None => string
   }
 
   private def dateRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
-    val (rangeString, timezoneSuffix) = if (string.matches(""".+ [A-Z]{3}""")) {
-      (string.substring(0, string.length - 4), string.substring(string.length - 3))
-    } else {
-      (string, "")
-    }
+    val hasTimeZone = string.matches(""".+ [A-Z]{3}""")
+    val (rangeString, timezoneSuffix) =
+      if (hasTimeZone) {
+        val timeZone = string.substring(string.length - 3)
+        val range = string.substring(0, string.length - 4)
+        (range, timeZone)
+      } else {
+        (string, "")
+      }
     val Array(fromString, toString) = rangeString.split(" - ")
     val fromDateTime = TicketTailorTimeParsing.parseDateAndTime((fromString + " " + timezoneSuffix).trim)
     val toDateTime = TicketTailorTimeParsing.parseTimeOrDate(fromDateTime.toLocalDate, toString, timezoneSuffix)
@@ -77,7 +81,7 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
 
   private def extractEventDates(eventLink: String): List[(ZonedDateTime, ZonedDateTime)] = {
     val eventPage = fetchPage(eventLink)
-    if (eventPage.select(".password_protected").first() != null) {
+    if (eventPage.selectFirst(".password_protected") != null) {
       Nil
     } else {
       val dateAndTimeElement = eventPage.selectFirst(".date_and_venue h2")
@@ -86,7 +90,7 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
       if (hasMultipleDates) {
         extractMultipleDates(eventLink)
       } else {
-        val moreStripped = stripMore(dateAndTimeText)
+        val moreStripped = stripMoreDatesText(dateAndTimeText)
         val (fromDate, toDate) = dateRangeFrom(moreStripped)
         List((fromDate, toDate))
       }
@@ -125,23 +129,25 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
       .distinct
   }
 
-  def fetchOrganizers(urls: ParSeq[String]): ParSeq[Organizer] = {
-    fetchOrganizerNames(urls)
+  def fetchOrganizers(eventUrls: ParSeq[String]): ParSeq[Organizer] = {
+    fetchOrganizerNames(eventUrls)
       .map(organizerEventsPageUrl)
-      .flatMap(url => {
-        val page = fetchPage(url)
+      .flatMap(fetchOrganizer)
+  }
 
-        if (page.wholeText().contains("This page is not available right now.")) {
-          None
-        } else {
-          val header = page.selectFirst("#global_large_header")
-          val name =
-            Option(header.selectFirst("h1")).map(_.text())
-              .orElse(Option(header.selectFirst("img")).map(_.attr("alt")))
-              .get
-          Some(Organizer(url = url, name = name, organizerType = OrganizerType.TicketTailor))
-        }
-      })
+  def fetchOrganizer(organizerPageUrl: String): Option[Organizer] = {
+    val page = fetchPage(organizerPageUrl)
+
+    if (page.wholeText().contains("This page is not available right now.")) {
+      None
+    } else {
+      val header = page.selectFirst("#global_large_header")
+      val name =
+        Option(header.selectFirst("h1")).map(_.text())
+          .orElse(Option(header.selectFirst("img")).map(_.attr("alt")))
+          .get
+      Some(Organizer(url = organizerPageUrl, name = name, organizerType = OrganizerType.TicketTailor))
+    }
   }
 }
 
@@ -167,10 +173,11 @@ object TicketTailorTimeParsing {
         }
       )
       .get
-    val time = Option(accessor.query(TemporalQueries.localTime()))
-      .getOrElse(LocalTime.MIDNIGHT.minusMinutes(1))
+    val localTimeQuery = Option(accessor.query(TemporalQueries.localTime()))
+    val noTimeSet = localTimeQuery.isEmpty
+    val time = localTimeQuery.getOrElse(LocalTime.MIDNIGHT.minusMinutes(1))
     val date = Option(accessor.query(TemporalQueries.localDate()))
-      .getOrElse(if (time == LocalTime.MIDNIGHT) defaultDate.plusDays(1) else defaultDate)
+      .getOrElse(if (noTimeSet) defaultDate.plusDays(1) else defaultDate)
     val timeZone = ZoneId.of(if (timezoneSuffix.isEmpty || timezoneSuffix == "BST") "GMT" else timezoneSuffix)
     ZonedDateTime.of(date, time, timeZone)
   }
