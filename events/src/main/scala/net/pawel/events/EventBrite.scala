@@ -2,6 +2,7 @@ package net.pawel.events
 
 import kong.unirest.Unirest
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
+import net.pawel.events.util.Utils.parallelize
 import play.api.libs.json.{JsArray, JsValue, Json}
 
 import java.time.format.DateTimeFormatter
@@ -51,17 +52,15 @@ class EventBrite(fetchPage: FetchPage = new FetchPageWithUnirest) {
   def possibleMultipleDates(url: String): Option[List[(ZonedDateTime, ZonedDateTime)]] = {
     val id = url.substring(url.lastIndexOf("-") + 1)
     val seriesUrl = s"https://www.eventbrite.co.uk/api/v3/series/$id/events/?time_filter=current_future&expand=series_dates%2Cticket_availability%2Cevent_sales_status%2Cvenue&page_size=1000&continuation="
-    val response = Unirest.get(seriesUrl).asString()
-    if (response.isSuccess) {
-      val json = Json.parse(response.getBody)
-      Some((json \ "events").as[JsArray].value.map(json => {
+    val response = Option(fetchPage.fetchUrl(seriesUrl))
+    response.map(response => {
+      val json = Json.parse(response)
+      (json \ "events").as[JsArray].value.map(json => {
         val startTime = localDateTimeFrom(dateTimeFormat.parse((json \ "start" \ "utc").as[String]))
         val endTime = localDateTimeFrom(dateTimeFormat.parse((json \ "end" \ "utc").as[String]))
         (startTime, endTime)
-      }).toList)
-    } else {
-      None
-    }
+      }).toList
+    })
   }
 
   def toEvent(organizerUrl: String)(json: JsValue): List[Event] = {
@@ -107,10 +106,12 @@ class EventBrite(fetchPage: FetchPage = new FetchPageWithUnirest) {
       .filter(_.startsWith("["))
       .head
 
-    val midnight = ZonedDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT, ZoneId.of("GMT"))
-    Json.parse(json)
+    val midnight = ZonedDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT, ZoneId.of("Europe/London"))
+    val eventJsons = Json.parse(json)
       .as[JsArray]
       .value
+      .toList
+    parallelize(eventJsons)
       .flatMap(toEvent(organizerPageUrl))
       .filter(_.start.isAfter(midnight.toInstant))
       .toList

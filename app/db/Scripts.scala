@@ -1,18 +1,14 @@
 package db
 
 import ai.snips.bsonmacros.DatabaseContext
-import kong.unirest.Unirest
-import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import net.pawel.events.util.PathFromUrl.makePathFromUrl
+import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.{Dandelion, EventBrite, Events, TicketTailor}
 import org.mongodb.scala.bson.collection.immutable.Document
 import play.api.inject.ApplicationLifecycle
 import play.api.{Configuration, Environment, Mode}
 
 import java.io.File
-import java.nio.charset.StandardCharsets
-import java.nio.file.{Files, Paths}
 import scala.collection.parallel.CollectionConverters.seqIsParallelizable
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
@@ -66,7 +62,7 @@ object UpdateOrganizersFromFile extends App with Repositories with Common {
 object UpdateEvents extends App with Repositories with Common {
   lazy val organizersFuture = organizerRepository.find(Document({
     "{ deleted: { $not: { $eq: true } }}"
-  })).toFuture().map(_.filter(_.url == "https://www.tickettailor.com/events/acaringplace"))
+  })).toFuture()
   lazy val allOrganizersFuture = organizerRepository.all.toFuture()
 
 
