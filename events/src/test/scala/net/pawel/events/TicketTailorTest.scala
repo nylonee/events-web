@@ -1,7 +1,8 @@
 package net.pawel.events
 
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import net.pawel.events.util.FetchPageFromFile
+import net.pawel.events.util.Time.parseInstant
+import net.pawel.events.util.{FetchPageFromFile, Time}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -124,30 +125,30 @@ class TicketTailorTest extends AnyFlatSpec with Matchers {
     otherEvents shouldBe List(
       Event("Moving Connections, Contact Improvisation, Dancing, Sharing, Saunas and Camping in Nature!",
         "https://www.tickettailor.com/events/dancelondon/812462/",
-        Instant.parse("2023-06-09T15:00:00Z"),
-        Instant.parse("2023-06-11T18:00:00Z"),
+        parseInstant("2023-06-09 16:00 Europe/London"),
+        parseInstant("2023-06-11 19:00 Europe/London"),
         "Bellingdon and Asheridge Village Hall, HP5 2XU",
         "https://www.tickettailor.com/events/dancelondon"
       ),
       Event(
         "Connecting with our Sensual Selves through Movement, Intimacy, Presence, Saunas and Camping in Nature!",
         "https://www.tickettailor.com/events/dancelondon/819749/",
-        Instant.parse("2023-06-16T15:00:00Z"),
-        Instant.parse("2023-06-18T18:00:00Z"),
+        parseInstant("2023-06-16 16:00 Europe/London"),
+        parseInstant("2023-06-18 19:00 Europe/London"),
         "Bellingdon and Asheridge Village Hall, HP5 2XU",
         "https://www.tickettailor.com/events/dancelondon"
       ),
       Event("Rumble 2023 - A festival devoted to its dancers - Part 1",
         "https://www.tickettailor.com/events/dancelondon/831409/",
-        Instant.parse("2023-08-03T13:00:00Z"),
-        Instant.parse("2023-08-07T22:59:00Z"),
+        parseInstant("2023-08-03 14:00 Europe/London"),
+        parseInstant("2023-08-07 23:59 Europe/London"),
         "Bellingdon and Asheridge Village Hall, HP5 2XU",
         "https://www.tickettailor.com/events/dancelondon"
       ),
       Event("Rumble 2023 - A festival devoted to its dancers - Part 2",
         "https://www.tickettailor.com/events/dancelondon/833184/",
-        Instant.parse("2023-08-10T13:00:00Z"),
-        Instant.parse("2023-08-14T22:59:00Z"),
+        parseInstant("2023-08-10 14:00 Europe/London"),
+        parseInstant("2023-08-14 23:59 Europe/London"),
         "Bellingdon and Asheridge Village Hall, HP5 2XU",
         "https://www.tickettailor.com/events/dancelondon"
       ),
