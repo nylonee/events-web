@@ -29,4 +29,64 @@ class EventBriteTest extends AnyFlatSpec with Matchers {
       ))
   }
 
+  "organizersEvents" should "fetch organizer's events with multiple dates" in {
+    val eventBrite = new EventBrite(new FetchPageFromFile)
+    val events = eventBrite.organizersEvents("https://www.eventbrite.co.uk/o/togetherness-8057382611")
+    events shouldBe List(
+      Event("Boundaries Lab: Intro to the Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/boundaries-lab-intro-to-the-wheel-of-consent-tickets-368828003487",
+        parseInstant("2023-02-23 19:00 Europe/London"),
+        parseInstant("2023-02-23 21:00 Europe/London"),
+        "Octavius St London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event(
+        "Boundaries Lab: Intro to the Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/boundaries-lab-intro-to-the-wheel-of-consent-tickets-368828003487",
+        parseInstant("2023-09-07 19:00 Europe/London"),
+        parseInstant("2023-09-07 21:00 Europe/London"),
+        "Octavius St London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event("Silent Walk & Circling",
+        "https://www.eventbrite.co.uk/e/silent-walk-circling-tickets-528136048137",
+        parseInstant("2023-03-05 11:00 Europe/London"),
+        parseInstant("2023-03-05 18:00 Europe/London"),
+        "Blackheath Ave London SE10 8XJ",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event(
+        "Practice Club: Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/practice-club-wheel-of-consent-tickets-551618274107",
+        parseInstant("2023-03-16 19:00 Europe/London"),
+        parseInstant("2023-03-16 21:30 Europe/London"),
+        "Sky Dome London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event(
+        "Practice Club: Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/practice-club-wheel-of-consent-tickets-551618274107",
+        parseInstant("2023-04-13 19:00 Europe/London"),
+        parseInstant("2023-04-13 21:30 Europe/London"),
+        "Sky Dome London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event(
+        "Practice Club: Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/practice-club-wheel-of-consent-tickets-551618274107",
+        parseInstant("2023-05-18 19:00 Europe/London"),
+        parseInstant("2023-05-18 21:30 Europe/London"),
+        "Sky Dome London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
+      Event(
+        "Practice Club: Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/practice-club-wheel-of-consent-tickets-551618274107",
+        parseInstant("2023-06-15 19:00 Europe/London"),
+        parseInstant("2023-06-15 21:30 Europe/London"),
+        "Sky Dome London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      )
+    )
+  }
 }
