@@ -6,6 +6,7 @@ import net.fortuna.ical4j.model.component.VEvent
 import net.fortuna.ical4j.model.property.Description
 import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
+import net.pawel.events.util.{RealTime, Time}
 import org.jsoup.nodes.{Document, Element}
 
 import java.io.StringReader
@@ -19,10 +20,11 @@ import scala.jdk.javaapi.CollectionConverters.asScala
 import scala.language.postfixOps
 import scala.util.Try
 
-class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
+class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest,
+                time: Time = new RealTime) {
 
   def dateTimeRangeFrom(string: String): (ZonedDateTime, ZonedDateTime) = {
-    val regexp = """(.+) – (.*\d+(am|pm)) (.+) \(UTC (.+)\)""" r
+    val regexp = """(.+) – (.*\d+(am|pm)) (.+) \(UTC (.+)\)""".r
     val (start, end, offset) = string match {
       case regexp(start, end, _, _, offset) => (start, end, offset)
     }
@@ -49,8 +51,7 @@ class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
   def parseDateAndTime(string: String, offset: String): ZonedDateTime = {
     val dateAndTimeFormatter = DateTimeFormatter.ofPattern("EEE d LLL uuuu',' h[':'mm]a z", Locale.ENGLISH)
     val cleanedUp = cleanupDateString(string) + " " + offset
-    val parsed = dateAndTimeFormatter.parse(cleanedUp, accessor => ZonedDateTime.from(accessor))
-    parsed
+    dateAndTimeFormatter.parse(cleanedUp, ZonedDateTime.from(_))
   }
 
   def parseDateAndTimeOrTime(string: String, offset: String, localDate: LocalDate, zoneId: ZoneId): ZonedDateTime =
@@ -75,27 +76,28 @@ class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
   }
 
   lazy val organizers =
-      events.map(_.organizerUrl).distinct.map(toOrganizer)
+    events.map(_.organizerUrl).distinct.map(toOrganizer)
 
   lazy val events =
-    parallelize(await(eventUrls()))
-      .map(tryToFetchEvent)
+    parallelize(await(eventUrls()), 20)
+      .flatMap(tryToFetchEvent)
       .toList
 
-  private def tryToFetchEvent(url: String): Event = {
+  private def tryToFetchEvent(url: String): Option[Event] = {
     try {
-      eventFor(url)
+      Some(eventFor(url))
     } catch {
-      case t =>
-        println("Failed for " + url)
-        throw t
+      case exception =>
+        println("Dandelion event fetch failed for " + url)
+        exception.printStackTrace()
+        None
     }
   }
 
   lazy val organizersToEventsMap = events.groupBy(_.organizerUrl)
 
   private def eventUrls(): Future[List[String]] = Future {
-    val todaysDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+    val todaysDate = time.today().format(DateTimeFormatter.ISO_LOCAL_DATE)
     val ical = fetchPage.fetchUrl(s"https://dandelion.earth/events.ics?display=&order=&from=$todaysDate&q=&event_tag_id=&search=1")
     System.setProperty("ical4j.unfolding.relaxed", "true")
     val stringReader = new StringReader(ical)
@@ -114,12 +116,15 @@ class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
     val (startDateTime, endDateTime) = eventDateTimesFrom(document)
     val addressElement = document.select("ul.fa-ul li").get(1)
     val address = addressFrom(addressElement)
-    val organizerUrl = "https://dandelion.earth" + document.selectFirst(".table-hr td a").attr("href").replace("/events", "")
+    val organizerEventsHref = document.selectFirst(".table-hr td a").attr("href")
+    val organizerUrl = "https://dandelion.earth" + organizerEventsHref.replace("/events", "")
     domain.Event(name, url, startDateTime.toInstant, endDateTime.toInstant, address, organizerUrl)
   }
 
   private def addressFrom(addressElement: Element): String =
-    if (addressElement.text() == "Online") "Online" else {
+    if (addressElement.text() == "Online")
+      "Online"
+    else {
       addressElement.selectFirst("a").text()
     }
 
@@ -129,7 +134,7 @@ class Dandelion(fetchPage: FetchPage = new FetchPageWithUnirest) {
     val dateRangeString = if (selectExists) {
       select.selectFirst("option").text()
     } else {
-      document.selectFirst("ul.fa-ul li").text()
+      document.selectFirst("ul.fa-ul li").ownText()
     }
     dateTimeRangeFrom(dateRangeString)
   }

@@ -1,8 +1,11 @@
 package net.pawel.events
 
+import com.sun.jndi.toolkit.url.Uri
+import io.lemonlabs.uri.Url
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import org.jsoup.nodes.{Document, Element}
 
+import java.net.{URI, URL}
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalQueries
 import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
@@ -52,7 +55,10 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
   }
 
   private def extractMultipleDates(eventUrl: String): List[(ZonedDateTime, ZonedDateTime)] = {
-    val page = fetchPage(eventUrl + "select-date")
+    val url = Url.parse(eventUrl)
+    val selectDateUrl = url.addPathPart("select-date").toString()
+
+    val page = fetchPage(selectDateUrl)
     page.select(".select_date .date")
       .asScala
       .toList
@@ -88,8 +94,8 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
     }.get
   }
 
-  private def extractEventDates(eventLink: String): List[(ZonedDateTime, ZonedDateTime)] = {
-    val eventPage = fetchPage(eventLink)
+  private def extractEventDates(eventUrl: String): List[(ZonedDateTime, ZonedDateTime)] = {
+    val eventPage = fetchPage(eventUrl)
     if (eventPage.selectFirst(".password_protected") != null) {
       Nil
     } else {
@@ -97,7 +103,7 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
       val dateAndTimeText = dateAndTimeElement.wholeText().trim
       val hasMultipleDates = dateAndTimeText.contains("Multiple dates and times")
       if (hasMultipleDates) {
-        extractMultipleDates(eventLink)
+        extractMultipleDates(eventUrl)
       } else {
         val moreStripped = stripMoreDatesText(dateAndTimeText)
         val (fromDate, toDate) = dateRangeFrom(moreStripped)
@@ -112,14 +118,25 @@ class TicketTailor(fetchPage: FetchPage = new FetchPageWithUnirest) {
   }
 
   def fetchOrganizerEvents(organizerPageUrl: String): List[Event] = {
-    val page = fetchPage(organizerPageUrl)
+    Try {
+      val page = fetchPage(organizerPageUrl)
 
-    val listings = page
-      .select(".event_listing")
-      .asScala.toList
-      .filterNot(_.attr("class").contains("no_events"))
+      if (page == null) {
+        return Nil
+      }
 
-    listings.flatMap(extractEvent(organizerPageUrl))
+      val listings = page
+        .select(".event_listing")
+        .asScala.toList
+        .filterNot(_.attr("class").contains("no_events"))
+
+      listings.flatMap(extractEvent(organizerPageUrl))
+    }.recover {
+      case t =>
+        println("fetchOrganizerEvents failed for: " + organizerPageUrl)
+        t.printStackTrace()
+        Nil
+    }.get
   }
 
   private def organizerEventsPageUrl(name: String): String = s"https://www.tickettailor.com/events/$name"

@@ -8,10 +8,10 @@ import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
 object Utils {
-  def parallelize[T](list: Seq[T]): ParSeq[T] = {
+  def parallelize[T](list: Seq[T], parrallelization: Int = 1000): ParSeq[T] = {
     val parallel = list.par
 
-    val forkJoinPool = new ForkJoinPool(1000)
+    val forkJoinPool = new ForkJoinPool(parrallelization)
     parallel.tasksupport = new ForkJoinTaskSupport(forkJoinPool)
     parallel
   }

@@ -1,13 +1,12 @@
 package net.pawel.events
 
-import kong.unirest.Unirest
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
 import net.pawel.events.util.Utils.parallelize
 import play.api.libs.json.{JsArray, JsValue, Json}
 
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.{TemporalAccessor, TemporalQueries}
-import java.time.{LocalDate, LocalTime, ZoneId, ZonedDateTime}
 import java.util.Locale
 import scala.collection.parallel.immutable.ParSeq
 import scala.jdk.CollectionConverters._
@@ -29,7 +28,7 @@ class EventBrite(fetchPage: FetchPage = new FetchPageWithUnirest) {
     } else {
       val anchors = page.select(".expired-organizer__link").asScala ++
         page.select("#organizer-link-org-panel").asScala ++
-        page.select(".organizer-info__name a").asScala
+        page.select(".descriptive-organizer-info__name a").asScala
       val anchorOption = anchors.headOption
       val result = anchorOption.map(_.attr("href"))
       if (result.isEmpty) {
@@ -97,24 +96,28 @@ class EventBrite(fetchPage: FetchPage = new FetchPageWithUnirest) {
   }
 
   def organizersEvents(organizerPageUrl: String): List[Event] = {
-    val page = fetchPage(organizerPageUrl)
+    try {
+      val page = fetchPage(organizerPageUrl)
 
-    val json = page
-      .select("script").asScala
-      .filter(_.attr("type") == "application/ld+json")
-      .map(_.data().trim)
-      .filter(_.startsWith("["))
-      .head
+      val json = page
+        .select("script").asScala
+        .filter(_.attr("type") == "application/ld+json")
+        .map(_.data().trim)
+        .filter(_.startsWith("["))
+        .head
 
-    val midnight = ZonedDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT, ZoneId.of("Europe/London"))
-    val eventJsons = Json.parse(json)
-      .as[JsArray]
-      .value
-      .toList
-    parallelize(eventJsons)
-      .flatMap(toEvent(organizerPageUrl))
-      .filter(_.start.isAfter(midnight.toInstant))
-      .toList
+      val eventJsons = Json.parse(json)
+        .as[JsArray]
+        .value
+        .toList
+      parallelize(eventJsons)
+        .flatMap(toEvent(organizerPageUrl))
+        .toList
+    } catch {
+      case e =>
+        println("Failed to update events for organizer: " + organizerPageUrl)
+        throw e
+    }
   }
 
   def fetchOrganizers(allUrls: ParSeq[String]): ParSeq[Organizer] = {

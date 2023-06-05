@@ -16,6 +16,9 @@ libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
 libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.8.18"
 libraryDependencies += "ai.snips" %% "play-mongo-bson" % "0.5.2"
+libraryDependencies += "com.google.api-client" % "google-api-client" % "2.0.0"
+libraryDependencies += "com.google.oauth-client" % "google-oauth-client-jetty" % "1.34.1"
+libraryDependencies += "com.google.apis" % "google-api-services-calendar" % "v3-rev20220715-2.0.0"
 
 enablePlugins(JavaAppPackaging)
 

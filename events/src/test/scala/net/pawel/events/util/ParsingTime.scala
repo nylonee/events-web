@@ -4,7 +4,7 @@ import java.time.{Instant, ZonedDateTime}
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-object Time {
+object ParsingTime {
   private val dateAndTimeFormatter = DateTimeFormatter.ofPattern("uuuu-MM-d HH:mm VV", Locale.ENGLISH)
 
   def parseZonedTime(dateTime: String): ZonedDateTime =
