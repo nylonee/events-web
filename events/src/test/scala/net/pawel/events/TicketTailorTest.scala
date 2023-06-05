@@ -1,8 +1,8 @@
 package net.pawel.events
 
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
-import net.pawel.events.util.Time.parseInstant
-import net.pawel.events.util.{FetchPageFromFile, Time}
+import net.pawel.events.util.ParsingTime.parseInstant
+import net.pawel.events.util.{FetchPageFromFile, ParsingTime}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 

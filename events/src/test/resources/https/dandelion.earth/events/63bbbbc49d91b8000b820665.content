@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link rel="manifest" href="/manifest.json">
+
+    <script
+      type="text/javascript"
+      src="https://app.termly.io/embed.min.js"
+      data-auto-block="on"
+      data-website-uuid="e3781b47-56e6-4a03-987b-1ce448a36930"
+      ></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164477789-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164477789-1');
+
+
+</script>
+
+  
+  <link rel="preload" href="/fonts/circular/stylesheet.css" as="style">
+  <link href="/fonts/circular/stylesheet.css" rel="stylesheet">
+  <script src="//kit.fontawesome.com/13bb83cfaf.js"></script>
+
+  <link href="/infinite_admin/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/bootstrap/bootstrap4/css/bootstrap.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/icon/themify-icons/themify-icons.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/animate/animate.min.css" rel="stylesheet">
+  <script src="/infinite_admin/plugins/loader/pace/pace.min.js"></script>
+  <script src="/infinite_admin/plugins/jquery/jquery-3.2.1.min.js"></script>
+  <script src="/infinite_admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/infinite_admin/plugins/cookie/js/js.cookie.js"></script>
+  <script src="/infinite_admin/plugins/tooltip/popper/popper.min.js"></script>
+  <script src="/infinite_admin/plugins/bootstrap/bootstrap4/js/bootstrap.js"></script>
+  <script src="/infinite_admin/plugins/scrollbar/slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="/infinite_admin/js/apps.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+  <script>
+    $(function () {
+      App.init();
+    });
+  </script>
+
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script>
+      if(typeof Pusher != 'undefined') {
+        pusher = new Pusher('b8c557aff6dc48fa427c', { cluster: 'eu', encrypted: true });
+      }
+    </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/en-gb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.2/flatpickr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.2/flatpickr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tributejs/3.5.3/tribute.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tributejs/3.5.3/tribute.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-table-headers/0.1.24/js/jquery.stickytableheaders.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.contentWindow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.4/web3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/intro.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/introjs.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
+
+<link rel="stylesheet" href="//rawcdn.githack.com/scottdejonge/map-icons/dbf6fd7caedd60d11b5bfb5f267a114a6847d012/dist/css/map-icons.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/easymde@2.10.1/dist/easymde.min.css">
+<link rel="stylesheet" href="/stylesheets/share.css">
+<link rel="stylesheet" href="/stylesheets/app.css?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+
+<script src="//www.google.com/recaptcha/api.js"></script>
+<script src="//js.stripe.com/v3/"></script>
+<script src="//cdn.iframe.ly/embed.js?key=531e90927f9f263c2932c0d76ef2c3e5"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyA7hlAPT6_S-aVuTc11o_w_19ttXyQ3tRU&amp;libraries=places"></script>
+<script src="//rawcdn.githack.com/bassjobsen/Bootstrap-3-Typeahead/067bd296184a4dda8c669923417124065b4ebced/bootstrap3-typeahead.min.js"></script>
+<script src="//rawcdn.githack.com/jackmoore/autosize/6ae70cd3d28888eb858eef1167e6ed75d25dff7f/dist/autosize.min.js"></script>
+<script src="//rawcdn.githack.com/mahnunchik/markerclustererplus/736b0e3a7d916fbeb2ee5007494f17a5329b11a8/src/markerclusterer.js"></script>
+<script src="//rawcdn.githack.com/scottdejonge/map-icons/dbf6fd7caedd60d11b5bfb5f267a114a6847d012/dist/js/map-icons.js"></script>
+<script src="//rawcdn.githack.com/euangoddard/clipboard2markdown/2d46aadd373f8b5cdb5fa0763090135ac31def13/to-markdown.js"></script>
+<script src="//rawcdn.githack.com/scottgonzalez/jquery-ui-extensions/fb7fd7df3d70e0288394f07bfe78262b548c30d6/src/autocomplete/jquery.ui.autocomplete.html.js"></script>
+<script src="//cdn.jsdelivr.net/npm/easymde@2.10.1/dist/easymde.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="/javascripts/linkify.min.js"></script>
+<script src="/javascripts/linkify-jquery.min.js"></script>
+<script src="/javascripts/jquery-deparam.js"></script>
+<script src="/javascripts/countUp.umd.js"></script>
+<script src="/javascripts/pagelets.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/jquery.lookup.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/ckeditor5/build/ckeditor.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/app.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+<link href="/images/black-on-transparent-sq.png?1685973938" rel="icon" type="image/png" />
+<title>Aquarius New Moon Circle · Dandelion</title>
+<meta name="description" content="Sun 22nd Jan 2023, 7:30pm – 9pm UK time (UTC +00:00)">
+<meta property="og:title" content="Aquarius New Moon Circle">
+<meta property="og:image" content="https://autopia.s3.amazonaws.com/2023/01/09/07/16/19/60be1100-8fbc-49d1-a3c3-8d66605579b1/NMC-Aquarius.jpg?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aquarius New Moon Circle">
+<meta name="twitter:description" content="Sun 22nd Jan 2023, 7:30pm – 9pm UK time (UTC +00:00)">
+<meta name="twitter:image" content="https://autopia.s3.amazonaws.com/2023/01/09/07/16/19/60be1100-8fbc-49d1-a3c3-8d66605579b1/NMC-Aquarius.jpg?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+<script>
+  $(function () {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can add to home screen
+      $('#a2hs').show()
+    });
+
+    $('#a2hs-btn').click(function () {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice
+              .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                  // console.log('User accepted the A2HS prompt');
+                } else {
+                  // console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+              });
+    })
+
+    if ('serviceWorker' in navigator) {
+      // console.log("Will the service worker register?");
+      navigator.serviceWorker.register('/service-worker.js')
+              .then(function (reg) {
+                // console.log("Yes, it did.");
+              }).catch(function (err) {
+        // console.log("No it didn't. This happened:", err)
+      });
+    }
+  })
+</script>
+
+  <style>
+    @media (max-width: 991px) {
+      ul.nav.navbar-nav.navbar-right {
+        display: none;
+      }
+      #page-container {
+        padding-top: 2.75rem;
+      }
+    }
+  </style>
+
+    <link rel="canonical" href="https://dandelion.events/events/63bbbbc49d91b8000b820665" />
+  <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "name": "Aquarius New Moon Circle",
+  "startDate": "2023-01-22T19:30:00+00:00",
+  "endDate": "2023-01-22T21:00:00+00:00",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "location": null,
+  "image": "https://autopia.s3.amazonaws.com/2023/01/09/07/16/19/60be1100-8fbc-49d1-a3c3-8d66605579b1/NMC-Aquarius.jpg",
+  "description": "Aquarius New Moon Circle",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Cosmoplanner",
+    "url": "https://cosmo-planner.com/new-moon-circles/"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "url": "https://dandelion.events/events/63bbbbc49d91b8000b820665",
+      "price": 0.0,
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+  </script>
+
+</head>
+
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id))
+                return;
+              js = d.createElement(s);
+              js.id = id;
+              js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1498399346894704&autoLogAppEvents=1';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- BEGIN #page-container -->
+    <div id="page-container" class="page-header-fixed page-sidebar-fixed  page-sidebar-minified   ">
+        <style>
+    #alert-wrap { position: absolute; z-index: 9999; top: 0; left: 50%; width: 90%; margin-left: -45% }
+    @media(min-width: 992px) {
+      #alert-wrap { width: 50%; margin-left: -25% }
+    }
+  </style>
+  <div id="alert-wrap" class="mt-3">
+    <div class="container">
+      
+    </div>
+  </div>
+  <script>
+    $(function () {
+      window.setTimeout(function () {
+        $("#alert-wrap .alert").alert('close');
+      }, 3000);
+    });
+  </script>
+
+      <!-- BEGIN #header -->
+      <div id="header" class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN container-fluid -->
+        <div class="container-fluid">
+          <!-- BEGIN mobile sidebar expand / collapse button -->
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand">
+              <img style="max-height: 1.75rem; position: relative; top: -0.25rem" src="/images/white-on-black.png">
+            </a>
+            <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- END mobile sidebar expand / collapse button -->
+          <!-- BEGIN header navigation right -->
+          <div class="navbar-xs-justified">
+            <style>
+  #feedback-li, #docs-li { display: none }
+  @media(min-width: 992px) { #feedback-li, #docs-li { display: list-item } }
+</style>
+<ul class="nav navbar-nav navbar-right">
+    <li class="d-none d-lg-inline" id="docs-li">
+      <a href="/docs">
+        How to use Dandelion
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" data-toggle="search-bar" class="navbar-icon">
+        <i class="ti-search"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/accounts/new">
+        Sign up
+      </a>
+    </li>
+    <li>
+      <a href="/accounts/sign_in">
+        Sign in
+      </a>
+    </li>
+</ul>
+
+          </div>
+          <!-- END header navigation right -->
+        </div>
+        <!-- END container-fluid -->
+        <!-- BEGIN header-search-bar -->
+        <div class="header-search-bar">
+          <form action="/search" name="search_bar_form">
+            <div class="form-group">
+              <div class="left-icon"><i class="ti-search"></i></div>
+              <input name="q" type="text" class="form-control" id="header-search">
+              <a href="javascript:;" data-dismiss="search-bar" class="right-icon"><i class="ti-close"></i></a>
+            </div>
+          </form>
+        </div>
+        <!-- END header-search-bar -->
+      </div>
+      <!-- END #header -->
+      <!-- BEGIN #sidebar -->
+      <div id="sidebar" class="sidebar sidebar-inverse">
+        <!-- BEGIN scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+          <script>
+  $(function () {
+
+    $('#sidebar ul.nav li a[data-toggle]').tooltip($('#page-container').hasClass('page-sidebar-minified') ? 'enable' : 'disable')
+
+    if ($(window).width() < 992)
+      $('#sidebar ul.nav li a[data-toggle]').tooltip('disable')
+
+  })
+</script>
+<ul class="nav">
+  <li style="height: 0.5rem"></li>
+  <li class="">
+    <a href="/" data-toggle="tooltip" title="Home" data-placement="right">
+        <i class="ti-home"></i>
+        <span class="nav-link-text">Home</span>
+    </a>
+  </li>
+    <li class="d-lg-none">
+      <a href="/accounts/new" data-toggle="tooltip" title="Sign up" data-placement="right">
+        <i class="fa fa-fw fa-user-plus"></i>
+        <span class="nav-link-text">Sign up</span>
+      </a>
+    </li>
+    <li class="d-lg-none">
+      <a href="/accounts/sign_in" data-toggle="tooltip" title="Sign in" data-placement="right">
+        <i class="fa fa-fw fa-sign-in"></i>
+        <span class="nav-link-text">Sign in</span>
+      </a>
+    </li>
+  <li class="">
+    <a href="/events" data-toggle="tooltip" title="Events" data-placement="right">
+      <i class="fa fa-calendar-o"></i>
+      <span class="nav-link-text">Events</span>
+    </a>
+  </li>
+    <li class="">
+      <a href="/organisations" data-toggle="tooltip" title="Organisations" data-placement="right">
+        <i class="fa fa-flag"></i>
+        <span class="nav-link-text">Organisations</span>
+      </a>
+    </li>
+    <li class="">
+      <a href="/gatherings" data-toggle="tooltip" title="Gatherings" data-placement="right">
+        <i class="fa fa-moon-o"></i>
+        <span class="nav-link-text">Gatherings</span>
+      </a>
+    </li>
+  <li class="">
+    <a href="/facilitators" data-toggle="tooltip" title="Facilitators" data-placement="right">
+      <i class="fa fa-graduation-cap"></i>
+      <span class="nav-link-text">Facilitators</span>
+    </a>
+  </li>
+  <li class="">
+    <a href="/map" data-toggle="tooltip" title="Places" data-placement="right">
+      <i class="fa fa-binoculars"></i>
+      <span class="nav-link-text">Places</span>
+    </a>
+  </li>
+  <li>
+    <a href="/donate" data-toggle="tooltip" title="Donate" data-placement="right">
+      <i class="fa fa-fw fa-money"></i>
+      <span class="nav-link-text">Donate</span>
+    </a>
+  </li>
+  <li>
+    <a href="/code" data-toggle="tooltip" title="Code" data-placement="right">
+      <i class="fa fa-fw fa-github"></i>
+      <span class="nav-link-text">Code</span>
+    </a>
+  </li>
+  <li>
+    <a
+      href="/contact" data-toggle="tooltip" title="Contact us" data-placement="right">
+      <i class="fa fa-envelope"></i>
+      <span class="nav-link-text">Contact us</span>
+    </a>
+  </li>
+  <li>
+    <a data-nolt="modal" href="https://dandelion.nolt.io" data-toggle="tooltip" title="Feedback?" data-placement="right">
+      <i class="fa fa-fw fa-comment-o"></i>
+      <span class="nav-link-text">Feedback?</span>
+    </a>
+  </li>
+  <li>
+    <a href="/docs" data-toggle="tooltip" title="How to use Dandelion" data-placement="right">
+      <i class="fa fa-fw fa-question-circle-o"></i>
+      <span class="nav-link-text">How to use Dandelion</span>
+    </a>
+  </li>
+</ul>
+
+        </div>
+        <!-- END scrollbar -->
+        <!-- BEGIN sidebar-minify-btn -->
+        <a onclick="$.post('/sidebar', {minified: $('#page-container').hasClass('page-sidebar-minified') ? false : true});
+            $('#sidebar ul.nav li a[data-toggle]').tooltip($('#page-container').hasClass('page-sidebar-minified') ? 'disable' : 'enable')
+           " href="#" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ti-arrow-left"></i></a>
+        <!-- END sidebar-minify-btn -->
+      </div>
+      <!-- END #sidebar -->
+      <!-- BEGIN #content -->
+      <div id="content" class="content">
+          <style>
+    #event-image { margin-top: -0.9375rem }
+    @media(min-width: 768px) { #event-image { margin-top: -1.5625rem } }
+  </style>
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+      <a href="/e/aquarius-new-moon-circle"><img id="event-image" class="w-100 mb-3" src="https://autopia.s3.amazonaws.com/2023/03/05/04/11/39/1e8e8b68-37c4-4fac-85de-28cda7a36c00/NMC-Aquarius.jpg"></a>
+  </div>
+</div>
+    <div id="buy-tickets" class="fixed-bottom bg-white p-3 w-100 d-block d-md-none" style="z-index: 1019; box-shadow: 0px -2px 4px 0px rgba(0,0,0,0.3);">
+      <a href="javascript:;" onclick="$(this).parent().hide();
+            $(window).scrollTop($('#purchase').offset()['top'] - $('#header').height() - 17)
+           " class="btn btn-primary btn-block">Get tickets</a>
+    </div>
+    <script>
+      $(function () {
+        $(window).scroll(function () {
+          if ((window.scrollY + window.innerHeight) > $('#purchase').offset()['top']) {
+            $('#buy-tickets').addClass('d-none').removeClass('d-block')
+            $('#discord-link').show()
+          } else {
+            $('#buy-tickets').addClass('d-block').removeClass('d-none')
+            $('#discord-link').hide()
+          }
+        })
+        $(window).scroll()
+      })
+    </script>
+  <div class="row">
+    <div class="col-lg-7">
+    <h1 class="mb-1">
+      Aquarius New Moon Circle
+      <small>
+        <div class="d-inline float-right" data-pagelet-url="/events/63bbbbc49d91b8000b820665/star">
+          
+        </div>
+      </small>
+    </h1>
+    <ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark mb-1">
+      <li>
+        <i  data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+          Sun 22nd Jan 2023, 7:30pm – 9pm UK time (UTC +00:00)
+      </li>
+      <li><i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+          Online
+      </li>
+        <li>
+          <i data-toggle="tooltip" title="Event URL" class="fa fa-li fa-link"></i>
+          <a data-toggle="tooltip" href="https://dandelion.events/e/aquarius-new-moon-circle">https://dandelion.events/e/aquarius-new-moon-circle</a>
+        </li>
+    </ul>
+    <div>
+        <a href="/o/cosmoplanner/events?event_tag_id=5f8820bf77ca12000d9389dd" class="text-white label label-primary d-inline-block mb-1">sharing circle</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac517" class="text-white label label-primary d-inline-block mb-1">new moon ceremony</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac519" class="text-white label label-primary d-inline-block mb-1">moon circle</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac51b" class="text-white label label-primary d-inline-block mb-1">divine feminine</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac51d" class="text-white label label-primary d-inline-block mb-1">manifesting</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=624069e4459a8f00111232e7" class="text-white label label-primary d-inline-block mb-1">setting intentions</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=62ad8e9bbba2c4000c89e54e" class="text-white label label-primary d-inline-block mb-1">new moon</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=63bbbf429d91b8000b8206df" class="text-white label label-primary d-inline-block mb-1">aquarius</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=63bbbf429d91b8000b8206e1" class="text-white label label-primary d-inline-block mb-1">new moon in aquarius</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=63bbbf429d91b8000b8206e3" class="text-white label label-primary d-inline-block mb-1">uniqueness</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=63bbbf429d91b8000b8206e5" class="text-white label label-primary d-inline-block mb-1">individuality</a>
+
+    </div>
+    <table class="table table-hr">
+  <tr>
+    <td>
+          Hosted by
+    </td>
+    <td>
+        <a href="/o/cosmoplanner/events"><img src="https://autopia.s3.amazonaws.com/2023/01/24/17/07/05/1cd71785-4f86-4b53-a35d-3e6fb15d2892/cosmoplanner-new-moon-circles-magic.png" style="width: 50px"></a>
+      <a href="/o/cosmoplanner/events">Cosmoplanner</a>
+      
+    </td>
+  </tr>
+    <tr>
+      <td>Activity</td>
+      <td>
+        <a href="/activities/622f33c5f480e8000ceac5cd">New Moon Ritual</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Enquiries to</td>
+      <td>
+        <a target="_blank" href="mailto:contact@cosmo-planner.com">contact@cosmo-planner.com</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Facilitators</td>
+      <td>
+        <div class="image-wall mb-1">
+  <a style="text-decoration: none" href="javascript:;" data-account-username="ester_s">
+  <img class="  " data-toggle="tooltip" title="Ester"  style="width: 50px;"  src="https://autopia.s3.amazonaws.com/2022/03/14/08/08/14/cce90578-4d9e-486a-96c5-1be6920a1f8c/EsterG_7193.jpg">
+</a>
+
+</div>
+
+      </td>
+    </tr>
+  <tr>
+    <td>
+      Add to calendar
+      <td>
+        <a target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Aquarius%20New%20Moon%20Circle&details=https%3A%2F%2Fdandelion.events%2Fe%2Faquarius-new-moon-circle&location=Online&dates=20230122T193000Z%2F20230122T210000Z">
+  Google
+</a>
+&middot;
+<a target="_blank" href="/events/63bbbbc49d91b8000b820665.ics">
+  ICS
+</a>
+
+      </td>
+    </tr>
+      <tr>
+        <td>Share</td>
+        <td><!-- AddToAny BEGIN -->
+<div style="" class="a2a_kit a2a_kit_size_24 a2a_default_style" data-a2a-url="https://dandelion.events/e/aquarius-new-moon-circle">
+  <a class="a2a_button_facebook"></a>
+  <a class="a2a_button_twitter"></a>
+  <a class="a2a_button_whatsapp"></a>
+  <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+</td>
+      </tr>
+  </table>
+
+      <div class="wysiwyg">
+        <big>
+              <h4>Aquarius New Moon Circle</h4><p>For the New Moon in Aquarius, we will gather for a Moon circle to connect, meditate and set intentions.</p><p>Finally out of the Mercury and Mars retrograde, energies are moving forward. New Moon in Aquarius starts a new Lunar year, if you haven't started the year yet, this is your chance!</p><p>The theme for the circle will be individuality and uniqueness.</p><p>What makes you unique?<br>What area of your life will be activated this cycle?<br>What do you need to release?<br>What is your highest vision?</p><p>New Moon ceremonies to set intentions is an ancient practice. When we consciously write down what we want, we co-create with the Universe. And in the process, we dissolve our inner resistance. When you join a circle, those energies are amplified.&nbsp;</p><p><span style="background-color:hsl(0,0%,0%);color:hsl(0,0%,100%);"><strong>What the circle will offer you?</strong></span></p><p>The opportunity to:</p><ul><li>Tap into your feminine manifesting power</li><li>Release limiting beliefs</li><li>Align to the cosmic energies</li><li>Connect with your heart's desires</li><li>Gain awareness to bring positive changes into your life</li></ul><p><span style="background-color:hsl(0,0%,0%);color:hsl(0,0%,100%);"><strong>How does it work?</strong></span></p><p>Once you sign up, you'll get an email from Dandelion with the information you need for the event:</p><ul><li>Google link to join the circle on the day</li><li>Workbook with details on setting intentions and what area of your life will be activated this Moon cycle</li><li>List of items needed for the ceremony</li></ul><p><strong>If you can't attend the circle, next day you will receive instructions and a link to a video that includes a guided meditation. </strong>This is not a recording of the circle, but you will be able to work with the energies and set intentions together with the information of the workbook provided.</p><p>I invite you to join the magic and safe space of the New Moon circles where transformation takes place.</p><p>WHAT OTHERS SAY</p><blockquote><p><i>"Despite the world slowing down these past few years, it has still been hard to find time to really stop for an hour, reflect inward, breathe deeply and find time to refine what's needed and what's really important in our lives. That's what Ester's moon circle inspires. By coming together with other fierce, fiery women, led in meditation and expert guidance by lunar sage Ester S., the moon circle is a pause each month to commune, create and conjure a much-needed moment of self-care and insightful wisdom drawn from ancient knowledge and Ester's own unique modern magick." </i>Louise</p></blockquote><blockquote><p><i>”I feel very fortunate to partake in Ester’s sessions! &nbsp;</i><br><i>Ester has a wonderfully maternal way of giving guidance - she will be gentle, yet straightforward, give advice simply put even in complex matters. Always with compassion and humour. Also personally I appreciate her background which makes me confident that she can relate to my frame of reference.” Susanna</i></p></blockquote><p>Find out more about it:</p><p><a href="https://cosmo-planner.com/new-moon-circles/">https://cosmo-planner.com/new-moon-circles/</a></p>
+        </big>
+      </div>
+  </div>
+    <div class="col-lg-5">
+  <div id="purchase">
+        <div class="card mb-3 " id="select-tickets">
+  <h3 class="card-header bg-primary text-white">Select tickets</h3>
+  <div class="card-body">
+        <div class="alert alert-danger">
+          <p class="mb-0">This event started 4 months ago</p>
+        </div>
+    <div id="ticket-types">
+<form action="" accept-charset="UTF-8" method="post">        <input type="hidden" name="cohost" />
+        <input type="hidden" name="affiliate_type" />
+        <input type="hidden" name="affiliate_id" />
+        <table class="table">
+        <tr>
+          <td style="border-top: 0; " >
+            Donation
+          </td>
+          <td style="border-top: 0; ">
+          </td>
+          <td style="width: 50%; border-top: 0; ">
+              <div class="row justify-content-between align-items-center">
+                <div class="col">
+                  <select name="quantities[63bbbbc59d91b8000b820673]" data-ticket-type-id="63bbbbc59d91b8000b820673" data-price="0.0" style="width: auto; display: inline-block" class="form-control"><option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+</select>
+                </div>
+              </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <strong>
+            VALUE £29. To ensure access for all, this event is offered on a donation basis. Minimum suggested donation is shown below.  
+            
+          </strong>
+          <div class="input-group" style="margin: 5px 0">
+            <div class="input-group-prepend">
+              <span class="input-group-text">£</span>
+            </div>
+            <input type="number" name="donation_amount" id="donation_amount" class="form-control" style="width: 5em" value="10.0" min="0" />
+          </div>
+            Following the tradition of generosity, to support our work, please donate in accordance to your situation. 
+        </td>
+      </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <strong>Total</strong>
+        <div class="input-group" style="margin: 5px 0">
+          <div class="input-group-prepend">
+            <span class="input-group-text">£</span>
+          </div>
+          <input type="number" name="totalDisplay" id="totalDisplay" class="form-control" style="width: 5em" disabled="disabled" />
+          <input type="hidden" name="total" id="total" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</form></div>
+</div>
+<h3 class="card-header bg-primary text-white">Your details</h3>
+<div class="card-body" id="details">
+  <script>
+    $(function () {
+      $('#account_name').attr('required', 'required')
+    })
+  </script>
+<form action="" accept-charset="UTF-8" method="post">      
+            <div class="form-group">
+              <label for="account_name" class="">
+                Name*
+                
+              </label>
+              <div class="">
+                <input type="text" name="account[name]" id="account_name" class="form-control " required="required" />
+                
+                
+              </div>
+            </div>
+            
+      
+            <div class="form-group">
+              <label for="account_email" class="">
+                Email*
+                
+              </label>
+              <div class="">
+                <input type="email" name="account[email]" id="account_email" class="form-control " required="required" />
+                
+                
+              </div>
+            </div>
+            
+      
+            <div class="form-group">
+              <label for="account_hear_about" class="">
+                How did you hear about this event?
+                
+              </label>
+              <div class="">
+                <input type="text" name="account[hear_about]" value="" id="account_hear_about" class="form-control " />
+                
+                
+              </div>
+            </div>
+            
+    <input type="hidden" name="account[http_referrer]" id="account_http_referrer" />
+      <script>
+        $(function () {
+          $('#opt-in-organisation label').html('Get email updates from Cosmoplanner')
+          $('#opt-in-organisation').show()
+        })
+      </script>
+      <div id="opt-in-organisation" style="display: none">
+        
+            <div class="checkbox">
+              <input type="hidden" name="account[opt_in_organisation]" value="0" /><input type="checkbox" name="account[opt_in_organisation]" value="1" id="account_opt_in_organisation" class="form-check-input " />
+              <label for="account_opt_in_organisation" class="">
+                Opt in organisation
+                
+                
+                
+              </label>
+              </div>
+            
+      </div>
+    <button class="btn btn-primary btn-block mb-1" type="submit" data-payment-method="rsvp">
+      <span>RSVP</span>
+      <i class="fa fa-spin fa-circle-o-notch" style="display: none"></i>
+    </button>
+    <input type="hidden" name="payment_method" value="rsvp" disabled="disabled" />
+      <button class="btn btn-primary btn-block mb-1" type="submit" data-payment-method="stripe">
+        <span>Pay</span>
+        <i class="fa fa-spin fa-circle-o-notch" style="display: none"></i>
+      </button>
+      <input type="hidden" name="payment_method" value="stripe" disabled="disabled" />
+    <input type="hidden" name="utm_source" />
+    <input type="hidden" name="utm_medium" />
+    <input type="hidden" name="utm_campaign" />
+</form></div>
+</div>
+<div class="card" id="card-error" style="display: none">
+  <h3 class="card-header bg-danger text-white">There was an error processing the transaction</h3>
+  <div class="card-body">
+    <p>
+      You have not be charged. Please refresh the page to try again.
+    </p>
+  </div>
+</div>
+<div class="card" id="pay-with-seeds" style="display: none">
+  <h3 class="card-header bg-primary text-white">Pay with SEEDS</h3>
+  <div class="card-body">
+    <p class="lead please"></p>
+    <p class="lead memo text-monospace font-weight-bold text-center"></p>
+    <p>Looking for your transaction... <i class="fa fa-spin fa-circle-o-notch"></i></p>
+  </div>
+</div>
+<div class="card" id="pay-with-evm" style="display: none">
+  <h3 class="card-header bg-primary text-white">
+    Pay with 
+  </h3>
+  <div class="card-body">
+    <p class="lead please"></p>
+    <p class="web3wallet"></p>
+    <p>Making a manual transaction? You will find pasting these details easier if you 'Expand view' first.</p>
+    <p>Looking for your transaction... <i class="fa fa-spin fa-circle-o-notch"></i></p>
+  </div>
+</div>
+<script>
+    timeAgo = '4 months'
+    eventId = "63bbbbc49d91b8000b820665"
+    placesRemaining = 7
+    currency = "GBP"
+    currencySymbol = "£"
+    stripePk = "pk_live_51KaOTMHz0yjqBzGYsNRt44u0zr7tXG13KhzU3JMtFlsReqbhOlMRWuDbMIJwGL7CG5JCrNxHvRhYTPmmzGS637Sr00vzmjMNFM"
+    coinbase = false
+    seedsUsername = null
+    evmAddress = null
+    contractAddress = null
+    networkId = 
+    networkName = ''
+    signedIn = false
+</script>
+<script src="/javascripts/purchase.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+            <div class="card mt-3">
+    <h3 class="card-header bg-primary text-white">Upcoming New Moon Ritual events</h3>
+    <div class="card-body">
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/gemini-new-moon-circle">
+    Gemini New Moon Circle (recording available)
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/cosmoplanner/events?event_tag_id=5f8820bf77ca12000d9389dd" class="text-white label label-primary d-inline-block mb-1">sharing circle</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=5fbd1983746986000d6bebaa" class="text-white label label-primary d-inline-block mb-1">empowerment</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=61479659201dd800119bc549" class="text-white label label-primary d-inline-block mb-1">transformation</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=62168466204b75000c00b5d8" class="text-white label label-primary d-inline-block mb-1">communication</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac519" class="text-white label label-primary d-inline-block mb-1">moon circle</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac51b" class="text-white label label-primary d-inline-block mb-1">divine feminine</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=622f2efaf480e8000ceac51d" class="text-white label label-primary d-inline-block mb-1">manifesting</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=624069e4459a8f00111232e7" class="text-white label label-primary d-inline-block mb-1">setting intentions</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=62ad8e9bbba2c4000c89e54e" class="text-white label label-primary d-inline-block mb-1">new moon</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=6363f4f4729deb000b0aef58" class="text-white label label-primary d-inline-block mb-1">personal development</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=63e2d8b6bb250e00045beeb3" class="text-white label label-primary d-inline-block mb-1">growth</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=640b11ca936a5200026b766c" class="text-white label label-primary d-inline-block mb-1">new moon ritual</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=642856430282ef000226f70c" class="text-white label label-primary d-inline-block mb-1">gemini</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=6478a4dc934b5e0002e7a6c6" class="text-white label label-primary d-inline-block mb-1">new moon in gemini</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=6478a4dc934b5e0002e7a6c8" class="text-white label label-primary d-inline-block mb-1">moon magic</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=6478a4dc934b5e0002e7a6ca" class="text-white label label-primary d-inline-block mb-1">lunar living</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=6478a4dc934b5e0002e7a6cd" class="text-white label label-primary d-inline-block mb-1">mindset</a>
+  <a href="/o/cosmoplanner/events?event_tag_id=647982ed934b5e0002e7da80" class="text-white label label-primary d-inline-block mb-1">negative self-talk</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Sun 18th Jun 2023, 7:30pm – 9pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      Online
+
+  </li>
+  </ul>
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+</div>
+  <h2 class="mt-5">Feedback on New Moon Ritual events</h2>
+  <div class="mt-3" data-pagelet-url="/activities/622f33c5f480e8000ceac5cd/show_feedback"></div>
+
+
+
+      </div>
+      <!-- END #content -->
+    </div>
+    <!-- END #page-container -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+  </body>
+</html>

@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link rel="manifest" href="/manifest.json">
+
+    <script
+      type="text/javascript"
+      src="https://app.termly.io/embed.min.js"
+      data-auto-block="on"
+      data-website-uuid="e3781b47-56e6-4a03-987b-1ce448a36930"
+      ></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164477789-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164477789-1');
+
+    gtag('config', 'UA-54477293-1');
+
+</script>
+
+    <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s)
+    {
+      if (f.fbq)
+        return;
+      n = f.fbq = function () {
+        n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq)
+        f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '339421300078806');
+    fbq('track', 'PageView');
+
+  </script>
+  <!-- End Facebook Pixel Code -->
+
+  <link rel="preload" href="/fonts/circular/stylesheet.css" as="style">
+  <link href="/fonts/circular/stylesheet.css" rel="stylesheet">
+  <script src="//kit.fontawesome.com/13bb83cfaf.js"></script>
+
+  <link href="/infinite_admin/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/bootstrap/bootstrap4/css/bootstrap.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/icon/themify-icons/themify-icons.css" rel="stylesheet">
+  <link href="/infinite_admin/plugins/animate/animate.min.css" rel="stylesheet">
+  <script src="/infinite_admin/plugins/loader/pace/pace.min.js"></script>
+  <script src="/infinite_admin/plugins/jquery/jquery-3.2.1.min.js"></script>
+  <script src="/infinite_admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/infinite_admin/plugins/cookie/js/js.cookie.js"></script>
+  <script src="/infinite_admin/plugins/tooltip/popper/popper.min.js"></script>
+  <script src="/infinite_admin/plugins/bootstrap/bootstrap4/js/bootstrap.js"></script>
+  <script src="/infinite_admin/plugins/scrollbar/slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="/infinite_admin/js/apps.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+  <script>
+    $(function () {
+      App.init();
+    });
+  </script>
+
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script>
+      if(typeof Pusher != 'undefined') {
+        pusher = new Pusher('b8c557aff6dc48fa427c', { cluster: 'eu', encrypted: true });
+      }
+    </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/en-gb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.2/flatpickr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.2/flatpickr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tributejs/3.5.3/tribute.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tributejs/3.5.3/tribute.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-table-headers/0.1.24/js/jquery.stickytableheaders.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.contentWindow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.4/web3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/intro.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/introjs.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
+
+<link rel="stylesheet" href="//rawcdn.githack.com/scottdejonge/map-icons/dbf6fd7caedd60d11b5bfb5f267a114a6847d012/dist/css/map-icons.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/easymde@2.10.1/dist/easymde.min.css">
+<link rel="stylesheet" href="/stylesheets/share.css">
+<link rel="stylesheet" href="/stylesheets/app.css?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+
+<script src="//www.google.com/recaptcha/api.js"></script>
+<script src="//js.stripe.com/v3/"></script>
+<script src="//cdn.iframe.ly/embed.js?key=531e90927f9f263c2932c0d76ef2c3e5"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyA7hlAPT6_S-aVuTc11o_w_19ttXyQ3tRU&amp;libraries=places"></script>
+<script src="//rawcdn.githack.com/bassjobsen/Bootstrap-3-Typeahead/067bd296184a4dda8c669923417124065b4ebced/bootstrap3-typeahead.min.js"></script>
+<script src="//rawcdn.githack.com/jackmoore/autosize/6ae70cd3d28888eb858eef1167e6ed75d25dff7f/dist/autosize.min.js"></script>
+<script src="//rawcdn.githack.com/mahnunchik/markerclustererplus/736b0e3a7d916fbeb2ee5007494f17a5329b11a8/src/markerclusterer.js"></script>
+<script src="//rawcdn.githack.com/scottdejonge/map-icons/dbf6fd7caedd60d11b5bfb5f267a114a6847d012/dist/js/map-icons.js"></script>
+<script src="//rawcdn.githack.com/euangoddard/clipboard2markdown/2d46aadd373f8b5cdb5fa0763090135ac31def13/to-markdown.js"></script>
+<script src="//rawcdn.githack.com/scottgonzalez/jquery-ui-extensions/fb7fd7df3d70e0288394f07bfe78262b548c30d6/src/autocomplete/jquery.ui.autocomplete.html.js"></script>
+<script src="//cdn.jsdelivr.net/npm/easymde@2.10.1/dist/easymde.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="/javascripts/linkify.min.js"></script>
+<script src="/javascripts/linkify-jquery.min.js"></script>
+<script src="/javascripts/jquery-deparam.js"></script>
+<script src="/javascripts/countUp.umd.js"></script>
+<script src="/javascripts/pagelets.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/jquery.lookup.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/ckeditor5/build/ckeditor.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+<script src="/javascripts/app.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+<link href="/images/black-on-transparent-sq.png?1685973938" rel="icon" type="image/png" />
+<title>Full Moon: Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey · Dandelion</title>
+<meta name="description" content="Sat 6th May 2023, 4pm – 7pm UK time (UTC +01:00)">
+<meta property="og:title" content="Full Moon: Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey">
+<meta property="og:image" content="https://autopia.s3.amazonaws.com/2023/01/23/18/38/38/27d86ece-ca0f-4415-9092-2eff136586cc/kundalini Lani.jpg?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Full Moon: Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey">
+<meta name="twitter:description" content="Sat 6th May 2023, 4pm – 7pm UK time (UTC +01:00)">
+<meta name="twitter:image" content="https://autopia.s3.amazonaws.com/2023/01/23/18/38/38/27d86ece-ca0f-4415-9092-2eff136586cc/kundalini Lani.jpg?7e51b97a94c9f26f1c7c0361df72b00edeb20825">
+<script>
+  $(function () {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can add to home screen
+      $('#a2hs').show()
+    });
+
+    $('#a2hs-btn').click(function () {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice
+              .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                  // console.log('User accepted the A2HS prompt');
+                } else {
+                  // console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+              });
+    })
+
+    if ('serviceWorker' in navigator) {
+      // console.log("Will the service worker register?");
+      navigator.serviceWorker.register('/service-worker.js')
+              .then(function (reg) {
+                // console.log("Yes, it did.");
+              }).catch(function (err) {
+        // console.log("No it didn't. This happened:", err)
+      });
+    }
+  })
+</script>
+
+  <style>
+    @media (max-width: 991px) {
+      ul.nav.navbar-nav.navbar-right {
+        display: none;
+      }
+      #page-container {
+        padding-top: 2.75rem;
+      }
+    }
+  </style>
+
+    <link rel="canonical" href="https://dandelion.events/events/63ced42d3d389e000b5f7383" />
+  <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "name": "Full Moon: Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey",
+  "startDate": "2023-05-06T16:00:00+01:00",
+  "endDate": "2023-05-06T19:00:00+01:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "231 Stoke Newington Church St",
+    "address": {
+      "@type": "PostalAddress",
+      "name": "London N16 9HP, United Kingdom"
+    }
+  },
+  "image": "https://autopia.s3.amazonaws.com/2023/01/23/18/38/38/27d86ece-ca0f-4415-9092-2eff136586cc/kundalini Lani.jpg",
+  "description": "We warmly invite you to gather in ceremony on the 6th May, sharing an evening of sacred cacao, kundalini yoga and a deep sound immersion. ",
+  "organizer": {
+    "@type": "Organization",
+    "name": "The Psychedelic Society",
+    "url": "http://psychedelicsociety.org.uk/"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "url": "https://dandelion.events/events/63ced42d3d389e000b5f7383",
+      "price": 38.0,
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "url": "https://dandelion.events/events/63ced42d3d389e000b5f7383",
+      "price": 25.0,
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/SoldOut"
+    },
+    {
+      "@type": "Offer",
+      "url": "https://dandelion.events/events/63ced42d3d389e000b5f7383",
+      "price": 35.0,
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+  </script>
+
+</head>
+
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id))
+                return;
+              js = d.createElement(s);
+              js.id = id;
+              js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1498399346894704&autoLogAppEvents=1';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- BEGIN #page-container -->
+    <div id="page-container" class="page-header-fixed page-sidebar-fixed  page-sidebar-minified   ">
+        <style>
+    #alert-wrap { position: absolute; z-index: 9999; top: 0; left: 50%; width: 90%; margin-left: -45% }
+    @media(min-width: 992px) {
+      #alert-wrap { width: 50%; margin-left: -25% }
+    }
+  </style>
+  <div id="alert-wrap" class="mt-3">
+    <div class="container">
+      
+    </div>
+  </div>
+  <script>
+    $(function () {
+      window.setTimeout(function () {
+        $("#alert-wrap .alert").alert('close');
+      }, 3000);
+    });
+  </script>
+
+      <!-- BEGIN #header -->
+      <div id="header" class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN container-fluid -->
+        <div class="container-fluid">
+          <!-- BEGIN mobile sidebar expand / collapse button -->
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand">
+              <img style="max-height: 1.75rem; position: relative; top: -0.25rem" src="/images/white-on-black.png">
+            </a>
+            <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- END mobile sidebar expand / collapse button -->
+          <!-- BEGIN header navigation right -->
+          <div class="navbar-xs-justified">
+            <style>
+  #feedback-li, #docs-li { display: none }
+  @media(min-width: 992px) { #feedback-li, #docs-li { display: list-item } }
+</style>
+<ul class="nav navbar-nav navbar-right">
+    <li class="d-none d-lg-inline" id="docs-li">
+      <a href="/docs">
+        How to use Dandelion
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" data-toggle="search-bar" class="navbar-icon">
+        <i class="ti-search"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/accounts/new">
+        Sign up
+      </a>
+    </li>
+    <li>
+      <a href="/accounts/sign_in">
+        Sign in
+      </a>
+    </li>
+</ul>
+
+          </div>
+          <!-- END header navigation right -->
+        </div>
+        <!-- END container-fluid -->
+        <!-- BEGIN header-search-bar -->
+        <div class="header-search-bar">
+          <form action="/search" name="search_bar_form">
+            <div class="form-group">
+              <div class="left-icon"><i class="ti-search"></i></div>
+              <input name="q" type="text" class="form-control" id="header-search">
+              <a href="javascript:;" data-dismiss="search-bar" class="right-icon"><i class="ti-close"></i></a>
+            </div>
+          </form>
+        </div>
+        <!-- END header-search-bar -->
+      </div>
+      <!-- END #header -->
+      <!-- BEGIN #sidebar -->
+      <div id="sidebar" class="sidebar sidebar-inverse">
+        <!-- BEGIN scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+          <script>
+  $(function () {
+
+    $('#sidebar ul.nav li a[data-toggle]').tooltip($('#page-container').hasClass('page-sidebar-minified') ? 'enable' : 'disable')
+
+    if ($(window).width() < 992)
+      $('#sidebar ul.nav li a[data-toggle]').tooltip('disable')
+
+  })
+</script>
+<ul class="nav">
+  <li style="height: 0.5rem"></li>
+  <li class="">
+    <a href="/" data-toggle="tooltip" title="Home" data-placement="right">
+        <i class="ti-home"></i>
+        <span class="nav-link-text">Home</span>
+    </a>
+  </li>
+    <li class="d-lg-none">
+      <a href="/accounts/new" data-toggle="tooltip" title="Sign up" data-placement="right">
+        <i class="fa fa-fw fa-user-plus"></i>
+        <span class="nav-link-text">Sign up</span>
+      </a>
+    </li>
+    <li class="d-lg-none">
+      <a href="/accounts/sign_in" data-toggle="tooltip" title="Sign in" data-placement="right">
+        <i class="fa fa-fw fa-sign-in"></i>
+        <span class="nav-link-text">Sign in</span>
+      </a>
+    </li>
+  <li class="">
+    <a href="/events" data-toggle="tooltip" title="Events" data-placement="right">
+      <i class="fa fa-calendar-o"></i>
+      <span class="nav-link-text">Events</span>
+    </a>
+  </li>
+    <li class="">
+      <a href="/organisations" data-toggle="tooltip" title="Organisations" data-placement="right">
+        <i class="fa fa-flag"></i>
+        <span class="nav-link-text">Organisations</span>
+      </a>
+    </li>
+    <li class="">
+      <a href="/gatherings" data-toggle="tooltip" title="Gatherings" data-placement="right">
+        <i class="fa fa-moon-o"></i>
+        <span class="nav-link-text">Gatherings</span>
+      </a>
+    </li>
+  <li class="">
+    <a href="/facilitators" data-toggle="tooltip" title="Facilitators" data-placement="right">
+      <i class="fa fa-graduation-cap"></i>
+      <span class="nav-link-text">Facilitators</span>
+    </a>
+  </li>
+  <li class="">
+    <a href="/map" data-toggle="tooltip" title="Places" data-placement="right">
+      <i class="fa fa-binoculars"></i>
+      <span class="nav-link-text">Places</span>
+    </a>
+  </li>
+  <li>
+    <a href="/donate" data-toggle="tooltip" title="Donate" data-placement="right">
+      <i class="fa fa-fw fa-money"></i>
+      <span class="nav-link-text">Donate</span>
+    </a>
+  </li>
+  <li>
+    <a href="/code" data-toggle="tooltip" title="Code" data-placement="right">
+      <i class="fa fa-fw fa-github"></i>
+      <span class="nav-link-text">Code</span>
+    </a>
+  </li>
+  <li>
+    <a
+      href="/contact" data-toggle="tooltip" title="Contact us" data-placement="right">
+      <i class="fa fa-envelope"></i>
+      <span class="nav-link-text">Contact us</span>
+    </a>
+  </li>
+  <li>
+    <a data-nolt="modal" href="https://dandelion.nolt.io" data-toggle="tooltip" title="Feedback?" data-placement="right">
+      <i class="fa fa-fw fa-comment-o"></i>
+      <span class="nav-link-text">Feedback?</span>
+    </a>
+  </li>
+  <li>
+    <a href="/docs" data-toggle="tooltip" title="How to use Dandelion" data-placement="right">
+      <i class="fa fa-fw fa-question-circle-o"></i>
+      <span class="nav-link-text">How to use Dandelion</span>
+    </a>
+  </li>
+</ul>
+
+        </div>
+        <!-- END scrollbar -->
+        <!-- BEGIN sidebar-minify-btn -->
+        <a onclick="$.post('/sidebar', {minified: $('#page-container').hasClass('page-sidebar-minified') ? false : true});
+            $('#sidebar ul.nav li a[data-toggle]').tooltip($('#page-container').hasClass('page-sidebar-minified') ? 'disable' : 'enable')
+           " href="#" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ti-arrow-left"></i></a>
+        <!-- END sidebar-minify-btn -->
+      </div>
+      <!-- END #sidebar -->
+      <!-- BEGIN #content -->
+      <div id="content" class="content">
+          <style>
+    #event-image { margin-top: -0.9375rem }
+    @media(min-width: 768px) { #event-image { margin-top: -1.5625rem } }
+  </style>
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+      <a href="/e/dozsk"><img id="event-image" class="w-100 mb-3" src="https://autopia.s3.amazonaws.com/2023/03/05/14/37/51/adfd1256-1693-4af8-9b7b-fea123a54c27/kundalini%20Lani.jpg"></a>
+  </div>
+</div>
+    <div id="buy-tickets" class="fixed-bottom bg-white p-3 w-100 d-block d-md-none" style="z-index: 1019; box-shadow: 0px -2px 4px 0px rgba(0,0,0,0.3);">
+      <a href="javascript:;" onclick="$(this).parent().hide();
+            $(window).scrollTop($('#purchase').offset()['top'] - $('#header').height() - 17)
+           " class="btn btn-primary btn-block">Get tickets</a>
+    </div>
+    <script>
+      $(function () {
+        $(window).scroll(function () {
+          if ((window.scrollY + window.innerHeight) > $('#purchase').offset()['top']) {
+            $('#buy-tickets').addClass('d-none').removeClass('d-block')
+            $('#discord-link').show()
+          } else {
+            $('#buy-tickets').addClass('d-block').removeClass('d-none')
+            $('#discord-link').hide()
+          }
+        })
+        $(window).scroll()
+      })
+    </script>
+  <div class="row">
+    <div class="col-lg-7">
+    <h1 class="mb-1">
+      Full Moon: Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey
+      <small>
+        <div class="d-inline float-right" data-pagelet-url="/events/63ced42d3d389e000b5f7383/star">
+          
+        </div>
+      </small>
+    </h1>
+    <ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark mb-1">
+      <li>
+        <i  data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+          Sat 6th May 2023, 4pm – 7pm UK time (UTC +01:00)
+      </li>
+      <li><i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+          <a target="_blank" href="https://www.google.co.uk/maps?q=231 Stoke Newington Church St, London N16 9HP, United Kingdom">231 Stoke Newington Church St, London N16 9HP, United Kingdom</a>
+      </li>
+        <li>
+          <i data-toggle="tooltip" title="Event URL" class="fa fa-li fa-link"></i>
+          <a data-toggle="tooltip" href="https://dandelion.events/e/dozsk">https://dandelion.events/e/dozsk</a>
+        </li>
+    </ul>
+    <div>
+        <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+    </div>
+    <table class="table table-hr">
+  <tr>
+    <td>
+          Hosted by
+    </td>
+    <td>
+        <a href="/o/the-psychedelic-society/events"><img src="https://autopia.s3.amazonaws.com/2022/09/26/19/39/47/61535583-a7af-4952-bac2-63190c63c89e/Logo-Black-HQ.png" style="width: 50px"></a>
+      <a href="/o/the-psychedelic-society/events">The Psychedelic Society</a>
+      
+    </td>
+  </tr>
+    <tr>
+      <td>Activity</td>
+      <td>
+        <a href="/activities/5e413a476a864b0004af0244">Lani and Annabelle&#39;s Events</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Local group</td>
+      <td>
+        <a href="/local_groups/5f44df4930aba9000e536649">London</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Facebook event</td>
+      <td>
+        <a target="_blank" href="https://www.facebook.com/events/882461842827841/882461852827840"><i class="fa fa-facebook-square"></i></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Enquiries to</td>
+      <td>
+        <a target="_blank" href="mailto:lanirocillo@protonmail.com">lanirocillo@protonmail.com</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Facilitators</td>
+      <td>
+        <div class="image-wall mb-1">
+  <a style="text-decoration: none" href="javascript:;" data-account-username="lanirocillo">
+  <img class="  " data-toggle="tooltip" title="Lani Rocillo"  style="width: 50px;"  src="https://autopia.s3.amazonaws.com/2022/10/12/17/44/22/a827a304-619d-48ab-88c5-08e7edd742a5/Lani%20Sings.jpg">
+</a>
+
+</div>
+
+      </td>
+    </tr>
+  <tr>
+    <td>
+      Add to calendar
+      <td>
+        <a target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Full%20Moon%3A%20Kundalini%20Yoga%2C%20Sacred%20Cacao%20and%20Harmonising%20Sound%20Journey&details=https%3A%2F%2Fdandelion.events%2Fe%2Fdozsk&location=231%20Stoke%20Newington%20Church%20St%2C%20London%20N16%209HP%2C%20United%20Kingdom&dates=20230506T150000Z%2F20230506T180000Z">
+  Google
+</a>
+&middot;
+<a target="_blank" href="/events/63ced42d3d389e000b5f7383.ics">
+  ICS
+</a>
+
+      </td>
+    </tr>
+      <tr>
+        <td>Share</td>
+        <td><!-- AddToAny BEGIN -->
+<div style="" class="a2a_kit a2a_kit_size_24 a2a_default_style" data-a2a-url="https://dandelion.events/e/dozsk">
+  <a class="a2a_button_facebook"></a>
+  <a class="a2a_button_twitter"></a>
+  <a class="a2a_button_whatsapp"></a>
+  <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+</td>
+      </tr>
+  </table>
+
+      <div class="wysiwyg">
+        <big>
+              <p>We warmly invite you to gather&nbsp;in ceremony on the 6th May,&nbsp;sharing an evening of sacred&nbsp;cacao,&nbsp;kundalini yoga and a deep sound immersion.&nbsp;</p><p>Activating a state of self-healing and transformation, bringing flow to your life force energy, attuning to the vision and guidance of your soul, and harmonising and optimising your sacred body vessel.</p><p>We will being sharing practises to celebrate and work with the energies of the full moon in Libra, which rises on this day.</p><p>This is a passage to connect with Spirit and know yourself as a being of Love.</p><p>&nbsp;</p><h4>HARMONISING SOUND JOURNEY</h4><p>A deep meditative journey in harmonising sound of Gongs, Crystal Bowls, Shamanic Drum, Light Language and Grounding Percussions. Facilitating an intimate softening into stillness, peace and radiant state of being.</p><h4>CACAO CEREMONY&nbsp;</h4><p>The ceremony will involve a sacred cacao ceremony, where we drink a rich brew of the plant Cacao. A plant medicine that powerfully opens the heart and attunes us to our feeling body - restoring emotional balance, heightening the intuitive and sensory perception and freeing creative expression.</p><p>The Cacao we will be communing with comes from Guatemala, lovingly grown and shared by the guardians of the Tz´utujil Mayan tribe</p><h4>KUNDALINI YOGA &amp; MEDITATION</h4><p>Kundalini yoga is a tantric practice for connecting with your soul, expanding in awareness, brightening your inner light and uncoiling toward your greater potential. It is a means by which to experience your infinite nature in the present moment.</p><p>We work with pranayama, asana, mantra, mudra and meditation to circulate life force energy, removing obstacles and healing energetic blocks in the body as it goes - blocks which may be memories or imprints from this lifetime or those inherited from ancestors.</p><p>Increasing both the sensitivity and resilience of the nervous system, we open up to a vaster range of perception and projection, in ways that may seem extraordinary. We can then listen with more clarity to the inner guidance of the soul and intentionally recode our bodies to be in alignment with our desires - amplifying what's already flowing well, and harmonising what's needed to support you in your life purpose.</p><p>We develop strength, flexibility and coordination, and improve the function of our organs and the balance of our nervous and endocrine systems. We nurture intuition, access states of deep meditation, stimulate powerful detoxification and much more.&nbsp;</p><p>The classes are open to all ranges of experiences.</p><p>Guided with love by Lani Rocillo&nbsp;</p><h4>LANI ROCILLO</h4><p>Lani Rocillo is a sound medicine, plant medicine and yoga practitioner, a musician and a community creator. The intention of her offering is to open spaces of deep and heartfelt experiences through tools and practices that profoundly activate our capacity to self-heal and positively transform.&nbsp;</p><p>She creates harmonising sound immersion, facilitates plant spirit explorations and assist in cultivating the physical and energy body. She instigates conditions where we are led to be present and surrender to the living moment; a state of being where we can touch the mystery of our own inner universe and resonate with our essence as Love. For it is in the presence with our breath that we can awaken to spaciousness, realising balanced health, compassionate purpose and vast creative potential.</p><p>Her practice is inspired by intuitive, heartfelt and embodied expression, which she weaves along-side guidance from ancient wisdom knowledge.</p><p><a href="http://www.soundbeing.co.uk/">www.soundbeing.co.uk</a><br><br><span style="color:hsl(210,75%,60%);"><i>“Would definitely recommend the Kundalini yoga sound and cacao ceremony. Such a beautiful and tranquillizing experience. The facilitators/ yogi's are super caring and helpful :)”</i></span><br><br><span style="color:hsl(210,75%,60%);"><i>“I had such a wonderful time at the kundalini yoga / sound / cacao ceremony! The yoga was just the right amount of challenging, the instruction was fabulous and I especially enjoyed the EPIC sound bath. Thank you ladies for facilitating such a brilliant experience, and thank you for hosting, Psychedelic fam!”</i></span><br><br><span style="color:hsl(210,75%,60%);"><i>“Such a beautiful event. I loved the mix of breathing, yoga, chanting and ceremony.”</i></span></p><p>&nbsp;</p>
+            <p><strong>REFUNDS POLICY:</strong> Please note, we do not arrange refunds or exchanges. When possible we encourage reselling on <a href="https://www.ticketswap.uk/location/the-psychedelic-society/146580">Ticketswap</a>.<br><br><strong>ACCESS</strong>: &nbsp;We do our best to include everyone in our events, regardless of health circumstances. If you have access requirements please email the event organiser directly to discuss.&nbsp;Many facilitators are able to offer <strong>reduced ticket prices</strong> for those truly unable to afford the ticket price. If this applies to you, do please get in touch with the event organiser.</p><p>For <strong>PSYCHEDELIC KNOWLEDGE AND RESOURCES</strong> please check out the <a href="https://psychedelicsociety.org.uk/">Psychedelic Society website</a>.&nbsp;</p><p>Our facilitators have agreed to our <a href="https://static1.squarespace.com/static/5e2f0ae503b587720e341f5b/t/62bb3026468726666fac7022/1656434726825/Facilitator+Code+of+Conduct+MAR2022.docx.pdf">code of conduct</a>. Learn about our <a href="https://static1.squarespace.com/static/5e2f0ae503b587720e341f5b/t/637b767857a97b0cf79fc54a/1669035642305/Raising+Concerns+complaints+and+feedback_Psychedelic+Society+NOV2022.docx.pdf">procedure for raising concerns</a></p><p><strong>MEMBERS of the Psychedelic Society get a discount off almost all of our events.</strong><br><a href="https://psychedelicsociety.org.uk/become-a-member"><strong>Join from £5 a month</strong></a><strong>&nbsp;and become part of this amazing community with invites to special events and more.</strong></p>
+        </big>
+      </div>
+      <div data-pagelet-url="/events/63ced42d3d389e000b5f7383/attendees">
+        
+      </div>
+  </div>
+    <div class="col-lg-5">
+  <div id="purchase">
+        <div class="card mb-3 " id="select-tickets">
+  <h3 class="card-header bg-primary text-white">Select tickets</h3>
+  <div class="card-body">
+        <div class="alert alert-danger">
+          <p class="mb-0">This event started about 1 month ago</p>
+        </div>
+    <div id="ticket-types">
+<form action="" accept-charset="UTF-8" method="post">        <input type="hidden" name="cohost" />
+        <input type="hidden" name="affiliate_type" />
+        <input type="hidden" name="affiliate_id" />
+        <table class="table">
+        <tr>
+          <td style="border-top: 0; " >
+            Supporter
+          </td>
+          <td style="border-top: 0; ">
+              £38
+          </td>
+          <td style="width: 50%; border-top: 0; ">
+              <div class="row justify-content-between align-items-center">
+                <div class="col">
+                  <select name="quantities[63ced42e3d389e000b5f738e]" data-ticket-type-id="63ced42e3d389e000b5f738e" data-price="38.0" style="width: auto; display: inline-block" class="form-control"><option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+</select>
+                </div>
+                  <div class="col-auto">
+                    <span class="badge badge-secondary">2 left</span>
+                  </div>
+              </div>
+        </td>
+      </tr>
+        <tr>
+          <td style=" " >
+            Standard
+          </td>
+          <td style=" ">
+              £35
+          </td>
+          <td style="width: 50%;  ">
+              <div class="row justify-content-between align-items-center">
+                <div class="col">
+                  <select name="quantities[63ced42e3d389e000b5f738f]" data-ticket-type-id="63ced42e3d389e000b5f738f" data-price="35.0" style="width: auto; display: inline-block" class="form-control"><option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+</select>
+                </div>
+                  <div class="col-auto">
+                    <span class="badge badge-secondary">2 left</span>
+                  </div>
+              </div>
+        </td>
+      </tr>
+        <tr>
+          <td style=" " >
+            Concession
+          </td>
+          <td style=" ">
+              £25
+          </td>
+          <td style="width: 50%;  ">
+            <span class="badge badge-primary">Sold out</span>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <strong>
+            Add a donation to The Psychedelic Society
+            
+          </strong>
+          <div class="input-group" style="margin: 5px 0">
+            <div class="input-group-prepend">
+              <span class="input-group-text">£</span>
+            </div>
+            <input type="number" name="donation_amount" id="donation_amount" class="form-control" style="width: 5em" value="2.0" min="0" />
+          </div>
+            <p id="become-a-member" style="display: none"><a target="_blank" style="font-weight: 600; background: linear-gradient(to right, #EE39A7, #8747e6, #487DE5);  -webkit-background-clip: text;  -webkit-text-fill-color: transparent;"  href="https://psychedelicsociety.org.uk/become-a-member">Become a member</a> for discounts to almost all our events</p><script>$(function() {if ($('#discount').length == 0 && $('.no-discounts').length == 0)  $('#become-a-member').show()})</script>
+        </td>
+      </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <strong>Total</strong>
+        <div class="input-group" style="margin: 5px 0">
+          <div class="input-group-prepend">
+            <span class="input-group-text">£</span>
+          </div>
+          <input type="number" name="totalDisplay" id="totalDisplay" class="form-control" style="width: 5em" disabled="disabled" />
+          <input type="hidden" name="total" id="total" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</form></div>
+</div>
+<h3 class="card-header bg-primary text-white">Your details</h3>
+<div class="card-body" id="details">
+  <script>
+    $(function () {
+      $('#account_name').attr('required', 'required')
+    })
+  </script>
+<form action="" accept-charset="UTF-8" method="post">      
+            <div class="form-group">
+              <label for="account_name" class="">
+                Name*
+                
+              </label>
+              <div class="">
+                <input type="text" name="account[name]" id="account_name" class="form-control " required="required" />
+                
+                
+              </div>
+            </div>
+            
+      
+            <div class="form-group">
+              <label for="account_email" class="">
+                Email*
+                
+              </label>
+              <div class="">
+                <input type="email" name="account[email]" id="account_email" class="form-control " required="required" />
+                
+                
+              </div>
+            </div>
+            
+        
+            <div class="form-group">
+              <label for="account_postcode" class="">
+                Postcode
+                
+              </label>
+              <div class="">
+                <input type="text" name="account[postcode]" id="account_postcode" class="form-control " />
+                
+                
+              </div>
+            </div>
+            
+        
+            <div class="form-group">
+              <label for="account_country" class="">
+                Country
+                
+              </label>
+              <div class="">
+                <select name="account[country]" id="account_country" class="form-control "><option value=""></option>
+<option value="Afghanistan">Afghanistan</option>
+<option value="Albania">Albania</option>
+<option value="Algeria">Algeria</option>
+<option value="American Samoa">American Samoa</option>
+<option value="Andorra">Andorra</option>
+<option value="Angola">Angola</option>
+<option value="Anguilla">Anguilla</option>
+<option value="Antarctica">Antarctica</option>
+<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+<option value="Argentina">Argentina</option>
+<option value="Armenia">Armenia</option>
+<option value="Aruba">Aruba</option>
+<option value="Australia">Australia</option>
+<option value="Austria">Austria</option>
+<option value="Azerbaijan">Azerbaijan</option>
+<option value="Bahamas">Bahamas</option>
+<option value="Bahrain">Bahrain</option>
+<option value="Bangladesh">Bangladesh</option>
+<option value="Barbados">Barbados</option>
+<option value="Belarus">Belarus</option>
+<option value="Belgium">Belgium</option>
+<option value="Belize">Belize</option>
+<option value="Benin">Benin</option>
+<option value="Bermuda">Bermuda</option>
+<option value="Bhutan">Bhutan</option>
+<option value="Bolivia (Plurinational State of)">Bolivia (Plurinational State of)</option>
+<option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+<option value="Botswana">Botswana</option>
+<option value="Bouvet Island">Bouvet Island</option>
+<option value="Brazil">Brazil</option>
+<option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+<option value="Brunei Darussalam">Brunei Darussalam</option>
+<option value="Bulgaria">Bulgaria</option>
+<option value="Burkina Faso">Burkina Faso</option>
+<option value="Burundi">Burundi</option>
+<option value="Cabo Verde">Cabo Verde</option>
+<option value="Cambodia">Cambodia</option>
+<option value="Cameroon">Cameroon</option>
+<option value="Canada">Canada</option>
+<option value="Cayman Islands">Cayman Islands</option>
+<option value="Central African Republic">Central African Republic</option>
+<option value="Chad">Chad</option>
+<option value="Chile">Chile</option>
+<option value="China">China</option>
+<option value="Christmas Island">Christmas Island</option>
+<option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+<option value="Colombia">Colombia</option>
+<option value="Comoros">Comoros</option>
+<option value="Congo">Congo</option>
+<option value="Congo (Democratic Republic of the)">Congo (Democratic Republic of the)</option>
+<option value="Cook Islands">Cook Islands</option>
+<option value="Costa Rica">Costa Rica</option>
+<option value="Croatia">Croatia</option>
+<option value="Cuba">Cuba</option>
+<option value="Curaçao">Curaçao</option>
+<option value="Cyprus">Cyprus</option>
+<option value="Czechia">Czechia</option>
+<option value="Côte d'Ivoire">Côte d&#39;Ivoire</option>
+<option value="Denmark">Denmark</option>
+<option value="Djibouti">Djibouti</option>
+<option value="Dominica">Dominica</option>
+<option value="Dominican Republic">Dominican Republic</option>
+<option value="Ecuador">Ecuador</option>
+<option value="Egypt">Egypt</option>
+<option value="El Salvador">El Salvador</option>
+<option value="Equatorial Guinea">Equatorial Guinea</option>
+<option value="Eritrea">Eritrea</option>
+<option value="Estonia">Estonia</option>
+<option value="Eswatini">Eswatini</option>
+<option value="Ethiopia">Ethiopia</option>
+<option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+<option value="Faroe Islands">Faroe Islands</option>
+<option value="Fiji">Fiji</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="French Guiana">French Guiana</option>
+<option value="French Polynesia">French Polynesia</option>
+<option value="French Southern Territories">French Southern Territories</option>
+<option value="Gabon">Gabon</option>
+<option value="Gambia">Gambia</option>
+<option value="Georgia">Georgia</option>
+<option value="Germany">Germany</option>
+<option value="Ghana">Ghana</option>
+<option value="Gibraltar">Gibraltar</option>
+<option value="Greece">Greece</option>
+<option value="Greenland">Greenland</option>
+<option value="Grenada">Grenada</option>
+<option value="Guadeloupe">Guadeloupe</option>
+<option value="Guam">Guam</option>
+<option value="Guatemala">Guatemala</option>
+<option value="Guernsey">Guernsey</option>
+<option value="Guinea">Guinea</option>
+<option value="Guinea-Bissau">Guinea-Bissau</option>
+<option value="Guyana">Guyana</option>
+<option value="Haiti">Haiti</option>
+<option value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+<option value="Holy See">Holy See</option>
+<option value="Honduras">Honduras</option>
+<option value="Hong Kong">Hong Kong</option>
+<option value="Hungary">Hungary</option>
+<option value="Iceland">Iceland</option>
+<option value="India">India</option>
+<option value="Indonesia">Indonesia</option>
+<option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
+<option value="Iraq">Iraq</option>
+<option value="Ireland">Ireland</option>
+<option value="Isle of Man">Isle of Man</option>
+<option value="Israel">Israel</option>
+<option value="Italy">Italy</option>
+<option value="Jamaica">Jamaica</option>
+<option value="Japan">Japan</option>
+<option value="Jersey">Jersey</option>
+<option value="Jordan">Jordan</option>
+<option value="Kazakhstan">Kazakhstan</option>
+<option value="Kenya">Kenya</option>
+<option value="Kiribati">Kiribati</option>
+<option value="Korea (Democratic People's Republic of)">Korea (Democratic People&#39;s Republic of)</option>
+<option value="Korea (Republic of)">Korea (Republic of)</option>
+<option value="Kuwait">Kuwait</option>
+<option value="Kyrgyzstan">Kyrgyzstan</option>
+<option value="Lao People's Democratic Republic">Lao People&#39;s Democratic Republic</option>
+<option value="Latvia">Latvia</option>
+<option value="Lebanon">Lebanon</option>
+<option value="Lesotho">Lesotho</option>
+<option value="Liberia">Liberia</option>
+<option value="Libya">Libya</option>
+<option value="Liechtenstein">Liechtenstein</option>
+<option value="Lithuania">Lithuania</option>
+<option value="Luxembourg">Luxembourg</option>
+<option value="Macao">Macao</option>
+<option value="Madagascar">Madagascar</option>
+<option value="Malawi">Malawi</option>
+<option value="Malaysia">Malaysia</option>
+<option value="Maldives">Maldives</option>
+<option value="Mali">Mali</option>
+<option value="Malta">Malta</option>
+<option value="Marshall Islands">Marshall Islands</option>
+<option value="Martinique">Martinique</option>
+<option value="Mauritania">Mauritania</option>
+<option value="Mauritius">Mauritius</option>
+<option value="Mayotte">Mayotte</option>
+<option value="Mexico">Mexico</option>
+<option value="Micronesia (Federated States of)">Micronesia (Federated States of)</option>
+<option value="Moldova (Republic of)">Moldova (Republic of)</option>
+<option value="Monaco">Monaco</option>
+<option value="Mongolia">Mongolia</option>
+<option value="Montenegro">Montenegro</option>
+<option value="Montserrat">Montserrat</option>
+<option value="Morocco">Morocco</option>
+<option value="Mozambique">Mozambique</option>
+<option value="Myanmar">Myanmar</option>
+<option value="Namibia">Namibia</option>
+<option value="Nauru">Nauru</option>
+<option value="Nepal">Nepal</option>
+<option value="Netherlands">Netherlands</option>
+<option value="New Caledonia">New Caledonia</option>
+<option value="New Zealand">New Zealand</option>
+<option value="Nicaragua">Nicaragua</option>
+<option value="Niger">Niger</option>
+<option value="Nigeria">Nigeria</option>
+<option value="Niue">Niue</option>
+<option value="Norfolk Island">Norfolk Island</option>
+<option value="North Macedonia">North Macedonia</option>
+<option value="Northern Mariana Islands">Northern Mariana Islands</option>
+<option value="Norway">Norway</option>
+<option value="Oman">Oman</option>
+<option value="Pakistan">Pakistan</option>
+<option value="Palau">Palau</option>
+<option value="Palestine, State of">Palestine, State of</option>
+<option value="Panama">Panama</option>
+<option value="Papua New Guinea">Papua New Guinea</option>
+<option value="Paraguay">Paraguay</option>
+<option value="Peru">Peru</option>
+<option value="Philippines">Philippines</option>
+<option value="Pitcairn">Pitcairn</option>
+<option value="Poland">Poland</option>
+<option value="Portugal">Portugal</option>
+<option value="Puerto Rico">Puerto Rico</option>
+<option value="Qatar">Qatar</option>
+<option value="Romania">Romania</option>
+<option value="Russian Federation">Russian Federation</option>
+<option value="Rwanda">Rwanda</option>
+<option value="Réunion">Réunion</option>
+<option value="Saint Barthélemy">Saint Barthélemy</option>
+<option value="Saint Helena, Ascension and Tristan da Cunha">Saint Helena, Ascension and Tristan da Cunha</option>
+<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+<option value="Saint Lucia">Saint Lucia</option>
+<option value="Saint Martin (French part)">Saint Martin (French part)</option>
+<option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+<option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+<option value="Samoa">Samoa</option>
+<option value="San Marino">San Marino</option>
+<option value="Sao Tome and Principe">Sao Tome and Principe</option>
+<option value="Saudi Arabia">Saudi Arabia</option>
+<option value="Senegal">Senegal</option>
+<option value="Serbia">Serbia</option>
+<option value="Seychelles">Seychelles</option>
+<option value="Sierra Leone">Sierra Leone</option>
+<option value="Singapore">Singapore</option>
+<option value="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)</option>
+<option value="Slovakia">Slovakia</option>
+<option value="Slovenia">Slovenia</option>
+<option value="Solomon Islands">Solomon Islands</option>
+<option value="Somalia">Somalia</option>
+<option value="South Africa">South Africa</option>
+<option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+<option value="South Sudan">South Sudan</option>
+<option value="Spain">Spain</option>
+<option value="Sri Lanka">Sri Lanka</option>
+<option value="Sudan">Sudan</option>
+<option value="Suriname">Suriname</option>
+<option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+<option value="Sweden">Sweden</option>
+<option value="Switzerland">Switzerland</option>
+<option value="Syrian Arab Republic">Syrian Arab Republic</option>
+<option value="Taiwan, Province of China">Taiwan, Province of China</option>
+<option value="Tajikistan">Tajikistan</option>
+<option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+<option value="Thailand">Thailand</option>
+<option value="Timor-Leste">Timor-Leste</option>
+<option value="Togo">Togo</option>
+<option value="Tokelau">Tokelau</option>
+<option value="Tonga">Tonga</option>
+<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+<option value="Tunisia">Tunisia</option>
+<option value="Turkmenistan">Turkmenistan</option>
+<option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+<option value="Tuvalu">Tuvalu</option>
+<option value="Türkiye">Türkiye</option>
+<option value="Uganda">Uganda</option>
+<option value="Ukraine">Ukraine</option>
+<option value="United Arab Emirates">United Arab Emirates</option>
+<option value="United Kingdom of Great Britain and Northern Ireland" selected="selected">United Kingdom of Great Britain and Northern Ireland</option>
+<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+<option value="United States of America">United States of America</option>
+<option value="Uruguay">Uruguay</option>
+<option value="Uzbekistan">Uzbekistan</option>
+<option value="Vanuatu">Vanuatu</option>
+<option value="Venezuela (Bolivarian Republic of)">Venezuela (Bolivarian Republic of)</option>
+<option value="Viet Nam">Viet Nam</option>
+<option value="Virgin Islands (British)">Virgin Islands (British)</option>
+<option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+<option value="Wallis and Futuna">Wallis and Futuna</option>
+<option value="Western Sahara">Western Sahara</option>
+<option value="Yemen">Yemen</option>
+<option value="Zambia">Zambia</option>
+<option value="Zimbabwe">Zimbabwe</option>
+<option value="Åland Islands">Åland Islands</option>
+</select>
+                
+                
+              </div>
+            </div>
+            
+      
+            <div class="form-group">
+              <label for="account_hear_about" class="">
+                How did you hear about this event?
+                
+              </label>
+              <div class="">
+                <input type="text" name="account[hear_about]" value="" id="account_hear_about" class="form-control " />
+                
+                
+              </div>
+            </div>
+            
+    <input type="hidden" name="account[http_referrer]" id="account_http_referrer" />
+      <script>
+        $(function () {
+          $('#opt-in-organisation label').html('Get email updates from The Psychedelic Society')
+          $('#opt-in-organisation').show()
+        })
+      </script>
+      <div id="opt-in-organisation" style="display: none">
+        
+            <div class="checkbox">
+              <input type="hidden" name="account[opt_in_organisation]" value="0" /><input type="checkbox" name="account[opt_in_organisation]" value="1" id="account_opt_in_organisation" class="form-check-input " />
+              <label for="account_opt_in_organisation" class="">
+                Opt in organisation
+                
+                
+                
+              </label>
+              </div>
+            
+      </div>
+      <script>
+        $(function () {
+          $('#opt-in-facilitator label').text('Get email updates from Lani')
+          $('#opt-in-facilitator').show()
+        })
+      </script>
+      <div id="opt-in-facilitator" style="display: none">
+        
+            <div class="checkbox">
+              <input type="hidden" name="account[opt_in_facilitator]" value="0" /><input type="checkbox" name="account[opt_in_facilitator]" value="1" id="account_opt_in_facilitator" class="form-check-input " />
+              <label for="account_opt_in_facilitator" class="">
+                Opt in facilitator
+                
+                
+                
+              </label>
+              </div>
+            
+      </div>
+      <p><small>
+          By proceeding you agree to The Psychedelic Society's <a href="https://docs.google.com/document/d/1ezxGryzom8cX3LOsTZHbWq2jrE8YNcdctSdmFR-D42k/edit" target="_blank">terms and conditions</a>
+            and understand this event is organised by Lani Rocillo.
+        </small>
+      </p>
+    <button class="btn btn-primary btn-block mb-1" type="submit" data-payment-method="rsvp">
+      <span>RSVP</span>
+      <i class="fa fa-spin fa-circle-o-notch" style="display: none"></i>
+    </button>
+    <input type="hidden" name="payment_method" value="rsvp" disabled="disabled" />
+      <button class="btn btn-primary btn-block mb-1" type="submit" data-payment-method="stripe">
+        <span>Pay</span>
+        <i class="fa fa-spin fa-circle-o-notch" style="display: none"></i>
+      </button>
+      <input type="hidden" name="payment_method" value="stripe" disabled="disabled" />
+    <input type="hidden" name="utm_source" />
+    <input type="hidden" name="utm_medium" />
+    <input type="hidden" name="utm_campaign" />
+</form></div>
+</div>
+<div class="card" id="card-error" style="display: none">
+  <h3 class="card-header bg-danger text-white">There was an error processing the transaction</h3>
+  <div class="card-body">
+    <p>
+      You have not be charged. Please refresh the page to try again.
+    </p>
+  </div>
+</div>
+<div class="card" id="pay-with-seeds" style="display: none">
+  <h3 class="card-header bg-primary text-white">Pay with SEEDS</h3>
+  <div class="card-body">
+    <p class="lead please"></p>
+    <p class="lead memo text-monospace font-weight-bold text-center"></p>
+    <p>Looking for your transaction... <i class="fa fa-spin fa-circle-o-notch"></i></p>
+  </div>
+</div>
+<div class="card" id="pay-with-evm" style="display: none">
+  <h3 class="card-header bg-primary text-white">
+    Pay with 
+  </h3>
+  <div class="card-body">
+    <p class="lead please"></p>
+    <p class="web3wallet"></p>
+    <p>Making a manual transaction? You will find pasting these details easier if you 'Expand view' first.</p>
+    <p>Looking for your transaction... <i class="fa fa-spin fa-circle-o-notch"></i></p>
+  </div>
+</div>
+<script>
+    timeAgo = 'about 1 month'
+    eventId = "63ced42d3d389e000b5f7383"
+    placesRemaining = 2
+    currency = "GBP"
+    currencySymbol = "£"
+    stripePk = "pk_live_Lc0kQT901cgJgWp2bRV291JF"
+    coinbase = false
+    seedsUsername = null
+    evmAddress = null
+    contractAddress = null
+    networkId = 
+    networkName = ''
+    signedIn = false
+</script>
+<script src="/javascripts/purchase.js?7e51b97a94c9f26f1c7c0361df72b00edeb20825"></script>
+
+            <div class="card mt-3">
+    <h3 class="card-header bg-primary text-white">Upcoming Lani and Annabelle&#39;s Events events</h3>
+    <div class="card-body">
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/oitxl">
+    Full Moon Sacred Voice Activation  Harmonizing Gong Bath with Ceremonial Cacao
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2c" class="text-white label label-primary d-inline-block mb-1">gong bath</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96c56f665e800137b6c32" class="text-white label label-primary d-inline-block mb-1">voicework</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=632c4be798ffc6000b21167d" class="text-white label label-primary d-inline-block mb-1">sound healing and cacao ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=6346fba7dd15100013ef705d" class="text-white label label-primary d-inline-block mb-1">voice activation</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/lanirocillo">Lani Rocillo</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Mon 3rd Jul 2023, 6:30pm – 9:30pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Soma hŌṃe (N16), Stoke Newington Church Street, London, UK">Soma hŌṃe (N16), Stoke Newington Church Street, London, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/jx8pc">
+    Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Fri 14th Jul 2023, 6pm – 9pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK">Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/iifs9">
+    Kundalini Yoga, Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Sun 16th Jul 2023, 1pm – 4pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=The Wild Box, Whitehouse Place, Bristol, UK">The Wild Box, Whitehouse Place, Bristol, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/zy0iu">
+    Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Fri 11th Aug 2023, 6pm – 9pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK">Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/bi9g4">
+    Kundalini Yoga, Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Sun 13th Aug 2023, 1pm – 4pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=The Wild Box, Whitehouse Place, Bristol, UK">The Wild Box, Whitehouse Place, Bristol, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/idmkr">
+    Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Fri 1st Sep 2023, 6pm – 9pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK">Soma hŌṃe (N16), Stoke Newington Church Street, London N16 9HP, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/qgdfc">
+    Kundalini Yoga, Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Sun 3rd Sep 2023, 1pm – 4pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=The Wild Box, Whitehouse Place, Bristol, UK">The Wild Box, Whitehouse Place, Bristol, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/huflr">
+    Autumn Equinox Retreat
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614081ecc7cd780011d686eb" class="text-white label label-primary d-inline-block mb-1">retreat</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a> and <a target="_parent" class="text-dark" href="/u/lanirocillo">Lani Rocillo</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Wed 20th Sep 2023, 3pm – Sun 24th Sep 2023, 1pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Cae Mabon, Fachwen, Llanberis, Gwynedd, LL55 3HB">Cae Mabon, Fachwen, Llanberis, Gwynedd, LL55 3HB</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/bvg9o">
+    Full Moon Sacred Voice Activation Harmonizing Gong Bath with Ceremonial Cacao
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2c" class="text-white label label-primary d-inline-block mb-1">gong bath</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96c56f665e800137b6c32" class="text-white label label-primary d-inline-block mb-1">voicework</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=632c4be798ffc6000b21167d" class="text-white label label-primary d-inline-block mb-1">sound healing and cacao ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=6346fba7dd15100013ef705d" class="text-white label label-primary d-inline-block mb-1">voice activation</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/lanirocillo">Lani Rocillo</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Fri 29th Sep 2023, 6:30pm – 9:30pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Soma hŌṃe (N16), Stoke Newington Church Street, London, UK">Soma hŌṃe (N16), Stoke Newington Church Street, London, UK</a>
+
+  </li>
+  </ul>
+
+      <h4 class="block-title">
+  <a class="text-dark" target="_parent" href="/e/xh2tr">
+    Kundalini Yoga, Sacred Cacao and Harmonising Sound Journey
+  </a>
+</h4>
+<div class="mb-2">
+    <a href="/o/the-psychedelic-society/events?event_tag_id=5dfa69a4bbdec50006808c2a" class="text-white label label-primary d-inline-block mb-1">sound</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5ea6e16f0f1a5800136f3280" class="text-white label label-primary d-inline-block mb-1">kundalini</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5eb96b89f665e800097b6c29" class="text-white label label-primary d-inline-block mb-1">yoga</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=5fc632bca50238000dca6a22" class="text-white label label-primary d-inline-block mb-1">cacao</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=601db4b26d476f0017e2ca6c" class="text-white label label-primary d-inline-block mb-1">ceremony</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=614b570113140600116d02ae" class="text-white label label-primary d-inline-block mb-1">london</a>
+  <a href="/o/the-psychedelic-society/events?event_tag_id=619c242e1fc6c800113faff4" class="text-white label label-primary d-inline-block mb-1">ceremony and ritual</a>
+
+</div>
+<ul style="margin-left: 1.66em; font-size: 1rem" class="fa-ul text-dark">
+    <li>
+      <i data-toggle="tooltip" title="Host/facilitators" class="fa fa-li fa-flag"></i>
+        <a target="_parent" class="text-dark" href="/u/annabelle_stappleton_crittenden">Annabelle Stapleton-Crittenden</a>
+
+    </li>
+  <li>
+    <i data-toggle="tooltip" title="Dates/times" class="fa fa-li fa-calendar"></i>
+    Sun 1st Oct 2023, 6pm – 9pm UK time (UTC +01:00)
+  </li>
+  <li>
+    <i data-toggle="tooltip" title="Location" class="fa fa-li fa-map-marker"></i>
+      <a target="_blank" href="https://www.google.co.uk/maps?q=Lime Wharf, Vyner Street, London E2 9DJ, UK">Lime Wharf, Vyner Street, London E2 9DJ, UK</a>
+
+  </li>
+  </ul>
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+</div>
+  <h2 class="mt-5">Feedback on Lani and Annabelle&#39;s Events events</h2>
+  <div class="mt-3" data-pagelet-url="/activities/5e413a476a864b0004af0244/show_feedback"></div>
+
+
+
+      </div>
+      <!-- END #content -->
+    </div>
+    <!-- END #page-container -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+  </body>
+</html>

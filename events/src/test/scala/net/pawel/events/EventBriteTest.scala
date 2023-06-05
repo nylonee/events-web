@@ -1,8 +1,8 @@
 package net.pawel.events
 
 import net.pawel.events.domain.Event
-import net.pawel.events.util.Time.parseInstant
-import net.pawel.events.util.{FetchAndWriteToFile, FetchPageFromFile}
+import net.pawel.events.util.FetchPageFromFile
+import net.pawel.events.util.ParsingTime.parseInstant
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -11,6 +11,10 @@ class EventBriteTest extends AnyFlatSpec with Matchers {
   "organizersEvents" should "fetch organizer's events" in {
     val eventBrite = new EventBrite(new FetchPageFromFile)
     val events = eventBrite.organizersEvents("https://www.eventbrite.co.uk/o/ukdc-15634844127")
+      .filter(_.start.isAfter(parseInstant("2023-03-01 00:00 Europe/London")))
+
+    events.size shouldBe 2
+
     events shouldBe List(
       Event(
         "Free Brazilian Zouk Latin Dance Class - Thurs 16th March",
@@ -32,19 +36,16 @@ class EventBriteTest extends AnyFlatSpec with Matchers {
   "organizersEvents" should "fetch organizer's events with multiple dates" in {
     val eventBrite = new EventBrite(new FetchPageFromFile)
     val events = eventBrite.organizersEvents("https://www.eventbrite.co.uk/o/togetherness-8057382611")
-    events shouldBe List(
+      .filter(_.start.isAfter(parseInstant("2023-02-22 00:00 Europe/London")))
+
+    events.size shouldBe 7
+
+    val sorted = events.sortBy(_.start)
+    sorted shouldBe List(
       Event("Boundaries Lab: Intro to the Wheel of Consent",
         "https://www.eventbrite.co.uk/e/boundaries-lab-intro-to-the-wheel-of-consent-tickets-368828003487",
         parseInstant("2023-02-23 19:00 Europe/London"),
         parseInstant("2023-02-23 21:00 Europe/London"),
-        "Octavius St London SE8 4BY",
-        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
-      ),
-      Event(
-        "Boundaries Lab: Intro to the Wheel of Consent",
-        "https://www.eventbrite.co.uk/e/boundaries-lab-intro-to-the-wheel-of-consent-tickets-368828003487",
-        parseInstant("2023-09-07 19:00 Europe/London"),
-        parseInstant("2023-09-07 21:00 Europe/London"),
         "Octavius St London SE8 4BY",
         "https://www.eventbrite.co.uk/o/togetherness-8057382611"
       ),
@@ -86,7 +87,15 @@ class EventBriteTest extends AnyFlatSpec with Matchers {
         parseInstant("2023-06-15 21:30 Europe/London"),
         "Sky Dome London SE8 4BY",
         "https://www.eventbrite.co.uk/o/togetherness-8057382611"
-      )
+      ),
+      Event(
+        "Boundaries Lab: Intro to the Wheel of Consent",
+        "https://www.eventbrite.co.uk/e/boundaries-lab-intro-to-the-wheel-of-consent-tickets-368828003487",
+        parseInstant("2023-09-07 19:00 Europe/London"),
+        parseInstant("2023-09-07 21:00 Europe/London"),
+        "Octavius St London SE8 4BY",
+        "https://www.eventbrite.co.uk/o/togetherness-8057382611"
+      ),
     )
   }
 }
