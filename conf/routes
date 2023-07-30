@@ -4,8 +4,12 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index()
-GET     /events                     controllers.HomeController.events()
+GET         /                      controllers.HomeController.index()
+GET         /events                controllers.HomeController.events()
+GET         /ics                   controllers.HomeController.ics()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file          controllers.Assets.versioned(path="/public", file: Asset)
+
+# Add new route for POST request to re-create the calendar with new URLs
+POST        /updateCalendar        controllers.HomeController.updateCalendar()

@@ -12,6 +12,7 @@ import com.google.api.client.util.DateTime
 import com.google.api.client.util.store.FileDataStoreFactory
 import com.google.api.services.calendar.{Calendar, CalendarScopes, model}
 import net.pawel.events.domain.{Event, Organizer, OrganizerType}
+import net.pawel.events.util.Utils
 import net.pawel.events.util.Utils.{await, parallelize}
 import net.pawel.events.{Dandelion, EventBrite, Events, TicketTailor}
 import org.mongodb.scala.bson.collection.immutable.Document
