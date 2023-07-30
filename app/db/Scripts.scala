@@ -112,11 +112,10 @@ object UpdateEvents extends App with Repositories with Common {
   }
 
   val events = eventsForOrganizers(organizersFuture)
-  val dandelionEvents = eventsForOrganizers(insertedDandelionOrganizersFuture).filter(onlyLondonEvents)
 
   println("All events gathered")
 
-  lazy val allEvents = events ++ dandelionEvents
+  lazy val allEvents = events
 
   println("Events:\n" + allEvents.mkString("\n"))
 
